@@ -1,0 +1,143 @@
+{
+  "name": "@consta/charts",
+  "version": "0.0.1",
+  "scripts": {
+    "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
+    "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps",
+    "build:types": "NODE_ENV=production ttsc --declaration --outDir lib/ --emitDeclarationOnly -p tsconfig.build.json",
+    "build:package.json": "node scripts/prepare-package-json.js",
+    "build:docs": "cp README.md lib/README.md",
+    "build": "rm -rf lib && yarn build:css && yarn build:js && yarn build:types && yarn build:package.json && yarn build:docs",
+    "start": "NODE_ENV=development ROOT_PATH=./ NODE_PATH=./node_modules start-storybook -p 6006 --ci",
+    "storybook:build": "NODE_ENV=production ROOT_PATH=./ NODE_PATH=./node_modules build-storybook -o build/storybook",
+    "lint": "npm-run-all --parallel lint:*",
+    "format": "prettier --write '{src,types,scripts}/**/*.{json,{j,t}s{,x},css,}'",
+    "lint-fix": "npm-run-all format lint-fix:*",
+    "lint:ts": "eslint '{src,types}/**/*.ts{,x}'",
+    "lint-fix:ts": "eslint '{src,types}/**/*.ts{,x}' --fix",
+    "lint:css": "stylelint 'src/**/*.css'",
+    "lint-fix:css": "stylelint 'src/**/*.css' --fix",
+    "checktypes": "tsc --noEmit --extendedDiagnostics",
+    "unit": "NODE_PATH=./node_modules TZ=Europe/Moscow jest",
+    "unit:watch": "yarn unit --watchAll",
+    "test": "npm-run-all --parallel lint checktypes unit",
+    "prepare": "yarn install-peers"
+  },
+  "files": [
+    "*",
+    "!*.css.d.ts",
+    "!**/__private__/storybook",
+    "!**/storybook",
+    "!**/__mocks__",
+    "!**/__stories__",
+    "!**/__tests__",
+    "!**/*.test.d.ts",
+    "!**/*.spec.d.ts",
+    "!**/*.mock.d.ts",
+    "!**/*.stories.d.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "browserslist": [
+    "Chrome >= 75"
+  ],
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn checktypes",
+      "post-checkout": "node node_modules/@consta/widgets-configs/scripts/checkout-clean.js"
+    }
+  },
+  "lint-staged": {
+    "{src,types}/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "{src}/**/*.css": [
+      "prettier --write",
+      "stylelint --fix",
+      "git add"
+    ],
+    "{src,scripts,config}/**/*.{json,js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "@consta/uikit": "1.11.10",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  },
+  "dependencies": {
+    "@antv/g2plot": "^2.3.18",
+    "@bem-react/classname": "1.5.8"
+  },
+  "resolutions": {
+    "@types/react": "16.9.34",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./commitizen.js"
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "7.10.5",
+    "@babel/plugin-transform-react-jsx": "7.3.0",
+    "@babel/preset-typescript": "7.10.4",
+    "@consta/widgets-configs": "1.5.0",
+    "@consta/widgets-utils": "0.2.14",
+    "@mdx-js/loader": "1.5.9",
+    "@storybook/addon-actions": "5.3.18",
+    "@storybook/addon-docs": "5.3.18",
+    "@storybook/addon-info": "5.3.18",
+    "@storybook/addon-knobs": "5.3.18",
+    "@storybook/react": "5.3.18",
+    "@storybook/theming": "5.3.18",
+    "@testing-library/react": "10.4.9",
+    "@types/classnames": "2.2.9",
+    "@types/react": "16.9.34",
+    "@types/react-dom": "16.9.7",
+    "@types/react-test-renderer": "16.9.2",
+    "babel-loader": "8.0.6",
+    "babel-plugin-module-resolver": "4.0.0",
+    "babel-plugin-transform-postcss": "0.3.0",
+    "babel-preset-minify": "0.5.1",
+    "commitizen": "^4.2.3",
+    "cssnano": "4.1.10",
+    "cz-customizable": "^6.3.0",
+    "eslint-plugin-todo-plz": "1.1.0",
+    "fast-glob": "3.2.2",
+    "husky": "3.0.0",
+    "install-peers-cli": "https://github.com/evless/install-peers-cli#fix-yarn-policies",
+    "mockdate": "2.0.5",
+    "npm-run-all": "4.1.5",
+    "postcss": "7.0.32",
+    "postcss-cli": "7.1.1",
+    "postcss-functions": "3.0.0",
+    "postcss-mixins": "6.2.3",
+    "postcss-modules": "3.2.0",
+    "postcss-nested": "4.2.1",
+    "postcss-preset-env": "6.6.0",
+    "postcss-url": "8.0.0",
+    "react-test-renderer": "16.8.6",
+    "remark-external-links": "6.0.0",
+    "remark-slug": "6.0.0",
+    "storybook-addon-react-docgen": "1.2.28",
+    "storybook-addon-smart-knobs": "6.0.2",
+    "storybook-addon-themes": "5.4.1",
+    "webpack-merge": "4.2.2"
+  },
+  "engines": {
+    "node": "12.x",
+    "yarn": ">=1.19.1"
+  }
+}
