@@ -4,6 +4,7 @@ import { Radar as G2plotRadar, RadarOptions as G2plotRadarProps } from '@antv/g2
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
+import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
@@ -20,7 +21,8 @@ export const Radar: Radar = React.forwardRef((props, ref) => {
     className,
     ...rest
   } = props
-  const { chart, container } = useChart(G2plotRadar, rest)
+  const theme = useChartTheme()
+  const { chart, container } = useChart(G2plotRadar, { ...rest, theme })
 
   useEffect(() => {
     getChart(chartRef, chart.current)

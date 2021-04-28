@@ -20,6 +20,7 @@ const Default = () => {
         width: 800,
         height: '100%',
       }}
+      renderer="svg"
       {...options}
     />
   )

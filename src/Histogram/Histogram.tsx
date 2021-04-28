@@ -7,6 +7,7 @@ import {
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
+import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
@@ -23,7 +24,8 @@ export const Histogram: Histogram = React.forwardRef((props, ref) => {
     className,
     ...rest
   } = props
-  const { chart, container } = useChart(G2plotHistogram, rest)
+  const theme = useChartTheme()
+  const { chart, container } = useChart(G2plotHistogram, { ...rest, theme })
 
   useEffect(() => {
     getChart(chartRef, chart.current)

@@ -4,6 +4,7 @@ import { Scatter as G2plotScatter, ScatterOptions as G2plotScatterProps } from '
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
+import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
@@ -20,7 +21,8 @@ export const Scatter: Scatter = React.forwardRef((props, ref) => {
     className,
     ...rest
   } = props
-  const { chart, container } = useChart(G2plotScatter, rest)
+  const theme = useChartTheme()
+  const { chart, container } = useChart(G2plotScatter, { ...rest, theme })
 
   useEffect(() => {
     getChart(chartRef, chart.current)

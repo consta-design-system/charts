@@ -4,6 +4,7 @@ import { Bullet as G2plotBullet, BulletOptions as G2plotBulletProps } from '@ant
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
+import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
@@ -21,7 +22,8 @@ export const Bullet: Bullet = React.forwardRef((props, ref) => {
     ...rest
   } = props
 
-  const { chart, container } = useChart(G2plotBullet, rest)
+  const theme = useChartTheme()
+  const { chart, container } = useChart(G2plotBullet, { ...rest, theme })
 
   useEffect(() => {
     getChart(chartRef, chart.current)

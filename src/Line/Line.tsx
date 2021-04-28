@@ -1,17 +1,19 @@
 import React, { useEffect, useImperativeHandle } from 'react'
 
-import { Line as G2plotLine, LineOptions as G2plotLineProps } from '@antv/g2plot'
+import { Line as G2plotLine } from '@antv/g2plot'
 import { useForkRef } from '@consta/uikit/useForkRef'
+import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { useChart } from '@/__private__/hooks/useChart'
+import { getChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
-import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-export type LineProps = ChartProps<G2plotLineProps>
+import { withDefaultProps } from './helpers'
+import { Line as Component } from './types'
 
-type Line = (props: LineProps) => React.ReactElement | null
+export * from './types'
 
-export const Line: Line = React.forwardRef((props, ref) => {
+export const Line: Component = React.forwardRef((props, ref) => {
   const {
     chartRef,
     style = {
@@ -20,7 +22,11 @@ export const Line: Line = React.forwardRef((props, ref) => {
     className,
     ...rest
   } = props
-  const { chart, container } = useChart(G2plotLine, rest)
+  const themeVars = useThemeVars()
+  const theme = getChartTheme(themeVars)
+  const chartProps = withDefaultProps(rest)
+
+  const { chart, container } = useChart(G2plotLine, { ...chartProps, theme })
 
   useEffect(() => {
     getChart(chartRef, chart.current)

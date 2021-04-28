@@ -9,8 +9,8 @@ const Default = () => {
   const options: GaugeProps = {
     percent: 0.7,
     range: {
-      ticks: [0, 1 / 3, 2 / 3, 1],
-      color: ['#F4664A', '#FAAD14', '#30BF78'],
+      // ticks: [0, 1 / 3, 2 / 3, 1],
+      // color: ['#F4664A', '#FAAD14', '#30BF78'],
     },
     indicator: {
       pointer: {
@@ -40,6 +40,7 @@ const Default = () => {
         width: 300,
         height: '100%',
       }}
+      renderer="svg"
       {...options}
     />
   )
