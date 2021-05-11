@@ -11,8 +11,6 @@ import {
   ThemeDecorator,
 } from '@/__private__/storybook'
 
-import stub from './stub.mdx'
-
 import './storybook.css'
 
 addDecorator(withPropsTable)
@@ -55,7 +53,6 @@ addParameters({
   },
   docs: {
     container: DocsDecorator,
-    page: stub,
   },
   options: {
     theme: themes.dark,
