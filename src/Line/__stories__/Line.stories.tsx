@@ -42,11 +42,6 @@ const Default = () => {
         },
       },
     ],
-    lineStyle: ({ color }) => {
-      return {
-        stroke: color,
-      }
-    },
   }
 
   return (
