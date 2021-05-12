@@ -7,7 +7,7 @@ import { createMetadata } from '@/__private__/storybook'
 import { data, Item } from '../__mocks__/mock.data'
 import { Line, LineProps } from '../Line'
 
-// import mdx from './Line.mdx'
+import mdx from './Line.mdx'
 
 const pxInNumber = (string: string) => Number(string.replace('px', ''))
 
@@ -68,9 +68,9 @@ export function Playground() {
 export default createMetadata({
   title: 'Компоненты|/Line',
   id: 'components/Line',
-  // parameters: {
-  //   docs: {
-  //     page: mdx,
-  //   },
-  // },
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 })

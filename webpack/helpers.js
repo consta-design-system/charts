@@ -23,18 +23,55 @@ const createRuleForMdx = (options = {}) => ({
 
 module.exports = {
   withMdxRules(config) {
-    // Для сборки mdx файлов, которые мы импортируем внутри TooltipContentForMultipleValues.stories.tsx
+    // // Для сборки mdx файлов, которые мы импортируем внутри TooltipContentForMultipleValues.stories.tsx
+    // config.module.rules.push({
+    //   include: /src|.storybook/,
+    //   ...createRuleForMdx(),
+    // })
+
+    // // Для сборки mdx файлов, которые напрямую подключаются в storybook из папки docs
+    // config.module.rules.push({
+    //   exclude: /src|.storybook/,
+    //   ...createRuleForMdx({
+    //     compilers: [createCompiler({})],
+    //   }),
+    // })
+
     config.module.rules.push({
-      include: /src|.storybook/,
-      ...createRuleForMdx(),
+      test: /(\/|\\)(src|\.storybook)(\/|\\)[\w/\\.-]*\.mdx$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+        {
+          loader: '@mdx-js/loader',
+          options: {
+            remarkPlugins: [remarkSlug, remarkExternalLinks],
+          },
+        },
+      ],
     })
 
-    // Для сборки mdx файлов, которые напрямую подключаются в storybook из папки docs
     config.module.rules.push({
-      exclude: /src|.storybook/,
-      ...createRuleForMdx({
-        compilers: [createCompiler({})],
-      }),
+      test: /(\/|\\)docs(\/|\\)[\w/\\.-]*\.mdx$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+        {
+          loader: '@mdx-js/loader',
+          options: {
+            remarkPlugins: [remarkSlug, remarkExternalLinks],
+            compilers: [createCompiler({})],
+          },
+        },
+      ],
     })
 
     return config

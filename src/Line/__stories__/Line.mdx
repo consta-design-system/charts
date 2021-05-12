@@ -1,1 +1,97 @@
-# Lin
+import { LineExampleOneLine } from './examples/LineExampleOneLine/LineExampleOneLine'
+import { LineExampleMultiLine } from './examples/LineExampleMultiLine/LineExampleMultiLine'
+import {
+  LineExampleColorLine,
+  LineExampleColorMultiLine,
+} from './examples/LineExampleColorLine/LineExampleColorLine'
+
+# Line
+
+основная документация [тут](https://g2plot.antv.vision/en/docs/api/plots/line)
+
+### Одна линия
+
+```tsx
+type Item = { Date: string; scales: number }
+
+const data: Item[] = [
+  {
+    Date: '2010-01',
+    scales: 1998,
+  },
+  // ...
+  {
+    Date: '2010-02',
+    scales: 1850,
+  },
+]
+
+function LineExampleOneLine() {
+  return <Line data={data} xField="Date" yField="scales" />
+}
+```
+
+<LineExampleOneLine />
+
+### Множестно линий
+
+```tsx’
+type Item = { country: string; year: string; value: null | number }
+
+const data: Item[] = [
+  { country: 'United Kingdom', year: '1915', value: 2.2 },
+  // ...
+  { country: 'United States', year: '1915', value: 0.7 },
+]
+
+function LineExampleMultiLine() {
+  return <Line data={data} xField="year" yField="value" seriesField="country" />
+}
+```
+
+<LineExampleMultiLine />
+
+### Цвет линий
+
+```tsx
+function LineExampleColorLine() {
+  return <Line data={data} xField="Date" yField="scales" lineStyle={{ stroke: 'red' }} />
+}
+```
+
+<LineExampleColorLine />
+
+```tsx
+const colorMap: { [key: string]: string } = {
+  Austria: '#ff7514',
+  Canada: '#ad4800',
+  France: '#ca3a27',
+  Germany: '#470d0b',
+  Japan: '#ffc0cb',
+  Netherlands: '#ffd88a',
+  'New Zealand': '#b39929',
+  Spain: '#c5e384',
+  Sweden: '#8c4566',
+  Switzerland: '#924e7d',
+  'United Kingdom': '#905d5d',
+  'United States': '#a2a2d0',
+}
+
+export function LineExampleColorMultiLine() {
+  return (
+    <Line
+      data={data}
+      xField="year"
+      yField="value"
+      seriesField="country"
+      lineStyle={({ country }) => {
+        return {
+          stroke: colorMap[country],
+        }
+      }}
+    />
+  )
+}
+```
+
+<LineExampleColorMultiLine />
