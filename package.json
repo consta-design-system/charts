@@ -20,7 +20,7 @@
     "checktypes": "tsc --noEmit --extendedDiagnostics",
     "unit": "NODE_PATH=./node_modules TZ=Europe/Moscow jest",
     "unit:watch": "yarn unit --watchAll",
-    "test": "npm-run-all --parallel lint checktypes unit",
+    "test": "npm-run-all --parallel lint checktypes",
     "prepare": "yarn install-peers"
   },
   "files": [

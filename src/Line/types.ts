@@ -1,7 +1,6 @@
 import { LineOptions as G2plotLineProps, ShapeStyle } from '@antv/g2plot'
 
 import { ContainerProps, Tooltip } from '@/__private__/hooks/useChart'
-import { ChartRefOptions } from '@/__private__/utils/types/ChartRefOptions'
 
 type ExcludeProps =
   | 'tooltip'
@@ -22,7 +21,6 @@ export type LineProps<Item> = Omit<G2plotLineProps, ExcludeProps> & {
   xField: keyof Item
   yField: keyof Item
   seriesField?: keyof Item
-} & ContainerProps &
-  React.RefAttributes<HTMLDivElement> & { chartRef?: ChartRefOptions }
+} & ContainerProps
 
-export type Line = <Item>(props: LineProps<Item>) => React.ReactElement | null
+export type LineComponentType = <Item>(props: LineProps<Item>) => React.ReactElement | null

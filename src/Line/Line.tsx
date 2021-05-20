@@ -8,11 +8,11 @@ import { useChart } from '@/__private__/hooks/useChart'
 import { getChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 
-import { Line as Component } from './types'
+import { LineComponentType } from './types'
 
 export * from './types'
 
-export const Line: Component = React.forwardRef((props, ref) => {
+export const Line: LineComponentType = React.forwardRef((props, ref) => {
   const {
     chartRef,
     style = {
