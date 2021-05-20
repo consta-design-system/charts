@@ -14,13 +14,15 @@ import { isEqual } from '@antv/util'
 
 import { clone, hasPath, isType, setPath } from '@/__private__/utils/ant'
 import { createNode } from '@/__private__/utils/createNode'
+import { ChartRefOptions } from '@/__private__/utils/types/ChartRefOptions'
 
 export type ContainerProps = {
   style?: React.CSSProperties
   className?: string
   onReady?: (chart: G2PlotConfig) => void
   onEvent?: (chart: G2PlotConfig, event: G2.Event) => void
-}
+  chartRef?: ChartRefOptions
+} & React.RefAttributes<HTMLDivElement>
 
 export type Tooltip =
   | (Omit<G2PlotTooltipOptions, 'customContent'> & {

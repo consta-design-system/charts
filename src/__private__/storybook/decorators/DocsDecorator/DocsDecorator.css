@@ -47,10 +47,6 @@
     background-color: var(--color-bg-secondary);
   }
 
-  .sbdocs-pre button {
-    background-color: var(--color-control-bg-primary);
-  }
-
   .sbdocs-p {
     font-size: var(--size-text-m);
     line-height: var(--line-height-text-l);

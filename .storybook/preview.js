@@ -11,9 +11,8 @@ import {
   ThemeDecorator,
 } from '@/__private__/storybook'
 
-import stub from './stub.mdx'
-
 import './storybook.css'
+import mdx from './stub.mdx'
 
 addDecorator(withPropsTable)
 addDecorator(withKnobs)
@@ -55,10 +54,10 @@ addParameters({
   },
   docs: {
     container: DocsDecorator,
-    page: stub,
+    page: mdx,
   },
   options: {
-    theme: themes.dark,
+    theme: themes.light,
     showRoots: true,
     storySort,
   },

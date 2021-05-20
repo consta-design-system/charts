@@ -7,6 +7,8 @@ import { createMetadata } from '@/__private__/storybook'
 import { data, Item } from '../__mocks__/mock.data'
 import { Line, LineProps } from '../Line'
 
+import mdx from './Line.mdx'
+
 const pxInNumber = (string: string) => Number(string.replace('px', ''))
 
 const Default = () => {
@@ -40,11 +42,6 @@ const Default = () => {
         },
       },
     ],
-    lineStyle: ({ color }) => {
-      return {
-        stroke: color,
-      }
-    },
   }
 
   return (
@@ -53,6 +50,7 @@ const Default = () => {
         width: 800,
         height: '100%',
       }}
+      renderer="svg"
       {...options}
     />
   )
@@ -65,4 +63,9 @@ export function Playground() {
 export default createMetadata({
   title: 'Компоненты|/Line',
   id: 'components/Line',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 })

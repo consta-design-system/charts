@@ -29,6 +29,7 @@ export const listOfThemes: readonly Theme[] = [
   {
     name: 'gpnDefault',
     color: '#fff',
+    default: true,
   },
   {
     name: 'gpnDark',
@@ -36,7 +37,6 @@ export const listOfThemes: readonly Theme[] = [
   },
   {
     name: 'gpnDisplay',
-    default: true,
     color: '#002033',
   },
 ]

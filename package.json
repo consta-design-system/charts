@@ -1,6 +1,6 @@
 {
   "name": "@consta/charts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
     "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps",
@@ -20,7 +20,7 @@
     "checktypes": "tsc --noEmit --extendedDiagnostics",
     "unit": "NODE_PATH=./node_modules TZ=Europe/Moscow jest",
     "unit:watch": "yarn unit --watchAll",
-    "test": "npm-run-all --parallel lint checktypes unit",
+    "test": "npm-run-all --parallel lint checktypes",
     "prepare": "yarn install-peers"
   },
   "files": [
@@ -68,12 +68,12 @@
     ]
   },
   "peerDependencies": {
-    "@consta/uikit": "1.11.10",
+    "@consta/uikit": "1.11.14",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@antv/g2plot": "^2.3.18",
+    "@antv/g2plot": "^2.3.19",
     "@bem-react/classname": "1.5.8"
   },
   "resolutions": {
@@ -96,12 +96,12 @@
     "@consta/widgets-configs": "1.5.0",
     "@consta/widgets-utils": "0.2.14",
     "@mdx-js/loader": "1.5.9",
-    "@storybook/addon-actions": "5.3.18",
-    "@storybook/addon-docs": "5.3.18",
-    "@storybook/addon-info": "5.3.18",
-    "@storybook/addon-knobs": "5.3.18",
-    "@storybook/react": "5.3.18",
-    "@storybook/theming": "5.3.18",
+    "@storybook/addon-actions": "5.3.19",
+    "@storybook/addon-docs": "5.3.19",
+    "@storybook/addon-info": "5.3.19",
+    "@storybook/addon-knobs": "5.3.19",
+    "@storybook/react": "5.3.19",
+    "@storybook/theming": "5.3.19",
     "@testing-library/react": "10.4.9",
     "@types/classnames": "2.2.9",
     "@types/react": "16.9.34",

@@ -1,6 +1,6 @@
-const createCompiler = require('@storybook/addon-docs/mdx-compiler-plugin');
-const remarkExternalLinks = require('remark-external-links');
-const remarkSlug = require('remark-slug');
+const createCompiler = require('@storybook/addon-docs/mdx-compiler-plugin')
+const remarkExternalLinks = require('remark-external-links')
+const remarkSlug = require('remark-slug')
 
 const createRuleForMdx = (options = {}) => ({
   test: /\.mdx?$/,
@@ -19,39 +19,76 @@ const createRuleForMdx = (options = {}) => ({
       },
     },
   ],
-});
+})
 
 module.exports = {
   withMdxRules(config) {
-    // Для сборки mdx файлов, которые мы импортируем внутри TooltipContentForMultipleValues.stories.tsx
-    config.module.rules.push({
-      include: /src|.storybook/,
-      ...createRuleForMdx(),
-    });
+    // // Для сборки mdx файлов, которые мы импортируем внутри TooltipContentForMultipleValues.stories.tsx
+    // config.module.rules.push({
+    //   include: /src|.storybook/,
+    //   ...createRuleForMdx(),
+    // })
 
-    // Для сборки mdx файлов, которые напрямую подключаются в storybook из папки docs
-    config.module.rules.push({
-      exclude: /src|.storybook/,
-      ...createRuleForMdx({
-        compilers: [createCompiler({})],
-      }),
-    });
+    // // Для сборки mdx файлов, которые напрямую подключаются в storybook из папки docs
+    // config.module.rules.push({
+    //   exclude: /src|.storybook/,
+    //   ...createRuleForMdx({
+    //     compilers: [createCompiler({})],
+    //   }),
+    // })
 
-    return config;
+    config.module.rules.push({
+      test: /(\/|\\)(src|\.storybook)(\/|\\)[\w/\\.-]*\.mdx$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+        {
+          loader: '@mdx-js/loader',
+          options: {
+            remarkPlugins: [remarkSlug, remarkExternalLinks],
+          },
+        },
+      ],
+    })
+
+    config.module.rules.push({
+      test: /(\/|\\)docs(\/|\\)[\w/\\.-]*\.mdx$/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+        {
+          loader: '@mdx-js/loader',
+          options: {
+            remarkPlugins: [remarkSlug, remarkExternalLinks],
+            compilers: [createCompiler({})],
+          },
+        },
+      ],
+    })
+
+    return config
   },
   disableCSSModules(config) {
     return {
       ...config,
       module: {
         ...config.module,
-        rules: config.module.rules.map((rule) => {
+        rules: config.module.rules.map(rule => {
           if (String(rule.test) === String(/\.css$/)) {
             return {
               ...rule,
               use: rule.use
-                .map((item) => {
+                .map(item => {
                   if (typeof item === 'string' && item.includes('css-modules-typescript-loader')) {
-                    return;
+                    return
                   }
 
                   if (
@@ -65,18 +102,18 @@ module.exports = {
                         ...item.options,
                         modules: false,
                       },
-                    };
+                    }
                   }
 
-                  return item;
+                  return item
                 })
                 .filter(Boolean),
-            };
+            }
           }
 
-          return rule;
+          return rule
         }),
       },
-    };
+    }
   },
-};
+}
