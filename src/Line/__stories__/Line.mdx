@@ -5,9 +5,11 @@ import {
   LineExampleColorMultiLine,
 } from './examples/LineExampleColorLine/LineExampleColorLine'
 
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
 # Line
 
-основная документация [тут](https://g2plot.antv.vision/en/docs/api/plots/line)
+<RemadeInfo commponentName="Line" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/line" />
 
 ### Одна линия
 
@@ -35,7 +37,7 @@ function LineExampleOneLine() {
 
 ### Множестно линий
 
-```tsx’
+```tsx
 type Item = { country: string; year: string; value: null | number }
 
 const data: Item[] = [

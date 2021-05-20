@@ -1,0 +1,5 @@
+.cw-story--RemadeInfo {
+  &-Link:hover {
+    text-decoration: underline;
+  }
+}
