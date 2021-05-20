@@ -57,7 +57,7 @@ addParameters({
     page: mdx,
   },
   options: {
-    theme: themes.dark,
+    theme: themes.light,
     showRoots: true,
     storySort,
   },

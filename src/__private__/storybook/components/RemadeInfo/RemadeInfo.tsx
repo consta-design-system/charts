@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { IconAlert } from '@consta/uikit/IconAlert'
 import { Informer } from '@consta/uikit/Informer'
 import { Text } from '@consta/uikit/Text'
 
@@ -13,7 +12,7 @@ const cnRemadeInfo = cn('RemadeInfo')
 export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = props => {
   const { commponentName, apiUrl } = props
   return (
-    <Informer className={cnRemadeInfo()} icon={IconAlert} status="system">
+    <Informer className={cnRemadeInfo()} status="system" view="bordered">
       <Text>
         Компонент{' '}
         <Text as="span" weight="bold">
