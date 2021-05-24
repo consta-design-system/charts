@@ -12,15 +12,15 @@ type ExcludeProps =
   | 'yField'
   | 'seriesField'
 
-export type LineProps<Item> = Omit<G2plotLineProps, ExcludeProps> & {
-  tooltip?: Tooltip
+export type LineProps<ITEM> = Omit<G2plotLineProps, ExcludeProps> & {
+  tooltip?: Tooltip<ITEM>
   theme?: never
   children?: never
-  data: Item[]
-  lineStyle?: ShapeStyle | ((item: Item) => ShapeStyle)
-  xField: keyof Item
-  yField: keyof Item
-  seriesField?: keyof Item
+  data: ITEM[]
+  lineStyle?: ShapeStyle | ((item: ITEM) => ShapeStyle)
+  xField: keyof ITEM
+  yField: keyof ITEM
+  seriesField?: keyof ITEM
 } & ContainerProps
 
-export type LineComponentType = <Item>(props: LineProps<Item>) => React.ReactElement | null
+export type LineComponentType = <ITEM>(props: LineProps<ITEM>) => React.ReactElement | null

@@ -24,15 +24,15 @@ export type ContainerProps = {
   chartRef?: ChartRefOptions
 } & React.RefAttributes<HTMLDivElement>
 
-export type Tooltip =
+export type Tooltip<ITEM> =
   | (Omit<G2PlotTooltipOptions, 'customContent'> & {
-      customContent?: (title: string, data: any[]) => ReactNode | string | void
+      customContent?: (title: string, data: ITEM[]) => ReactNode | string | void
       container?: ReactNode
     })
   | false
 
 export type Options = Omit<G2PlotConfig, 'tooltip' | 'data' | 'yAxis'> & {
-  tooltip?: Tooltip
+  tooltip?: Tooltip<any>
   data?: any
   yAxis?: G2PlotConfig['yAxis'] | Array<G2PlotConfig['yAxis']>
   [key: string]: any

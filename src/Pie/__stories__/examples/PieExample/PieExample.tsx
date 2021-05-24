@@ -1,15 +1,23 @@
 import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
+import { Text } from '@consta/uikit/Text'
 
-import { createMetadata } from '@/__private__/storybook'
+import { Pie } from '@/Pie'
+import { data } from '@/Pie/__mocks__/mock.data'
 
-import { data } from '../__mocks__/mock.data'
-import { Pie } from '../Pie'
+function sum(array?: Array<{ type: string; value: number }>) {
+  if (!array) {
+    return '0'
+  }
+  let s: number = 0
+  for (const item of array) {
+    s += item.value
+  }
+  return s.toString()
+}
 
-import mdx from './Pie.docs.mdx'
-
-const Default = () => {
+export function PieExample() {
   const vars = useThemeVars()
 
   return (
@@ -29,6 +37,9 @@ const Default = () => {
             color: vars.color.primary['--color-typo-primary'],
           },
         },
+        content: {
+          customHtml: (_v, _v2, v3, v4) => <Text size="3xl">{v3?.value || sum(v4)}</Text>,
+        },
       }}
       innerRadius={0.64}
       label={{
@@ -44,17 +55,3 @@ const Default = () => {
     />
   )
 }
-
-export function Playground() {
-  return <Default />
-}
-
-export default createMetadata({
-  title: 'Компоненты|/Pie',
-  id: 'components/Pie',
-  parameters: {
-    docs: {
-      page: mdx,
-    },
-  },
-})
