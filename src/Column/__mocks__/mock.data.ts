@@ -1,82 +1,93 @@
-export const data = [
+type Item = {
+  name: string
+  month: string
+  value: number
+  group: number
+}
+
+export const data: Item[] = [
   {
     name: 'London',
-    mount: 'Jan.',
+    month: 'Jan.',
     value: 18.9,
+    group: 1,
   },
   {
     name: 'London',
-    mount: 'Feb.',
+    month: 'Feb.',
     value: 28.8,
+    group: 1,
   },
   {
     name: 'London',
-    mount: 'Mar.',
+    month: 'Mar.',
     value: 39.3,
+    group: 2,
   },
   {
     name: 'London',
-    mount: 'Apr.',
+    month: 'Apr.',
     value: 81.4,
+    group: 1,
   },
   {
     name: 'London',
-    mount: 'May',
+    month: 'May',
     value: 47,
+    group: 2,
   },
   {
     name: 'London',
-    mount: 'Jun.',
+    month: 'Jun.',
     value: 20.3,
+    group: 1,
   },
   {
     name: 'London',
-    mount: 'Jul.',
+    month: 'Jul.',
     value: 24,
-  },
-  {
-    name: 'London',
-    mount: 'Aug.',
-    value: 35.6,
+    group: 2,
   },
   {
     name: 'Berlin',
-    mount: 'Jan.',
+    month: 'Jan.',
     value: 12.4,
+    group: 2,
   },
   {
     name: 'Berlin',
-    mount: 'Feb.',
+    month: 'Feb.',
     value: 23.2,
+    group: 1,
   },
   {
     name: 'Berlin',
-    mount: 'Mar.',
+    month: 'Mar.',
     value: 34.5,
+    group: 2,
   },
   {
     name: 'Berlin',
-    mount: 'Apr.',
+    month: 'Apr.',
     value: 99.7,
+    group: 1,
   },
   {
     name: 'Berlin',
-    mount: 'May',
+    month: 'May',
     value: 52.6,
+    group: 1,
   },
   {
     name: 'Berlin',
-    mount: 'Jun.',
+    month: 'Jun.',
     value: 35.5,
+    group: 2,
   },
   {
     name: 'Berlin',
-    mount: 'Jul.',
+    month: 'Jul.',
     value: 37.4,
-  },
-  {
-    name: 'Berlin',
-    mount: 'Aug.',
-    value: 42.4,
+    group: 2,
   },
 ]

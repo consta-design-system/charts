@@ -9,6 +9,8 @@ import { getChart } from '@/__private__/utils/getChart'
 
 import { PieComponentType } from './types'
 
+export * from './types'
+
 export const Pie: PieComponentType = React.forwardRef((props, ref) => {
   const {
     chartRef,
