@@ -5,12 +5,14 @@ import { createMetadata } from '@/__private__/storybook'
 import { data } from '../__mocks__/mock.data'
 import { Bar, BarProps } from '../Bar'
 
+import mdx from './Bar.docs.mdx'
+
 const Default = () => {
   const options: BarProps = {
     data,
     padding: 'auto',
     xField: 'value',
-    yField: 'mount',
+    yField: 'month',
     seriesField: 'name',
     marginRatio: 0,
   }
@@ -34,4 +36,9 @@ export function Playground() {
 export default createMetadata({
   title: 'Компоненты|/Bar',
   id: 'components/Bar',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 })
