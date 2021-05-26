@@ -8,11 +8,6 @@ const axisTickLineLength = chartLineWidth * 4
 
 const getNumber = (str: string) => parseInt(str, 10)
 
-const chartLineWidth = 1
-const axisTickLineLength = chartLineWidth * 4
-
-const getNumber = (str: string) => parseInt(str, 10)
-
 export const getChartTheme = (vars: ThemeVars) => {
   const styleSheet: StyleSheet = {
     backgroundColor: 'transparent',
