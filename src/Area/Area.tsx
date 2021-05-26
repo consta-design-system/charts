@@ -1,18 +1,17 @@
 import React, { useEffect, useImperativeHandle } from 'react'
 
-import { Area as G2plotArea, AreaOptions as G2plotAreaProps } from '@antv/g2plot'
+import { Area as G2plotArea } from '@antv/g2plot'
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
 import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
-import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-export type AreaProps = ChartProps<G2plotAreaProps>
+import { AreaComponentType } from './types'
 
-type Area = (props: AreaProps) => React.ReactElement | null
+export * from './types'
 
-export const Area: Area = React.forwardRef((props, ref) => {
+export const Area: AreaComponentType = React.forwardRef((props, ref) => {
   const {
     chartRef,
     style = {
