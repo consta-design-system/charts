@@ -1,4 +1,4 @@
-import { ThemeVars } from '@/__private__/utils/types/ThemeVars'
+import { ThemeVars } from '@consta/uikit/useThemeVars'
 
 import { LiquidProps } from './Liquid'
 

@@ -1,18 +1,17 @@
 import React, { useEffect, useImperativeHandle } from 'react'
 
-import { Column as G2plotColumn, ColumnOptions as G2plotColumnProps } from '@antv/g2plot'
+import { Column as G2plotColumn } from '@antv/g2plot'
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
 import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
-import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-export type ColumnProps = ChartProps<G2plotColumnProps>
+import { ColumnComponentType } from './types'
 
-type Column = (props: ColumnProps) => React.ReactElement | null
+export * from './types'
 
-export const Column: Column = React.forwardRef((props, ref) => {
+export const Column: ColumnComponentType = React.forwardRef((props, ref) => {
   const {
     chartRef,
     style = {

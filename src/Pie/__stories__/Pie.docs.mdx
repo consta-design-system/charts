@@ -1,0 +1,78 @@
+import { PieExample } from './examples/PieExample/PieExample'
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Pie
+
+<RemadeInfo commponentName="Pie" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/pie" />
+
+### Пример
+
+```tsx
+type Item = { type: string; value: number }
+
+const data: Item[] = [
+  { type: 'Option-1', value: 27 },
+  { type: 'Option-2', value: 25 },
+  { type: 'Option-3', value: 18 },
+  { type: 'Option-4', value: 15 },
+  { type: 'Option-5', value: 10 },
+  { type: 'Option-6', value: 5 },
+]
+
+function sum(array?: Item[]) {
+  if (!array) {
+    return '0'
+  }
+  let s: number = 0
+  for (const item of array) {
+    s += item.value
+  }
+  return s.toString()
+}
+
+export function LineExampleMultiLine() {
+  const vars = useThemeVars()
+
+  return (
+    <Pie
+      style={{
+        width: 800,
+        height: '100%',
+      }}
+      data={data}
+      angleField="value"
+      colorField="type"
+      radius={1}
+      statistic={{
+        title: {
+          formatter: v => v?.type || 'Всего',
+          style: {
+            color: vars.color.primary['--color-typo-primary'],
+          },
+        },
+        content: {
+          customHtml: (v, v2, v3, v4) => <Text size="3xl">{v3?.value || sum(v4)}</Text>,
+        },
+      }}
+      innerRadius={0.64}
+      label={{
+        type: 'inner',
+        offset: '-50%',
+        content: '{value}',
+        style: {
+          textAlign: 'center',
+          fontSize: 14,
+        },
+      }}
+      interactions={[
+        { type: 'element-selected' },
+        { type: 'element-active' },
+        { type: 'pie-statistic-active' },
+      ]}
+    />
+  )
+}
+```
+
+<PieExample />

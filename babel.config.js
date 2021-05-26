@@ -1,11 +1,5 @@
 module.exports = {
-  ignore: [
-    '**/*.css.d.ts',
-    '**/__tests__/*',
-    '**/__stories__/*',
-    '**/__mocks__/*',
-    '**/__private__/storybook/*',
-  ],
+  ignore: ['**/*.css.d.ts', '**/__tests__/*', '**/__stories__/*.stories.tsx'],
   comments: false,
   presets: [
     require('@consta/widgets-configs/config/webpack/babel'),
@@ -29,4 +23,4 @@ module.exports = {
       },
     ],
   ],
-};
+}

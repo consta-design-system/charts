@@ -12,6 +12,7 @@ import {
 } from '@/__private__/storybook'
 
 import './storybook.css'
+import mdx from './stub.mdx'
 
 addDecorator(withPropsTable)
 addDecorator(withKnobs)
@@ -53,9 +54,10 @@ addParameters({
   },
   docs: {
     container: DocsDecorator,
+    page: mdx,
   },
   options: {
-    theme: themes.dark,
+    theme: themes.light,
     showRoots: true,
     storySort,
   },

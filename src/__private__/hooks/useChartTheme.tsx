@@ -1,8 +1,12 @@
 import { StyleSheet } from '@antv/g2/lib/interface'
-import { useThemeVars } from '@consta/uikit/useThemeVars'
+import { ThemeVars, useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { createThemeByStyleSheet } from '@/__private__/utils/theme/createThemeByStyleSheet'
-import { ThemeVars } from '@/__private__/utils/types/ThemeVars'
+
+const chartLineWidth = 1
+const axisTickLineLength = chartLineWidth * 4
+
+const getNumber = (str: string) => parseInt(str, 10)
 
 const chartLineWidth = 1
 const axisTickLineLength = chartLineWidth * 4
@@ -72,7 +76,7 @@ export const getChartTheme = (vars: ThemeVars) => {
     axisLabelOffset: getNumber(vars.space['--space-2xs']),
     axisGridBorderColor: vars.color.primary['--color-bg-system'],
     axisGridBorder: chartLineWidth,
-    axisGridLineDash: [3, 0, 0, 3],
+    axisGridLineDash: undefined,
     legendTitleTextFillColor: vars.color.primary['--color-typo-secondary'],
     legendTitleTextFontSize: getNumber(vars.size['--size-text-xs']),
     legendTitleTextLineHeight: getNumber(vars.size['--size-text-xs']) * 1.2,
@@ -170,11 +174,11 @@ export const getChartTheme = (vars: ThemeVars) => {
     innerLabelFontWeight: 'normal',
     innerLabelBorderColor: 'transparent',
     innerLabelBorder: 0,
-    overflowLabelFillColor: '#ff00d0',
+    overflowLabelFillColor: vars.color.primary['--color-typo-primary'],
     overflowLabelFontSize: getNumber(vars.size['--size-text-xs']),
     overflowLabelLineHeight: getNumber(vars.size['--size-text-xs']),
     overflowLabelFontWeight: 'normal',
-    overflowLabelBorderColor: '#ff00d0',
+    overflowLabelBorderColor: vars.color.primary['--color-typo-primary'],
     overflowLabelBorder: chartLineWidth,
     labelLineBorder: chartLineWidth,
     labelLineBorderColor: vars.color.primary['--color-bg-system'],

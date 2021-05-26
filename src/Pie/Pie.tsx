@@ -1,18 +1,17 @@
 import React, { useEffect, useImperativeHandle } from 'react'
 
-import { Pie as G2plotPie, PieOptions as G2plotPieProps } from '@antv/g2plot'
+import { Pie as G2plotPie } from '@antv/g2plot'
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
 import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
-import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-export type PieProps = ChartProps<G2plotPieProps>
+import { PieComponentType } from './types'
 
-type Pie = (props: PieProps) => React.ReactElement | null
+export * from './types'
 
-export const Pie: Pie = React.forwardRef((props, ref) => {
+export const Pie: PieComponentType = React.forwardRef((props, ref) => {
   const {
     chartRef,
     style = {

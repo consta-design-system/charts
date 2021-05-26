@@ -1,18 +1,17 @@
 import React, { useEffect, useImperativeHandle } from 'react'
 
-import { Bar as G2plotBar, BarOptions as G2plotBarProps } from '@antv/g2plot'
+import { Bar as G2plotBar } from '@antv/g2plot'
 import { useForkRef } from '@consta/uikit/useForkRef'
 
 import { useChart } from '@/__private__/hooks/useChart'
 import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
-import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-export type BarProps = ChartProps<G2plotBarProps>
+import { BarComponentType } from './types'
 
-type Bar = (props: BarProps) => React.ReactElement | null
+export * from './types'
 
-export const Bar: Bar = React.forwardRef((props, ref) => {
+export const Bar: BarComponentType = React.forwardRef((props, ref) => {
   const {
     chartRef,
     style = {

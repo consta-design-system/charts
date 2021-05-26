@@ -1,0 +1,93 @@
+import { BarExample } from './examples/BarExample/BarExample'
+import { BarExampleGroup } from './examples/BarExampleGroup/BarExampleGroup'
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Column
+
+<RemadeInfo commponentName="Bar" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/bar" />
+
+### Пример
+
+```tsx
+type Item = {
+  name: string
+  month: string
+  value: number
+}
+
+const data: Item[] = [
+  {
+    name: 'London',
+    month: 'Jan.',
+    value: 18.9,
+  },
+
+  // ...
+  {
+    name: 'London',
+    month: 'Feb.',
+    value: 28.8,
+  },
+]
+
+export function BarExample() {
+  return (
+    <Bar
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={data}
+      xField="value"
+      yField="month"
+      seriesField="name"
+    />
+  )
+}
+```
+
+<BarExample />
+
+```tsx
+type Item = {
+  name: string
+  month: string
+  value: number
+}
+
+const data: Item[] = [
+  {
+    name: 'London',
+    month: 'Jan.',
+    value: 18.9,
+  },
+
+  // ...
+  {
+    name: 'London',
+    month: 'Feb.',
+    value: 28.8,
+  },
+]
+
+export function BarExampleGroup() {
+  return (
+    <Bar
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={data}
+      xField="value"
+      yField="month"
+      seriesField="name"
+      isGroup
+      label={{
+        position: 'middle',
+        layout: [
+          { type: 'interval-adjust-position' },
+          { type: 'interval-hide-overlap' },
+          { type: 'adjust-color' },
+        ],
+      }}
+    />
+  )
+}
+```
+
+<BarExampleGroup />

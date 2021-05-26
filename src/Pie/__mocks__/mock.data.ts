@@ -1,4 +1,6 @@
-export const data = [
+type Item = { type: string; value: number }
+
+export const data: Item[] = [
   { type: 'Option-1', value: 27 },
   { type: 'Option-2', value: 25 },
   { type: 'Option-3', value: 18 },

@@ -1,0 +1,84 @@
+import { ColumnExample } from './examples/ColumnExample/ColumnExample'
+import { ColumnExampleGroup } from './examples/ColumnExampleGroup/ColumnExampleGroup'
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Column
+
+<RemadeInfo commponentName="Column" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/column" />
+
+### Пример
+
+```tsx
+type Item = {
+  name: string
+  month: string
+  value: number
+}
+
+const data: Item[] = [
+  {
+    name: 'London',
+    month: 'Jan.',
+    value: 18.9,
+  },
+
+  // ...
+  {
+    name: 'London',
+    month: 'Feb.',
+    value: 28.8,
+  },
+]
+
+export function ColumnExample() {
+  return <Column data={data} xField="month" yField="value" seriesField="name" />
+}
+```
+
+<ColumnExample />
+
+```tsx
+type Item = {
+  name: string
+  month: string
+  value: number
+}
+
+const data: Item[] = [
+  {
+    name: 'London',
+    month: 'Jan.',
+    value: 18.9,
+  },
+
+  // ...
+  {
+    name: 'London',
+    month: 'Feb.',
+    value: 28.8,
+  },
+]
+
+function ColumnExampleGroup() {
+  return (
+    <Column
+      data={data}
+      xField="month"
+      yField="value"
+      seriesField="name"
+      isGroup
+      label={{
+        position: 'middle',
+        layout: [
+          { type: 'interval-adjust-position' },
+          { type: 'interval-hide-overlap' },
+          { type: 'adjust-color' },
+        ],
+      }}
+    />
+  )
+}
+```
+
+<ColumnExampleGroup />

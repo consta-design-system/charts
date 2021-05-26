@@ -1,27 +1,16 @@
 import React from 'react'
 
+import { useThemeVars } from '@consta/uikit/useThemeVars'
+
 import { createMetadata } from '@/__private__/storybook'
 
 import { data } from '../__mocks__/mock.data'
-import { Pie, PieProps } from '../Pie'
+import { Pie } from '../Pie'
+
+import mdx from './Pie.docs.mdx'
 
 const Default = () => {
-  const options: PieProps = {
-    appendPadding: 10,
-    data,
-    angleField: 'value',
-    colorField: 'type',
-    radius: 1,
-    label: {
-      type: 'inner',
-      offset: '-50%',
-      content: '{value}',
-      style: {
-        textAlign: 'center',
-        fontSize: 14,
-      },
-    },
-  }
+  const vars = useThemeVars()
 
   return (
     <Pie
@@ -29,8 +18,29 @@ const Default = () => {
         width: 800,
         height: '100%',
       }}
-      renderer="svg"
-      {...options}
+      data={data}
+      angleField="value"
+      colorField="type"
+      radius={1}
+      statistic={{
+        title: {
+          formatter: v => v?.type || 'Всего',
+          style: {
+            color: vars.color.primary['--color-typo-primary'],
+          },
+        },
+      }}
+      innerRadius={0.64}
+      label={{
+        type: 'inner',
+        offset: '-50%',
+        content: '{value}',
+        style: {
+          textAlign: 'center',
+          fontSize: 14,
+        },
+      }}
+      interactions={[{ type: 'pie-statistic-active' }]}
     />
   )
 }
@@ -42,4 +52,9 @@ export function Playground() {
 export default createMetadata({
   title: 'Компоненты|/Pie',
   id: 'components/Pie',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 })

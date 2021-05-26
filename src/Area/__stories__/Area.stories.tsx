@@ -3,18 +3,11 @@ import React from 'react'
 import { createMetadata } from '@/__private__/storybook'
 
 import { data } from '../__mocks__/mock.data'
-import { Area, AreaProps } from '../Area'
+import { Area } from '../Area'
 
-const Default = () => {
-  const options: AreaProps = {
-    data,
-    xField: 'timePeriod',
-    yField: 'value',
-    xAxis: {
-      range: [0, 1],
-    },
-  }
+import mdx from './Area.docs.mdx'
 
+export function Playground() {
   return (
     <Area
       style={{
@@ -22,16 +15,20 @@ const Default = () => {
         height: '100%',
       }}
       renderer="svg"
-      {...options}
+      data={data}
+      xField="year"
+      yField="value"
+      seriesField="country"
     />
   )
-}
-
-export function Playground() {
-  return <Default />
 }
 
 export default createMetadata({
   title: 'Компоненты|/Area',
   id: 'components/Area',
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 })
