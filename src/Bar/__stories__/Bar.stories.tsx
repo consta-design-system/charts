@@ -3,28 +3,24 @@ import React from 'react'
 import { createMetadata } from '@/__private__/storybook'
 
 import { data } from '../__mocks__/mock.data'
-import { Bar, BarProps } from '../Bar'
+import { Bar } from '../Bar'
 
 import mdx from './Bar.docs.mdx'
 
 const Default = () => {
-  const options: BarProps = {
-    data,
-    padding: 'auto',
-    xField: 'value',
-    yField: 'month',
-    seriesField: 'name',
-    marginRatio: 0,
-  }
-
   return (
     <Bar
+      data={data}
+      padding="auto"
+      xField="value"
+      yField="month"
+      seriesField="name"
+      marginRatio={0}
       style={{
         width: 800,
         height: '100%',
       }}
       renderer="svg"
-      {...options}
     />
   )
 }
