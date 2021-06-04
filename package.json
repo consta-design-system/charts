@@ -8,8 +8,8 @@
     "build:package.json": "node scripts/prepare-package-json.js",
     "build:docs": "cp README.md lib/README.md",
     "build": "rm -rf lib && yarn build:css && yarn build:js && yarn build:types && yarn build:package.json && yarn build:docs",
-    "start": "NODE_ENV=development ROOT_PATH=./ NODE_PATH=./node_modules start-storybook -p 6006 --ci",
-    "storybook:build": "NODE_ENV=production ROOT_PATH=./ NODE_PATH=./node_modules build-storybook -o build/storybook",
+    "start": "NODE_ENV=development ROOT_PATH=./ NODE_PATH=./node_modules start-storybook -s public -p 6006 --ci",
+    "storybook:build": "NODE_ENV=production ROOT_PATH=./ NODE_PATH=./node_modules build-storybook -s public -o build/storybook",
     "lint": "npm-run-all --parallel lint:*",
     "format": "prettier --write '{src,types,scripts}/**/*.{json,{j,t}s{,x},css,}'",
     "lint-fix": "npm-run-all format lint-fix:*",
@@ -68,7 +68,7 @@
     ]
   },
   "peerDependencies": {
-    "@consta/uikit": "1.11.14",
+    "@consta/uikit": "1.12.2",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },

@@ -1,8 +1,8 @@
 import { withKnobs } from '@storybook/addon-knobs'
 import { withInfo } from '@storybook/addon-info'
 import { addDecorator, addParameters } from '@storybook/react'
-import { themes } from '@storybook/theming'
 import { withPropsTable } from 'storybook-addon-react-docgen'
+import { theme } from './manager'
 
 import {
   DocsDecorator,
@@ -57,7 +57,7 @@ addParameters({
     page: mdx,
   },
   options: {
-    theme: themes.light,
+    theme,
     showRoots: true,
     storySort,
   },
