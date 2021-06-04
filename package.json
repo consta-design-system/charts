@@ -74,7 +74,8 @@
   },
   "dependencies": {
     "@antv/g2plot": "^2.3.19",
-    "@bem-react/classname": "1.5.8"
+    "@bem-react/classname": "1.5.8",
+    "storybook-addon-designs": "^6.0.0"
   },
   "resolutions": {
     "@types/react": "16.9.34",

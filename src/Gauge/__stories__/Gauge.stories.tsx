@@ -53,4 +53,10 @@ export function Playground() {
 export default createMetadata({
   title: 'Компоненты|/Gauge',
   id: 'components/Gauge',
+  parameters: {
+    // design: {
+    //   type: 'figma',
+    //   url: 'https://consta-charts.vercel.app/?path=/story/components-gauge--playground',
+    // },
+  },
 })
