@@ -35,4 +35,10 @@ export function Playground() {
 export default createMetadata({
   title: 'Компоненты|/Scatter',
   id: 'components/Scatter',
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3743%3A0',
+    },
+  },
 })

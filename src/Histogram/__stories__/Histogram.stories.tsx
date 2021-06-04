@@ -31,4 +31,10 @@ export function Playground() {
 export default createMetadata({
   title: 'Компоненты|/Histogram',
   id: 'components/Histogram',
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3824%3A11584',
+    },
+  },
 })

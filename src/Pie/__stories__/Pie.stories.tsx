@@ -56,5 +56,9 @@ export default createMetadata({
     docs: {
       page: mdx,
     },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3798%3A11317',
+    },
   },
 })
