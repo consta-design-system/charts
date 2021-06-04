@@ -32,9 +32,9 @@ export default createMetadata({
   title: 'Компоненты|/Waterfall',
   id: 'components/Waterfall',
   parameters: {
-    // design: {
-    //   type: 'figma',
-    //   url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3847%3A11645',
-    // },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3847%3A11645',
+    },
   },
 })

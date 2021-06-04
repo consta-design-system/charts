@@ -54,9 +54,9 @@ export default createMetadata({
   title: 'Компоненты|/Gauge',
   id: 'components/Gauge',
   parameters: {
-    // design: {
-    //   type: 'figma',
-    //   url: 'https://consta-charts.vercel.app/?path=/story/components-gauge--playground',
-    // },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3852%3A230',
+    },
   },
 })

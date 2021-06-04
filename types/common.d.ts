@@ -59,6 +59,10 @@ declare module '@storybook/types' {
       docs?: {
         page: (props: any) => JSX.Element
       }
+      design?: {
+        type: string
+        url: string
+      }
       environment?: EnvironmentDecoratorParams
     }
   }

@@ -68,14 +68,13 @@
     ]
   },
   "peerDependencies": {
-    "@consta/uikit": "1.11.14",
+    "@consta/uikit": "1.12.2",
     "react": "16.8.6",
     "react-dom": "16.8.6"
   },
   "dependencies": {
     "@antv/g2plot": "^2.3.19",
-    "@bem-react/classname": "1.5.8",
-    "storybook-addon-designs": "^6.0.0"
+    "@bem-react/classname": "1.5.8"
   },
   "resolutions": {
     "@types/react": "16.9.34",
@@ -132,6 +131,7 @@
     "react-test-renderer": "16.8.6",
     "remark-external-links": "6.0.0",
     "remark-slug": "6.0.0",
+    "storybook-addon-designs": "^6.0.0",
     "storybook-addon-react-docgen": "1.2.28",
     "storybook-addon-smart-knobs": "6.0.2",
     "storybook-addon-themes": "5.4.1",

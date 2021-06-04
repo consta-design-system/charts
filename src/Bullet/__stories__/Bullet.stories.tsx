@@ -35,9 +35,9 @@ export default createMetadata({
   title: 'Компоненты|/Bullet',
   id: 'components/Bullet',
   parameters: {
-    // design: {
-    //   type: 'figma',
-    //   url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3763%3A0',
-    // },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3763%3A0',
+    },
   },
 })

@@ -39,9 +39,9 @@ export default createMetadata({
   title: 'Компоненты|/Radar',
   id: 'components/Radar',
   parameters: {
-    // design: {
-    //   type: 'figma',
-    //   url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3852%3A0',
-    // },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3852%3A0',
+    },
   },
 })
