@@ -27,17 +27,6 @@ const Default = () => {
       seriesField="country"
       annotations={[
         {
-          type: 'text',
-          position: ['min', 'median'],
-          content: 'Предел',
-          offsetY: -4,
-          style: {
-            textBaseline: 'bottom',
-            fontSize: pxInNumber(vars.size['--size-text-m']),
-            fill: vars.color.primary['--color-typo-primary'],
-          },
-        },
-        {
           type: 'line',
           start: ['min', 'median'],
           end: ['max', 'median'],

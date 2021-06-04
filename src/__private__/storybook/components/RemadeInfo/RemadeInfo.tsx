@@ -37,8 +37,8 @@ export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = 
           target="_blank"
         >
           Consta
-        </Text>{' '}
-        и полностью проксировано{' '}
+        </Text>
+        , и полностью проксировано{' '}
         <Text className={cnRemadeInfo('Link')} as="a" view="link" href={apiUrl} target="_blank">
           Api
         </Text>
