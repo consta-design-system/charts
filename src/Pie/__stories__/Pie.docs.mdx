@@ -1,4 +1,5 @@
 import { PieExample } from './examples/PieExample/PieExample'
+import { PieSimpleExample } from './examples/PieSimpleExample/PieSimpleExample'
 
 import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
@@ -6,7 +7,28 @@ import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/Remade
 
 <RemadeInfo commponentName="Pie" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/pie" />
 
+Круговая диаграмма, данные представляются в виде дуг.
+Нужна, чтобы показать соотношение небольшого количества категорий.
+
 ### Пример
+
+```tsx
+export function PieSimpleExample() {
+  return (
+    <Pie
+      style={{
+        width: 800,
+        height: '100%',
+      }}
+      data={data}
+      angleField="value"
+      colorField="type"
+    />
+  )
+}
+```
+
+<PieSimpleExample />
 
 ```tsx
 type Item = { type: string; value: number }

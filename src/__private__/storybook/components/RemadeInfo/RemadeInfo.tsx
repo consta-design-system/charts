@@ -23,7 +23,7 @@ export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = 
           className={cnRemadeInfo('Link')}
           as="a"
           view="link"
-          href="https://g2plot.antv.vision"
+          href="https://g2plot.antv.vision/en"
           target="_blank"
         >
           G2Plot
@@ -33,7 +33,7 @@ export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = 
           className={cnRemadeInfo('Link')}
           as="a"
           view="link"
-          href="https://consta.gazprom-neft.ru/"
+          href="https://consta.gazprom-neft.ru"
           target="_blank"
         >
           Consta
