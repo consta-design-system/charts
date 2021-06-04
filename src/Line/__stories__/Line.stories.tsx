@@ -9,8 +9,6 @@ import { Line } from '../Line'
 
 import mdx from './Line.docs.mdx'
 
-const pxInNumber = (string: string) => Number(string.replace('px', ''))
-
 const Default = () => {
   const vars = useThemeVars()
 
