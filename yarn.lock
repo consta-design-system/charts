@@ -149,10 +149,10 @@
     "@antv/util" "~2.0.5"
     tslib "^2.0.0"
 
-"@antv/g2plot@^2.3.19":
-  version "2.3.19"
-  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.3.19.tgz#5edd9983b21ef3733096f2c7a43221adaf2d41c8"
-  integrity sha512-F/1rreVG1+gqiCB7rMEnQ1qVuscw4e5jny/4/kxP37SqhTxX1El+frk+euFDvUfx77Od5i59cC/Y0LkFxwMyQg==
+"@antv/g2plot@2.3.21":
+  version "2.3.21"
+  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.3.21.tgz#f134046304294d94879c52d6db8bc1b70c72aebe"
+  integrity sha512-YNTeQobFiuSAI8e6pVMZhQISlfobHS/+/5jix6yBMQezO6zlu9DjEn3Uz6q+V3wfW/utKi7NRlFIkVuHGezQsA==
   dependencies:
     "@antv/event-emitter" "^0.1.2"
     "@antv/g2" "^4.1.0"
