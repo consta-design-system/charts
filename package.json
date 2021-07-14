@@ -73,7 +73,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@antv/g2plot": "^2.3.19",
+    "@antv/g2plot": "2.3.21",
     "@bem-react/classname": "1.5.8"
   },
   "resolutions": {

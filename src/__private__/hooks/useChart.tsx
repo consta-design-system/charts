@@ -24,7 +24,7 @@ export type ContainerProps = {
   chartRef?: ChartRefOptions
 } & React.RefAttributes<HTMLDivElement>
 
-export type Tooltip<ITEM> =
+export type Tooltip<ITEM = unknown> =
   | (Omit<G2PlotTooltipOptions, 'customContent'> & {
       customContent?: (title: string, data: ITEM[]) => ReactNode | string | void
       container?: ReactNode
