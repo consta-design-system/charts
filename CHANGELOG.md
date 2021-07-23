@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.2 (23/07/2021)
+- [docs(Components): add docs for Bullet Scatter Waterfall (#7)](https://github.com/gazprom-neft/consta-charts/commit/abf4a21c5ea43153c28369a400614c2a299072e7) - [@gizeasy](https://github.com/gizeasy)
+
+---
+
 ## v0.1.1 (14/07/2021)
 - [feat(DualAxes): added DualAxes](https://github.com/gazprom-neft/consta-charts/commit/30e60497ff6e02bd24f100eef2f575957414c30e) - [@gizeasy](https://github.com/gizeasy)
 - [docs(Common): add start docs](https://github.com/gazprom-neft/consta-charts/commit/880975f014edaf1eb172da267a19c996c222cde0) - [@gizeasy](https://github.com/gizeasy)
