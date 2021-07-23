@@ -1,0 +1,85 @@
+import { ScatterExample } from './examples/ScatterExample/ScatterExample'
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Scatter
+
+<RemadeInfo
+  commponentName="Scatter"
+  apiUrl="https://g2plot.antv.vision/en/docs/api/plots/scatter"
+/>
+
+### Пример
+
+```tsx
+import { useThemeVars } from '@consta/uikit/useThemeVars'
+
+const data = [
+  {
+    iso3: 'ARE',
+    'change in female rate': -0.7,
+    'change in male rate': 3.3000000000000043,
+    female_2000: 1.9,
+    male_2000: 34.3,
+    female_2015: 1.2,
+    male_2015: 37.6,
+    income: 'High income',
+    pop: 9269612,
+    EN: 'United Arab Emirates',
+    DE: 'Vereinigte Arabische Emirate',
+    FR: 'Émirats arabes unis',
+    IT: 'Emirati Arabi Uniti',
+    ES: 'Emiratos Árabes Unidos',
+    PT: 'Emirados Árabes Unidos',
+    RU: 'Объединенные Арабские Эмираты',
+    ZH: '阿拉伯联合酋长国',
+    JA: 'アラブ首長国連邦',
+    AR: 'الإمارات العربية المتحدة',
+    continent: 'Asia',
+  },
+  //..//..
+]
+
+export function ScatterExample() {
+  const vars = useThemeVars()
+  return (
+    <Scatter
+      data={data}
+      xField="change in female rate"
+      appendPadding={30}
+      yField="change in male rate"
+      sizeField="pop"
+      size={[4, 30]}
+      shape="circle"
+      colorField="continent"
+      legend={{
+        layout: 'horizontal',
+        position: 'top-left',
+        marker: {
+          symbol: 'square',
+        },
+      }}
+      pointStyle={{
+        fillOpacity: 0.6,
+        stroke: null,
+      }}
+      xAxis={{
+        grid: {
+          line: {
+            style: {
+              stroke: vars.color.primary['--color-bg-system'],
+            },
+          },
+        },
+        line: {
+          style: {
+            stroke: vars.color.primary['--color-bg-system'],
+          },
+        },
+      }}
+    />
+  )
+}
+```
+
+<ScatterExample />

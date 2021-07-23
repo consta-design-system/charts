@@ -1,0 +1,61 @@
+import { WaterfallExample } from './examples/WaterfallExample/WaterfallExample'
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Waterfall
+
+<RemadeInfo
+  commponentName="Waterfall"
+  apiUrl="https://g2plot.antv.vision/en/docs/api/plots/waterfall"
+/>
+
+### Пример
+
+```tsx
+const data = [
+  { type: 'type-1', money: 120 },
+  { type: 'type-2', money: 900 },
+  { type: 'type-3', money: 200 },
+  { type: 'type-4', money: 300 },
+  { type: 'type-5', money: 1200 },
+  { type: 'type-6', money: 1000 },
+  { type: 'type-7', money: -2000 },
+]
+
+export function WaterfallExample() {
+  const vars = useThemeVars()
+  return (
+    <Waterfall
+      data={data}
+      xField="type"
+      yField="money"
+      legend={{
+        layout: 'horizontal',
+        position: 'top-left',
+        marker: {
+          symbol: 'square',
+        },
+      }}
+      risingFill={vars.color.primary['--color-bg-success']}
+      fallingFill={vars.color.primary['--color-bg-alert']}
+      total={{
+        style: {
+          fill: vars.color.primary['--color-bg-system'],
+        },
+      }}
+      yAxis={{
+        grid: {
+          line: {
+            style: {
+              lineDash: null,
+              stroke: vars.color.primary['--color-bg-system'],
+            },
+          },
+        },
+      }}
+    />
+  )
+}
+```
+
+<WaterfallExample />

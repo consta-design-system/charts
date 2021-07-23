@@ -12,9 +12,7 @@ import { getChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-import { getDefaultProps } from './helpers'
-
-export type WaterfallProps = Omit<ChartProps<G2plotWaterfallProps>, 'color' | 'label'>
+export type WaterfallProps = Omit<ChartProps<G2plotWaterfallProps>, 'label'>
 
 type Waterfall = (props: WaterfallProps) => React.ReactElement | null
 
@@ -30,8 +28,7 @@ export const Waterfall: Waterfall = React.forwardRef((props, ref) => {
 
   const themeVars = useThemeVars()
   const theme = getChartTheme(themeVars)
-  const chartProps = getDefaultProps(rest, themeVars)
-  const { chart, container } = useChart(G2plotWaterfall, { ...chartProps, theme })
+  const { chart, container } = useChart(G2plotWaterfall, { ...rest, theme })
 
   useEffect(() => {
     getChart(chartRef, chart.current)
