@@ -1,20 +1,16 @@
 import React from 'react'
 
+import { useThemeVars } from '@consta/uikit/useThemeVars'
+
 import { createMetadata } from '@/__private__/storybook'
 
-import { data } from '../__mocks__/mock.data'
-import { Scatter, ScatterProps } from '../Scatter'
+import { data } from '../__mocks__/data.mock'
+import { Scatter } from '../Scatter'
+
+import mdx from './Scatter.docs.mdx'
 
 const Default = () => {
-  const options: ScatterProps = {
-    data,
-    xField: 'x',
-    yField: 'y',
-    size: 5,
-    pointStyle: {
-      fill: '#5B8FF9',
-    },
-  }
+  const vars = useThemeVars()
 
   return (
     <Scatter
@@ -22,8 +18,24 @@ const Default = () => {
         width: 800,
         height: '100%',
       }}
-      renderer="svg"
-      {...options}
+      data={data}
+      xField="x"
+      yField="y"
+      size={5}
+      xAxis={{
+        grid: {
+          line: {
+            style: {
+              stroke: vars.color.primary['--color-bg-system'],
+            },
+          },
+        },
+        line: {
+          style: {
+            stroke: vars.color.primary['--color-bg-system'],
+          },
+        },
+      }}
     />
   )
 }
@@ -36,6 +48,9 @@ export default createMetadata({
   title: 'Компоненты|/Scatter',
   id: 'components/Scatter',
   parameters: {
+    docs: {
+      page: mdx,
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3743%3A0',

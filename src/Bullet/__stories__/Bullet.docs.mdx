@@ -1,0 +1,33 @@
+import { BulletExample } from './examples/BulletExample/BulletExample'
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Bullet
+
+<RemadeInfo commponentName="Bullet" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/bullet" />
+
+### Пример
+
+```tsx
+const data = [
+  { title: 'bullet1', ranges: [100], measures: [20, 30], target: 85 },
+  { title: 'bullet2', ranges: [100], measures: [10, 50], target: 85 },
+  { title: 'bullet3', ranges: [100], measures: [30, 10, 10, 10], target: 55 },
+  { title: 'bullet4', ranges: [100], measures: [30], target: 60 },
+  { title: 'bullet5', ranges: [100], measures: [45], target: 85 },
+]
+
+function BulletExample() {
+  return (
+    <Bullet
+      data={data}
+      measureField="measures"
+      rangeField="ranges"
+      targetField="target"
+      xField="title"
+    />
+  )
+}
+```
+
+<BulletExample />

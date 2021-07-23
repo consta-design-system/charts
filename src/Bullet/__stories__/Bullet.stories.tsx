@@ -5,6 +5,8 @@ import { createMetadata } from '@/__private__/storybook'
 import { data } from '../__mocks__/mock.data'
 import { Bullet, BulletProps } from '../Bullet'
 
+import mdx from './Bullet.docs.mdx'
+
 const Default = () => {
   const options: BulletProps = {
     data,
@@ -21,7 +23,6 @@ const Default = () => {
         width: 800,
         height: '100%',
       }}
-      renderer="svg"
       {...options}
     />
   )
@@ -35,6 +36,9 @@ export default createMetadata({
   title: 'Компоненты|/Bullet',
   id: 'components/Bullet',
   parameters: {
+    docs: {
+      page: mdx,
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3763%3A0',

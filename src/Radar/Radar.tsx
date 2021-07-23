@@ -8,7 +8,7 @@ import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-export type RadarProps = Omit<ChartProps<G2plotRadarProps>, 'color' | 'label'>
+export type RadarProps = Omit<ChartProps<G2plotRadarProps>, 'label'>
 
 type Radar = (props: RadarProps) => React.ReactElement | null
 

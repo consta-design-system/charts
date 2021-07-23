@@ -8,7 +8,7 @@ import { useChartTheme } from '@/__private__/hooks/useChartTheme'
 import { getChart } from '@/__private__/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
-export type ScatterProps = Omit<ChartProps<G2plotScatterProps>, 'color' | 'label'>
+export type ScatterProps = ChartProps<G2plotScatterProps>
 
 type Scatter = (props: ScatterProps) => React.ReactElement | null
 
