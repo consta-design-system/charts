@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable camelcase */
+export const dataSimple = [
+  { country: 'Asia', year: '1750', value: 502 },
+  { country: 'Asia', year: '1800', value: 635 },
+  { country: 'Europe', year: '1750', value: 163 },
+  { country: 'Europe', year: '1800', value: 203 },
+]
+
 export const data = [
   {
     iso3: 'ARE',
