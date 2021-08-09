@@ -11,6 +11,14 @@ export function BulletExample() {
       rangeField="ranges"
       targetField="target"
       xField="title"
+      label={{
+        measure: {
+          position: 'middle',
+          style: {
+            fill: '#fff',
+          },
+        },
+      }}
     />
   )
 }
@@ -26,6 +34,30 @@ export function BulletExampleSingle() {
       rangeField="range"
       targetField="target"
       xField="title"
+    />
+  )
+}
+
+export function BulletExampleLabel() {
+  return (
+    <Bullet
+      style={{
+        height: '140px',
+        marginBottom: 'var(--space-l)',
+      }}
+      data={dataSingle}
+      measureField="mesures"
+      rangeField="range"
+      targetField="target"
+      xField="title"
+      label={{
+        measure: {
+          position: 'middle',
+          style: {
+            fill: '#fff',
+          },
+        },
+      }}
     />
   )
 }

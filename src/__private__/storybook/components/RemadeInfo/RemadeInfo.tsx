@@ -55,7 +55,7 @@ export const RemadeTableInfo: React.FC<{ apiUrl: string }> = props => {
   const { apiUrl } = props
   return (
     <Informer className={cnRemadeInfo()} status="system" view="bordered">
-      <Text style={{ marginBottom: 'var(--space-m)' }}>
+      <Text>
         Здесь описаны только основные свойства компонента.{' '}
         <Text className={cnRemadeInfo('Link')} as="a" view="link" href={apiUrl} target="_blank">
           Посмотреть все свойства
