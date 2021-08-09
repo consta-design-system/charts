@@ -1,10 +1,35 @@
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable camelcase */
 export const dataSimple = [
-  { country: 'Asia', year: '1750', value: 502 },
-  { country: 'Asia', year: '1800', value: 635 },
-  { country: 'Europe', year: '1750', value: 163 },
-  { country: 'Europe', year: '1800', value: 203 },
+  { x: 1, y: 2 },
+  { x: 2, y: 3 },
+  { x: 3, y: 4 },
+  { x: 4, y: 5 },
+  { x: 5, y: 6 },
+  { x: 6, y: 7 },
+  { x: 7, y: 8 },
+  { x: 8, y: 9 },
+]
+
+export const dataColor = [
+  { temperature: 0, ufo: 0, place: 'Тмутаракань', color: 'green' },
+  { emperature: 1, ufo: 0, place: 'Бобруйск', color: 'blue' },
+  { temperature: 2, place: 'Урюпинск', color: 'green' },
+  { temperature: 3, ufo: 5, place: 'Тмутаракань', color: 'green' },
+  { temperature: 5, ufo: 1, place: 'Бобруйск', color: 'blue' },
+  { temperature: 7, ufo: 22, place: 'Урюпинск', color: 'green' },
+  { temperature: 10, ufo: 7, place: 'Урюпинск', color: 'green' },
+  { temperature: 13, ufo: 12, place: 'Тмутаракань', color: 'green' },
+  { temperature: 16, ufo: 44, place: 'Бобруйск', color: 'blue' },
+  { temperature: 22, ufo: 17, place: 'Урюпинск', color: 'green' },
+  { temperature: 25, ufo: 11, place: 'Тмутаракань', color: 'green' },
+  { temperature: 28, ufo: 3, place: 'Бобруйск', color: 'blue' },
+  { temperature: 31, ufo: 12, place: 'Урюпинск', color: 'green' },
+  { temperature: 35, ufo: 15, place: 'Тмутаракань', color: 'green' },
+  { temperature: -1, ufo: 10, place: 'Бобруйск', color: 'blue' },
+  { year: -4, ufo: 22, place: 'Урюпинск', color: 'green' },
+  { year: 5, ufo: 34, place: 'Тмутаракань', color: 'green' },
+  { year: 36, ufo: 1, place: 'Бобруйск', color: 'blue' },
 ]
 
 export const data = [

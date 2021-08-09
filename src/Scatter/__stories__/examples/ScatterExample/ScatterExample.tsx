@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
 
-import { data, dataSimple } from '../../../__mocks__/bigData.mock'
+import { data, dataColor, dataSimple } from '../../../__mocks__/bigData.mock'
 import { Scatter } from '../../../Scatter'
 
 export function ScatterExample() {
@@ -56,42 +56,45 @@ export function ScatterExampleSimple() {
   const vars = useThemeVars()
   return (
     <Scatter
+      style={{ marginBottom: 'var(--space-m)', width: 300, height: 200 }}
       data={dataSimple}
-      xField="year"
-      yField="value"
-      sizeField="color"
-      size={[4, 30]}
-      shape="circle"
-      colorField="country"
-      meta={{
-        year: {
-          alias: 'год',
-          range: [0, 1],
-        },
-        value: {
-          alias: 'значение',
-          formatter: v => {
-            return `${v}`
-          },
-        },
-      }}
+      xField="x"
+      yField="y"
+    />
+  )
+}
+
+export function ScatterExampleColor() {
+  const vars = useThemeVars()
+  return (
+    <Scatter
+      style={{ marginBottom: 'var(--space-m)', width: 300, height: 200 }}
+      data={dataColor}
+      xField="temperature"
+      yField="ufo"
+      colorField="place"
+    />
+  )
+}
+
+export function ScatterExampleSize() {
+  const vars = useThemeVars()
+  return (
+    <Scatter
+      style={{ marginBottom: 'var(--space-m)', width: 200, height: 100 }}
+      data={dataColor}
+      xField="temperature"
+      yField="ufo"
+      colorField="place"
+      sizeField="ufo"
+      size={8}
       pointStyle={{
-        fillOpacity: 0.6,
-        stroke: null,
+        fill: '#5B8FF9',
       }}
-      xAxis={{
-        grid: {
-          line: {
-            style: {
-              stroke: vars.color.primary['--color-bg-system'],
-            },
-          },
-        },
-        line: {
-          style: {
-            stroke: vars.color.primary['--color-bg-system'],
-          },
-        },
+      meta={{
+        temperature: { alias: 'градусы' },
+        ufo: { alias: 'НЛО' },
+        place: { alias: 'где' },
       }}
     />
   )
