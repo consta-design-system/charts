@@ -53,10 +53,9 @@ export function ScatterExample() {
 }
 
 export function ScatterExampleSimple() {
-  const vars = useThemeVars()
   return (
     <Scatter
-      style={{ marginBottom: 'var(--space-m)', width: 300, height: 200 }}
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataSimple}
       xField="x"
       yField="y"
@@ -65,36 +64,137 @@ export function ScatterExampleSimple() {
 }
 
 export function ScatterExampleColor() {
-  const vars = useThemeVars()
   return (
     <Scatter
-      style={{ marginBottom: 'var(--space-m)', width: 300, height: 200 }}
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+      data={dataColor}
+      xField="temperature"
+      yField="ufo"
+      color={'#ffd500'}
+      size={5}
+      shape="circle"
+      pointStyle={{
+        fillOpacity: 1,
+      }}
+    />
+  )
+}
+
+export function ScatterExampleColorField() {
+  return (
+    <Scatter
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataColor}
       xField="temperature"
       yField="ufo"
       colorField="place"
+      color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+      size={5}
+      shape="circle"
+      pointStyle={{
+        fillOpacity: 1,
+      }}
     />
   )
 }
 
 export function ScatterExampleSize() {
-  const vars = useThemeVars()
   return (
     <Scatter
-      style={{ marginBottom: 'var(--space-m)', width: 200, height: 100 }}
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+      data={dataColor}
+      xField="temperature"
+      yField="ufo"
+      size={20}
+      shape="circle"
+      pointStyle={{
+        fillOpacity: 1,
+      }}
+    />
+  )
+}
+
+export function ScatterExampleSizeField() {
+  return (
+    <Scatter
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataColor}
       xField="temperature"
       yField="ufo"
       colorField="place"
+      color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+      size={[4, 20]}
       sizeField="ufo"
-      size={8}
+      shape="circle"
       pointStyle={{
-        fill: '#5B8FF9',
+        fillOpacity: 1,
+      }}
+    />
+  )
+}
+
+export function ScatterExampleShape() {
+  return (
+    <Scatter
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+      data={dataColor}
+      xField="temperature"
+      yField="ufo"
+      shape="triangle"
+      size={5}
+      pointStyle={{
+        fillOpacity: 1,
+      }}
+    />
+  )
+}
+
+export function ScatterExampleShapeField() {
+  return (
+    <Scatter
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+      data={dataColor}
+      xField="temperature"
+      yField="ufo"
+      shapeField="place"
+      shape={['circle', 'square', 'triangle']}
+      size={5}
+      pointStyle={{
+        fillOpacity: 1,
+      }}
+    />
+  )
+}
+
+export function ScatterExamplePseudo() {
+  return (
+    <Scatter
+      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+      data={dataColor}
+      xField="temperature"
+      yField="ufo"
+      colorField="place"
+      color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+      size={[4, 20]}
+      sizeField="ufo"
+      shape="circle"
+      pointStyle={{
+        fillOpacity: 1,
       }}
       meta={{
-        temperature: { alias: 'градусы' },
-        ufo: { alias: 'НЛО' },
-        place: { alias: 'где' },
+        temperature: {
+          alias: 'Воздух',
+          formatter: v => {
+            return `${v}°`
+          },
+        },
+        ufo: {
+          alias: 'Видели НЛО',
+          formatter: v => {
+            return `${v} раз`
+          },
+        },
+        place: { alias: 'Город' },
       }}
     />
   )
