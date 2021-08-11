@@ -1,4 +1,4 @@
-import { BulletExample, BulletExampleSingle, BulletExampleNoAxys, BulletExampleLabel } from './examples/BulletExample/BulletExample'
+import { BulletExample, BulletExampleSingle, BulletExampleNoAxys } from './examples/BulletExample/BulletExample'
 
 import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
@@ -53,25 +53,6 @@ import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/
 Что получилось:
 
 <BulletExampleSingle />
-
-## Формат подписи
-
-Вы можете поменять внешний вид подписи, которая выводится рядом с отрезком и показывает его значение. За это отвечает свойство `label`.
-
-Например, можно поменять цвет подписи и переместить её внутрь отрезка. Так подпись заметнее и понятно, к какому именно отрезку она относится.
-
-<BulletExampleLabel />
-
-```tsx
-label={{
-  measure: {
-    position: 'middle',
-    style: {
-      fill: '#fff',
-    },
-  },
-}}
-```
 
 
 ## Сетка

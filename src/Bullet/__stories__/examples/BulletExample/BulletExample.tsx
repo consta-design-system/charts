@@ -11,14 +11,6 @@ export function BulletExample() {
       rangeField="ranges"
       targetField="target"
       xField="title"
-      label={{
-        measure: {
-          position: 'middle',
-          style: {
-            fill: '#fff',
-          },
-        },
-      }}
     />
   )
 }
@@ -50,14 +42,6 @@ export function BulletExampleLabel() {
       rangeField="range"
       targetField="target"
       xField="title"
-      label={{
-        measure: {
-          position: 'middle',
-          style: {
-            fill: '#fff',
-          },
-        },
-      }}
     />
   )
 }
