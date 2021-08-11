@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.3 (11/08/2021)
+- [docs(Scatter): add docs & examples (#9)](https://github.com/gazprom-neft/consta-charts/commit/8e5210f62b709930dc3d77319eaa08d19d0f73aa) - [@arhayka](https://github.com/arhayka)
+- [docs(Bullet): add docs and examples (#8)](https://github.com/gazprom-neft/consta-charts/commit/92664d5414fba1fdc1cf2cae7fdeaf03ff048ff9) - [@arhayka](https://github.com/arhayka)
+
+---
+
 ## v0.1.2 (23/07/2021)
 - [docs(Components): add docs for Bullet Scatter Waterfall (#7)](https://github.com/gazprom-neft/consta-charts/commit/abf4a21c5ea43153c28369a400614c2a299072e7) - [@gizeasy](https://github.com/gizeasy)
 
