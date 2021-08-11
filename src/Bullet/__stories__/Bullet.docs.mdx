@@ -1,12 +1,20 @@
-import { BulletExample, BulletExampleSingle, BulletExampleNoAxys } from './examples/BulletExample/BulletExample'
+import {
+  BulletExample,
+  BulletExampleSingle,
+  BulletExampleNoAxys,
+} from './examples/BulletExample/BulletExample'
 
-import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
 # Bullet
 
 <RemadeInfo commponentName="Bullet" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/bullet" />
 
 Диаграмма-термометр (или диаграмма-шкала). Нужна, чтобы показать отношение результата к сложной цели. Например:
+
 - показать все этапы, через которые должен пройти процесс, и точку, в которой он сейчас,
 - KPI и чего удалось достичь,
 - цель и результат проверки.
@@ -14,7 +22,6 @@ import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/
 <BulletExampleLabel />
 
 - [Данные](#данные)
-- [Формат подписи](#формат-подписи)
 - [Сетка](#сетка)
 - [Список свойств](#свойства)
 - [Пример использования](#пример)
@@ -22,6 +29,7 @@ import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/
 ## Данные
 
 Описать данные можно в массиве `data`. Что можно указать:
+
 - название линии,
 - набор значений для фона (если укажете одно, фон будет сплошным),
 - набор значений для отрезков,
@@ -33,34 +41,29 @@ import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/
 { title: 'Наша первая цель', range: [50, 100], mesures: [5, 20, 30, 25], target: 85 },
 { title: 'Наша вторая цель', range: [100], mesures: [30], target: 70 },
 ```
+
 Укажите, из какого массива брать данные, в свойстве `data`.
 
 Потом сообщите компоненту, какие элементы массива за какие данные отвечают:
+
 - за описание отрезков отвечает свойство `measureField`,
 - за фон — `rangeField`,
 - за цель — `targetField` (на линии появится вертикальная полоска),
 - за название линии (видно слева от неё) отвечает свойство `xField`.
 
 ```tsx
-<Bullet
-  data={data}
-  measureField="measures"
-  rangeField="ranges"
-  targetField="target"
-/>
+<Bullet data={data} measureField="measures" rangeField="ranges" targetField="target" />
 ```
 
 Что получилось:
 
 <BulletExampleSingle />
 
-
 ## Сетка
 
 По умолчанию сетка всегда видна и полностью заполняет контейнер с компонентом.
 
 Если не хотите её показывать, добавьте `yAxis={false}`.
-
 
 <BulletExampleNoAxys />
 
@@ -78,17 +81,16 @@ import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/
 
 <RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/bullet" />
 
-| Свойство | Тип и значения | По умолчанию | Описание |
-| -------- | -------------- | ------------ | -------- |
-| [`data`](#данные)  | `Data[]`   | -            | Массив с информацией о линиях  |
-| [`measureField`](#данные)  | `string`       | -            | Ключ элемента массива из свойства `data` с описанием отрезков         |
-| [`rangeField`](#данные)  | `string`       | -            |  Ключ элемента массива из свойства `data` с описанием фона        |
-| [`targetField`](#данные)  | `string`       | -            |  Ключ элемента массива из свойства `data` с описанием целевого значения       |
-| [`yAxis`](#сетка)       | `boolean`       | -            | Нужно ли показывать сетку         |
-| `className`       | `string`       | -            | Дополнительный CSS-класс компонента         |
+| Свойство                  | Тип и значения | По умолчанию | Описание                                                               |
+| ------------------------- | -------------- | ------------ | ---------------------------------------------------------------------- |
+| [`data`](#данные)         | `Data[]`       | -            | Массив с информацией о линиях                                          |
+| [`measureField`](#данные) | `string`       | -            | Ключ элемента массива из свойства `data` с описанием отрезков          |
+| [`rangeField`](#данные)   | `string`       | -            | Ключ элемента массива из свойства `data` с описанием фона              |
+| [`targetField`](#данные)  | `string`       | -            | Ключ элемента массива из свойства `data` с описанием целевого значения |
+| [`yAxis`](#сетка)         | `boolean`      | -            | Нужно ли показывать сетку                                              |
+| `className`               | `string`       | -            | Дополнительный CSS-класс компонента                                    |
 
 ## Пример
-
 
 ```tsx
 const data = [
