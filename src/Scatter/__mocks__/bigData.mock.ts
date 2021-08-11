@@ -1,5 +1,36 @@
 /* eslint-disable @typescript-eslint/quotes */
 /* eslint-disable camelcase */
+export const dataSimple = [
+  { x: 1, y: 2 },
+  { x: 2, y: 3 },
+  { x: 3, y: 4 },
+  { x: 4, y: 5 },
+  { x: 5, y: 6 },
+  { x: 6, y: 7 },
+  { x: 7, y: 8 },
+  { x: 8, y: 9 },
+]
+
+export const dataColor = [
+  { temperature: 0, ufo: 0, place: 'Тмутаракань' },
+  { temperature: 1, ufo: 6, place: 'Бобруйск' },
+  { temperature: 3, ufo: 5, place: 'Тмутаракань' },
+  { temperature: 5, ufo: 1, place: 'Бобруйск' },
+  { temperature: 7, ufo: 25, place: 'Урюпинск' },
+  { temperature: 10, ufo: 7, place: 'Урюпинск' },
+  { temperature: 13, ufo: 12, place: 'Тмутаракань' },
+  { temperature: 16, ufo: 38, place: 'Бобруйск' },
+  { temperature: 22, ufo: 17, place: 'Урюпинск' },
+  { temperature: 25, ufo: 11, place: 'Тмутаракань' },
+  { temperature: 28, ufo: 8, place: 'Бобруйск' },
+  { temperature: 31, ufo: 12, place: 'Урюпинск' },
+  { temperature: 35, ufo: 15, place: 'Тмутаракань' },
+  { temperature: -1, ufo: 10, place: 'Бобруйск' },
+  { temperature: -4, ufo: 21, place: 'Урюпинск' },
+  { temperature: 5, ufo: 35, place: 'Тмутаракань' },
+  { temperature: 36, ufo: 1, place: 'Бобруйск' },
+]
+
 export const data = [
   {
     iso3: 'ARE',
