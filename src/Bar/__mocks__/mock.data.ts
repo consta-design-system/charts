@@ -1,27 +1,27 @@
 export const data = [
   {
     name: 'London',
-    month: 'Jan.',
+    month: 'Jan',
     value: 18.9,
   },
   {
     name: 'Berlin',
-    month: 'Jan.',
+    month: 'Jan',
     value: 12.4,
   },
   {
     name: 'London',
-    month: 'Feb.',
+    month: 'Feb',
     value: 28.8,
   },
   {
     name: 'London',
-    month: 'Mar.',
+    month: 'Mar',
     value: 39.3,
   },
   {
     name: 'London',
-    month: 'Apr.',
+    month: 'Apr',
     value: 81.4,
   },
   {
@@ -31,33 +31,33 @@ export const data = [
   },
   {
     name: 'London',
-    month: 'Jun.',
+    month: 'Jun',
     value: 20.3,
   },
   {
     name: 'London',
-    month: 'Jul.',
+    month: 'Jul',
     value: 24,
   },
   {
     name: 'London',
-    month: 'Aug.',
+    month: 'Aug',
     value: 35.6,
   },
 
   {
     name: 'Berlin',
-    month: 'Feb.',
+    month: 'Feb',
     value: 23.2,
   },
   {
     name: 'Berlin',
-    month: 'Mar.',
+    month: 'Mar',
     value: 34.5,
   },
   {
     name: 'Berlin',
-    month: 'Apr.',
+    month: 'Apr',
     value: 99.7,
   },
   {
@@ -67,17 +67,25 @@ export const data = [
   },
   {
     name: 'Berlin',
-    month: 'Jun.',
+    month: 'Jun',
     value: 35.5,
   },
   {
     name: 'Berlin',
-    month: 'Jul.',
+    month: 'Jul',
     value: 37.4,
   },
   {
     name: 'Berlin',
-    month: 'Aug.',
+    month: 'Aug',
     value: 42.4,
   },
+]
+
+export const dataSimple = [
+  { parameter: 'Параметр 1', number: 1234 },
+  { parameter: 'Параметр 2', number: 1083 },
+  { parameter: 'Параметр 3', number: 672 },
+  { parameter: 'Параметр 4', number: 301 },
+  { parameter: 'Параметр 5', number: 167 },
 ]

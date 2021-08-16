@@ -11,7 +11,7 @@ export type BarProps<ITEM> = Omit<G2plotBarProps, ExcludeProps> & {
   data: ITEM[]
   xField: keyof ITEM
   yField: keyof ITEM
-  seriesField: keyof ITEM
+  seriesField?: keyof ITEM
 } & ContainerProps
 
 export type BarComponentType = <ITEM>(props: BarProps<ITEM>) => React.ReactElement | null
