@@ -25,6 +25,7 @@ export function PieExample() {
       style={{
         width: 800,
         height: '100%',
+        marginBottom: 'var(--space-xl)',
       }}
       data={data}
       angleField="value"
@@ -52,6 +53,26 @@ export function PieExample() {
         },
       }}
       interactions={[{ type: 'pie-statistic-active' }]}
+    />
+  )
+}
+
+export function PieExampleDonut() {
+  return (
+    <Pie
+      style={{
+        width: 800,
+        height: '100%',
+        marginBottom: 'var(--space-xl)',
+      }}
+      data={data}
+      angleField="value"
+      colorField="type"
+      innerRadius={0.64}
+      statistic={{
+        title: false,
+        content: false,
+      }}
     />
   )
 }
