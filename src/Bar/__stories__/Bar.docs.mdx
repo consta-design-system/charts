@@ -1,7 +1,7 @@
-import { BarExample } from './examples/BarExample/BarExample'
+import { BarExample, BarExampleSimple, BarExampleLabel, BarExampleSeriesField } from './examples/BarExample/BarExample'
 import { BarExampleGroup } from './examples/BarExampleGroup/BarExampleGroup'
 
-import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
 # Bar
 
@@ -9,7 +9,113 @@ import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/Remade
 
 Столбчатая диаграмма. Показывает значения одного или нескольких параметров за разные периоды или в разных ситуациях — рисует «столбики».
 
-### Пример
+- [Столбцы](#столбцы)
+  - [Содержимое](#содержимое)
+  - [Значение на столбике](#значение-на-столбике)
+  - [Группировка по цвету](#группировка-по-цвету)
+- [Стековая диаграмма](#стековая-диаграмма)
+- [Группы столбцов](#группы-столбцов)
+- [Список свойств](#свойства)
+
+## Столбцы
+
+### Содержимое
+
+Создайте объект с данными для столбцов. Для каждого столбика нужны хотя бы две переменные:
+- величина столбика по оси X (обычно это горизонтальная ось),
+- позиция или название столбца на оси Y (обычно это вертикальная ось).
+
+Например, так:
+
+```tsx
+const dataSimple = [
+  { parameter: 'Параметр 1', number: 1234 },
+  { parameter: 'Параметр 2', number: 1083 },
+  { parameter: 'Параметр 3', number: 672 },
+  { parameter: 'Параметр 4', number: 301 },
+  { parameter: 'Параметр 5', number: 167 },
+]
+```
+
+Укажите, из какого объекта брать данные, в свойстве `data`.
+
+Потом сообщите компоненту, какие элементы объекта за какие данные отвечают:
+
+- за величину столбика по оси X отвечает свойство `xField`,
+- за расположение и подпись на оси Y — `yField`.
+
+<BarExampleSimple />
+
+```tsx
+export function BarExampleSimple() {
+  return (
+    <Bar
+      style={{ marginBottom: 'var(--space-m)', maxWidth: 300, maxHeight: 200 }}
+      data={dataSimple}
+      xField="number"
+      yField="parameter"
+    />
+  )
+}
+```
+
+### Значение на столбике
+
+За вывод значения отвечает свойство `label`. [Подробности](https://g2plot.antv.vision/en/docs/api/plots/bar#label)
+
+<BarExampleLabel />
+
+```tsx
+export function BarExample() {
+  return (
+    <Bar
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={data}
+      xField="value"
+      yField="month"
+      seriesField="name"
+      isStack
+      label={{
+        position: 'middle',
+        layout: [
+          { type: 'interval-adjust-position' },
+          { type: 'interval-hide-overlap' },
+          { type: 'adjust-color' },
+        ],
+      }}
+    />
+  )
+}
+```
+
+### Группировка по цвету
+
+Вы можете покрасить столбцы в разные цвета с помощью `seriesField`.
+
+Например, чтобы показать распределение по параметрам, укажите в `seriesField` поле `parameter`.
+
+<BarExampleSeriesField />
+
+```tsx
+export function BarExampleSeriesField() {
+  return (
+    <Bar
+      style={{ marginBottom: 'var(--space-m)', maxWidth: 400, maxHeight: 200 }}
+      data={dataSimple}
+      xField="number"
+      yField="parameter"
+      seriesField="parameter"
+    />
+  )
+}
+```
+
+
+## Стековая диаграмма
+
+Чтобы собирать столбик из нескольких частей, добавьте `isStack`. Укажите, по какому параметру объединять значения в один столбик, в свойстве `seriesField`.
+
+<BarExample />
 
 ```tsx
 type Item = {
@@ -41,12 +147,17 @@ export function BarExample() {
       xField="value"
       yField="month"
       seriesField="name"
+      isStack
     />
   )
 }
 ```
 
-<BarExample />
+## Группы столбцов
+
+Чтобы создать группы столбцов, добавьте `isGroup`. Укажите, по какому параметру объединять столбцы в группы, в свойстве `seriesField`.
+
+<BarExampleGroup />
 
 ```tsx
 type Item = {
@@ -92,4 +203,17 @@ export function BarExampleGroup() {
 }
 ```
 
-<BarExampleGroup />
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/bar" />
+
+| Свойство | Тип и значения | По умолчанию | Описание |
+| -------- | -------------- | ------------ | -------- |
+| [`data`](#содержимое)  | `Data[]`   | -            | Объект с информацией о столбцах  |
+| [`xField`](#содержимое)  | `string`       | -            | Величина столбца по оси X    |
+| [`yField`](#содежимое)  | `string`       | -            | Расположение столбца по оси Y      |
+| [`seriesField`](#группировка-по-цвету)  | `string`       | -            | Поле с данными для группировки столбцов по цветам       |
+| [`isStack`](#стековая-диаграмма)  | `boolean`       | -            | Собирает столбики из нескольких частей       |
+| [`isGroup`](#группы-столбцов)  | `boolean`       | -            | Собирает столбцы в группы       |
+| `meta`  | `string`       | -            |  Объект с форматом данных для тултипа       |
+| `className`       | `string`       | -            | Дополнительный CSS-класс компонента         |

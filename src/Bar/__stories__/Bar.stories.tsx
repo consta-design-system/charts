@@ -16,6 +16,7 @@ const Default = () => {
       yField="month"
       seriesField="name"
       marginRatio={0}
+      isStack
       style={{
         width: 800,
         height: '100%',
