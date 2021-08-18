@@ -1,15 +1,31 @@
-# GPN Components
+# [Дизайн-система Consta](http://consta.gazprom-neft.ru/) | Библиотека графиков
 
-Репозиторий компонентов и графиков основанный на [g2plot](https://g2plot.antv.vision/en)
+Consta — дизайн-система для разработки интерфейсов, написана на [React](https://reactjs.org/), сделана и поддерживается в «Газпром нефти».
 
-NPM: https://www.npmjs.com/package/@consta/charts
-GitHub: https://github.com/gazprom-neft/consta-charts
+**В этом репозитории — библиотека графиков:** линейные, столбчатые, круговые диаграммы и другие компоненты, с помощью которых удобно показывать статистику. Библиотека сделана на основе [G2Plot](https://g2plot.antv.vision/en), добавлена стилизация для Consta.
 
-## Использование
+В другом репозитории — [библиотека интерфейсных компонентов](https://github.com/gazprom-neft/consta-uikit): простые контролы, сложные блоки, темы и хуки. Обе библиотеки представлены в виде компонентов и макетов в Figma.
 
-### Установка
 
-Установка пакета:
+## Что входит в дизайн-систему
+
+### Библиотека компонентов
+
+[Репозиторий](https://github.com/gazprom-neft/consta-uikit) | [NPM](https://www.npmjs.com/package/@consta/uikit) | [Документация и стенд](https://consta-uikit.vercel.app/?path=/story/common-about--page) | [Макеты](https://www.figma.com/community/file/853774806786762374)
+
+### Библиотека графиков
+
+[В этом репозитории](https://github.com/gazprom-neft/consta-charts) | [NPM](https://www.npmjs.com/package/@consta/charts) | [Документация и стенд](https://consta-charts.vercel.app/) | [Макеты](https://www.figma.com/community/file/982611119114314434)
+
+<hr>
+
+Подробности — на [сайте дизайн-системы Consta](http://consta.gazprom-neft.ru/)
+
+Следите за новостями и релизами в [телеграм-канале дизайн-системы](https://t.me/consta_ui_releases)
+
+# Как использовать
+
+## Установите пакет
 
 ```sh
 # NPM
@@ -19,16 +35,17 @@ $ npm i @consta/charts
 $ yarn add @consta/charts
 ```
 
-### Зависимости
+## Подключите зависимости
 
-Для работы пакета необходимо установить библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настроить тему](https://consta-uikit.vercel.app/?path=/docs/components-theme--playground).
+Чтобы начать работу, установите библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настройте тему](https://consta-uikit.vercel.app/?path=/docs/components-theme--playground).
 
-### Использование компонентов
+### Можно использовать компоненты
 
-Пример:
+Например, так:
 
 ```js
-import { Pie, PieProps } from '@consta/charts/Pie'
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
+import { Pie, PieProps } from '@consta/charts/Pie';
 
 export const data = [
   { type: 'Option-1', value: 27 },
@@ -58,13 +75,9 @@ const MyComponent = () => {
   }
 
   return (
-    <Pie
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      {...options}
-    />
+    <Theme preset={presetGpnDefault}>
+      <Pie {...options}/>
+    </Theme>
   )
 }
 ```
@@ -75,7 +88,7 @@ const MyComponent = () => {
 
 Рабочее окружение должно содержать NodeJS и Yarn, необходимые версии можно узнать в файле [package.json](./package.json) в блоке **engines**.
 
-Для установки зависимостей следует выполнить команду:
+Чтобы установить зависимости, выполните команду:
 
 ```sh
 $ yarn install
@@ -96,9 +109,23 @@ $ yarn lint
 # Форматирование всех файлов prettier
 $ yarn format
 
-# Запуск тестов
+# Запуск юнит-тестов
 $ yarn unit
 
-# Запуск тестов и линтинг файлов
+# Запуск юнит-тестов, тестирование TS, линтинг файлов
 $ yarn test
 ```
+
+## Документация и стенд
+
+На стенде можно посмотреть примеры графиков. Документация — во вкладке у каждого компонента.
+
+[Вперёд, к стенду](https://consta-charts.vercel.app/?path=/story/*)
+
+## Контрибьюторам
+
+Будем рады, если вы захотите принять участие в разработке дизайн-системы =) Но сначала прочитайте [инструкцию для контрибьюторов](https://consta-charts.vercel.app/?path=/docs/common-develop-contributors--page).
+
+## Лицензия
+
+Дизайн-систему можно использовать бесплатно, она распространяется ПАО «Газпром нефть» на условиях открытой [лицензии MIT](https://consta.gazprom-neft.ru/static/licence_mit.pdf).
