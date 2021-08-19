@@ -4,6 +4,7 @@ import {
   AreaExampleColorLine,
   AreaExampleColorMultiLine,
 } from './examples/AreaExampleColorLine/AreaExampleColorLine'
+import { AreaExampleMeta} from './examples/AreaExampleMeta/AreaExampleMeta'
 
 import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
@@ -11,11 +12,26 @@ import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/Remade
 
 <RemadeInfo commponentName="Area" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/area" />
 
-Линейная диаграмма подходит, если вам нужно описать непрерывный процесс (или несколько)
-с большим количеством значений. На такой диаграмме хорошо видно, как значения меняются,
-и удобно сравнивать изменения в разных процессах.
+Диаграмма с областями. Похожа на [линейную диаграмму](/?path=/docs/components-line--playground), но области под линиями заполняются цветом. Подходит, чтобы сравнивать изменения в разных процессах.
+
+- [Одна линия](#одна-линия)
+- [Несколько линий](#несколько-линий)
+- [Цвет линий](#цвет-линий)
+- [Формат данных](#формат-данных)
+- [Список свойств](#свойства)
 
 ### Одна линия
+
+Создайте объект с данными для графика. Для каждой точки нужны хотя бы две координаты: по оси X и по оси Y.
+
+Укажите, из какого объекта брать данные, в свойстве `data`.
+
+Потом сообщите компоненту, какие элементы объекта за какие данные отвечают:
+
+- за координаты по оси X отвечает свойство `xField`,
+- за координаты по оси Y — `yField`.
+
+<AreaExampleOneLine />
 
 ```tsx
 type Item = { Date: string; scales: number }
@@ -37,9 +53,13 @@ function AreaExampleOneLine() {
 }
 ```
 
-<AreaExampleOneLine />
+## Несколько линий
 
-### Множестно линий
+Если нужно сгруппировать данные по какому-то параметру — то есть показать несколько линий, используйте `seriesField`.
+
+Например, чтобы показать распределение по странам, укажите в `seriesField` поле `country`.
+
+<AreaExampleMultiLine />
 
 ```tsx
 type Item = { country: string; year: string; value: null | number }
@@ -55,9 +75,13 @@ function AreaExampleMultiLine() {
 }
 ```
 
-<AreaExampleMultiLine />
 
-### Цвет линий
+## Цвет линий
+
+Чтобы поменять цвет линии, используйте `areaStyle`.
+
+
+<AreaExampleColorLine />
 
 ```tsx
 function AreaExampleColorLine() {
@@ -74,7 +98,10 @@ function AreaExampleColorLine() {
 }
 ```
 
-<AreaExampleColorLine />
+Если линий несколько, создайте карту цветов. В качестве ключей используйте значения из поля, которое указали в `seriesField`.
+
+<AreaExampleColorMultiLine />
+
 
 ```tsx
 const colorMap: { [key: string]: string } = {
@@ -118,4 +145,51 @@ export function AreaExampleColorMultiLine() {
 }
 ```
 
-<AreaExampleColorMultiLine />
+## Формат данных
+
+При наведении на точку всплывает тултип со всеми данными о ней. Вы можете поменять названия полей и формат данных с помощью свойства `meta`.
+
+<AreaExampleMeta />
+
+```tsx
+type Item = { Date: string; scales: number }
+
+const data: Item[] = [
+  {
+    Date: '2010-01',
+    scales: 1998,
+  },
+  // ...
+  {
+    Date: '2010-02',
+    scales: 1850,
+  },
+]
+
+function LineExampleMeta() {
+  return
+  <Line
+    data={data}
+    xField="Date"
+    yField="scales"
+    meta={{
+      Date: {alias: 'Дата'},
+      scales : {alias: 'Число'},
+      }}
+    }
+  />
+}
+```
+
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/line" />
+
+| Свойство | Тип и значения | По умолчанию | Описание |
+| -------- | -------------- | ------------ | -------- |
+| [`data`](#одна-линия)  | `Data[]`   | -            | Объект с информацией о линиях  |
+| [`xField`](#одна-линия)  | `string`       | -            | Поле с данными для отображения на горизонтальной оси        |
+| [`yField`](#одна-линия)  | `string`       | -            |  Поле с данными для отображения на вертикальной оси      |
+| [`seriesField`](#несколько-линий)  | `string`       | -            | Поле с данными для группировки линий        |
+| [`meta`](#формат-данных)  | `string`       | -            |  Объект с форматом данных для тултипа       |
+| `className`       | `string`       | -            | Дополнительный CSS-класс компонента         |
