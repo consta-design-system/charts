@@ -7,7 +7,9 @@ import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/
 
 <RemadeInfo commponentName="Bar" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/bar" />
 
-Столбчатая диаграмма. Показывает значения одного или нескольких параметров за разные периоды или в разных ситуациях — рисует «столбики».
+Горизонтальная столбчатая диаграмма. Показывает значения одного или нескольких параметров за разные периоды или в разных ситуациях — рисует «столбики».
+
+Если нужно расположить столбцы вертикально, используйте [Column](/?path=/docs/components-Column--playground).
 
 - [Столбцы](#столбцы)
   - [Содержимое](#содержимое)
@@ -69,12 +71,10 @@ export function BarExampleSimple() {
 export function BarExample() {
   return (
     <Bar
-      style={{ marginBottom: 'var(--space-m)' }}
-      data={data}
-      xField="value"
-      yField="month"
-      seriesField="name"
-      isStack
+      style={{ marginBottom: 'var(--space-m)', maxWidth: 300, maxHeight: 200 }}
+      data={dataSimple}
+      xField="number"
+      yField="parameter"
       label={{
         position: 'middle',
         layout: [
@@ -114,6 +114,9 @@ export function BarExampleSeriesField() {
 ## Стековая диаграмма
 
 Чтобы собирать столбик из нескольких частей, добавьте `isStack`. Укажите, по какому параметру объединять значения в один столбик, в свойстве `seriesField`.
+
+> Если не добавлять `isStack`, объединённые части столбиков накладываются друг на друга
+
 
 <BarExample />
 
@@ -212,8 +215,8 @@ export function BarExampleGroup() {
 | [`data`](#содержимое)  | `Data[]`   | -            | Объект с информацией о столбцах  |
 | [`xField`](#содержимое)  | `string`       | -            | Величина столбца по оси X    |
 | [`yField`](#содежимое)  | `string`       | -            | Расположение столбца по оси Y      |
-| [`seriesField`](#группировка-по-цвету)  | `string`       | -            | Поле с данными для группировки столбцов по цветам       |
-| [`isStack`](#стековая-диаграмма)  | `boolean`       | -            | Собирает столбики из нескольких частей       |
-| [`isGroup`](#группы-столбцов)  | `boolean`       | -            | Собирает столбцы в группы       |
-| `meta`  | `string`       | -            |  Объект с форматом данных для тултипа       |
+| [`seriesField?`](#группировка-по-цвету)  | `string`       | -            | Поле с данными для группировки столбцов по цветам       |
+| [`isStack?`](#стековая-диаграмма)  | `boolean`       | -            | Собирает столбики из нескольких частей       |
+| [`isGroup?`](#группы-столбцов)  | `boolean`       | -            | Собирает столбцы в группы       |
+| `meta?`  | `string`       | -            |  Объект с форматом данных для тултипа       |
 | `className`       | `string`       | -            | Дополнительный CSS-класс компонента         |
