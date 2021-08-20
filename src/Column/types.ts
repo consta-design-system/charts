@@ -11,7 +11,7 @@ export type ColumnProps<ITEM> = Omit<G2plotColumnProps, ExcludeProps> & {
   data: ITEM[]
   xField: keyof ITEM
   yField: keyof ITEM
-  seriesField: keyof ITEM
+  seriesField?: keyof ITEM
 } & ContainerProps
 
 export type ColumnComponentType = <ITEM>(props: ColumnProps<ITEM>) => React.ReactElement | null
