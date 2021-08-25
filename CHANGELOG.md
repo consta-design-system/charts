@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.2.1 (25/08/2021)
+- [docs(Waterfall): edit docs, add props table and examples (#16)](https://github.com/gazprom-neft/consta-charts/commit/ad446f26e6db5590aab05e188f75f353017b06ad) - [@arhayka](https://github.com/arhayka)
+- [docs(Bar): add link to Column, add ? to the props table](https://github.com/gazprom-neft/consta-charts/commit/46cbbfb526293650f643714f42df62334080d40c) - [@arhayka](https://github.com/arhayka)
+- [docs(Column): edit link to Bar](https://github.com/gazprom-neft/consta-charts/commit/853e03361ffefd7c7442bf160bae21ee565f12b9) - [@arhayka](https://github.com/arhayka)
+- [docs(Column): edit docs, add examples](https://github.com/gazprom-neft/consta-charts/commit/738763bbe0ea60618ad229d5fb2544bf3fe5d913) - [@arhayka](https://github.com/arhayka)
+- [docs(Area): edit docs, add example (#13)](https://github.com/gazprom-neft/consta-charts/commit/d2fb421c46ced95c23a28867f2a2f82e07b15ed6) - [@arhayka](https://github.com/arhayka)
+
+--------------------
+
 ## v0.2.0 (18/08/2021)
 В последних версиях Consta-Charts мы стилизовали еще несколько графиков:
 - Диаграмма-шкала (Bullet)
