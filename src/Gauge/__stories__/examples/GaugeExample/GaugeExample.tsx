@@ -2,13 +2,9 @@ import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
 
-import { createMetadata } from '@/__private__/storybook'
+import { Gauge } from '@/Gauge'
 
-import { Gauge, GaugeProps } from '../Gauge'
-
-import mdx from './Gauge.docs.mdx'
-
-const Default = () => {
+export const GaugeExample = () => {
   const customFormatter = (data: Record<string, number> | undefined): string => {
     return data && typeof data.percent === 'number'
       ? `${(Number(data.percent) * 100).toFixed(0)}%`
@@ -17,7 +13,7 @@ const Default = () => {
 
   const vars = useThemeVars()
 
-  const options: GaugeProps = {
+  const options = {
     percent: 0.75,
     radius: 0.75,
     range: {
@@ -60,32 +56,5 @@ const Default = () => {
     },
   }
 
-  return (
-    <Gauge
-      style={{
-        width: 300,
-        height: '100%',
-      }}
-      renderer="svg"
-      {...options}
-    />
-  )
+  return <Gauge {...options} gaugeStyle={{ lineCap: 'round' }} />
 }
-
-export function Playground() {
-  return <Default />
-}
-
-export default createMetadata({
-  title: 'Компоненты|/Gauge',
-  id: 'components/Gauge',
-  parameters: {
-    docs: {
-      page: mdx,
-    },
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3852%3A230',
-    },
-  },
-})

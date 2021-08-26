@@ -1,0 +1,72 @@
+import { GaugeExample } from './examples/GaugeExample/GaugeExample';
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Gauge
+
+<RemadeInfo
+    commponentName="Gauge"
+    apiUrl="https://g2plot.antv.vision/en/docs/api/plots/gauge"
+/>
+
+Шкальный график подходит, если вам необходимо отобразить данные на
+круговой шкале. Это могут быть показатели скорости, процент выполненной работы и т.п.
+
+### Пример
+
+```tsx
+export function GaugeExample() {
+
+    const vars = useThemeVars()
+
+    const options = {
+      percent: 0.75,
+      radius: 0.75,
+      range: {
+        color: vars.color.primary['--color-bg-success'],
+      },
+      statistic: {
+        content: {
+          formatter: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
+          style: {
+            color: vars.color.primary['--color-bg-default'],
+            fontSize: 54,
+            fontWeight: 'bold'
+          },
+        },radius: 0.75,
+      },
+      gaugeStyle: {
+        lineCap: 'round',
+      },
+      axis: {
+        subTickLine: {
+          count: 3,
+        },
+        label: {
+          style: {
+            fontSize: 12
+          }
+        }
+      },
+      indicator: {
+        pin: {
+          style: {
+            r: 16,
+            stroke: vars.color.primary['--color-bg-border'],
+            lineWidth: 6,
+          }
+        },
+        pointer: {
+          style: {
+            stroke: vars.color.primary['--color-bg-border'],
+            lineWidth: 6
+          }
+        }
+      }
+    }
+
+    return <Gauge {...options} />
+}
+```
+
+<GaugeExample />
