@@ -2,14 +2,10 @@ import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
 
-import { createMetadata } from '@/__private__/storybook'
+import { Histogram, HistogramProps } from '@/Histogram'
+import { stackedData } from '@/Histogram/__mocks__/mock.data'
 
-import { stackedData } from '../__mocks__/mock.data'
-import { Histogram, HistogramProps } from '../Histogram'
-
-import mdx from './Histogram.docs.mdx'
-
-const Default = () => {
+export function HistogramExampleStacked() {
   const vars = useThemeVars()
   const options: HistogramProps = {
     data: stackedData,
@@ -45,26 +41,7 @@ const Default = () => {
         width: 800,
         height: '100%',
       }}
-      renderer="svg"
       {...options}
     />
   )
 }
-
-export function Playground() {
-  return <Default />
-}
-
-export default createMetadata({
-  title: 'Компоненты|/Histogram',
-  id: 'components/Histogram',
-  parameters: {
-    docs: {
-      page: mdx,
-    },
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3824%3A11584',
-    },
-  },
-})

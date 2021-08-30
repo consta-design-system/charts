@@ -1,0 +1,114 @@
+import { HistogramExampleBasic } from './examples/HistogramExampleBasic/HistogramExampleBasic'
+import { HistogramExampleStacked } from './examples/HistogramExampleStacked/HistogramExampleStacked'
+
+import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# Histogram
+
+<RemadeInfo
+    commponentName="Histogram"
+    apiUrl="https://g2plot.antv.vision/en/docs/api/plots/histogram"
+/>
+
+Гистограмма берет ряд данных и считает их количественное распределение.
+
+### Пример с одной группой значений
+
+```tsx
+export const data = [
+  { value: 0 },
+  { value: 0 },
+  //...
+  { value: 17 },
+  { value: 17 },
+]
+
+export function HistogramExampleBasic() {
+
+  const options = {
+    data,
+    binField: 'value',
+    binWidth: 2,
+    meta: {
+      range: {
+        tickInterval: 10,
+      },
+      count: {
+        max: 40,
+        nice: false,
+      },
+    },
+    xAxis: {
+      tickInterval: 5,
+    },
+  }
+
+  return (
+    <Histogram
+      style={{
+        width: 800,
+        height: '100%',
+      }}
+      renderer="svg"
+      {...options}
+    />
+  )
+}
+```
+
+<HistogramExampleBasic/>
+
+### Пример с несколькими группами значений
+
+```tsx
+export const data = [
+  { name: 'Blue', color: '#33ACF2', value: 4 },
+  { name: 'Blue', color: '#33ACF2', value: 5 },
+  //...
+  { name: 'Green', color: '#04BC7F', value: 0 },
+  { name: 'Green', color: '#04BC7F', value: 1 },
+  //...
+  { name: 'Orange', color: '#FFA217', value: 4 },
+  { name: 'Orange', color: '#FFA217', value: 5 },
+]
+
+export function HistogramExampleBasic() {
+
+  const options = {
+    data,
+    binField: 'value',
+    stackField: 'name',
+    binWidth: 4,
+    color: ['#33ACF2', '#FFA217', '#04BC7F'],
+    meta: {
+      range: {
+        tickInterval: 10,
+      },
+      count: {
+        max: 50,
+        nice: false,
+      },
+    },
+    legend: {
+      layout: 'horizontal',
+      position: 'top-left',
+      marker: {
+        symbol: 'square',
+      },
+    }
+  }
+
+  return (
+    <Histogram
+      style={{
+        width: 800,
+        height: '100%',
+      }}
+      renderer="svg"
+      {...options}
+    />
+  )
+}
+```
+
+<HistogramExampleStacked/>
