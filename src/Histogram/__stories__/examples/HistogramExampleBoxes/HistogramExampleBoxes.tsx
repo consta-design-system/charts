@@ -3,47 +3,36 @@ import React from 'react'
 import { Histogram, HistogramProps } from '@/Histogram'
 import { data } from '@/Histogram/__mocks__/mock.data'
 
-export function HistogramExampleBasic() {
+export function HistogramExampleBoxesWidth() {
   const options: HistogramProps = {
     data,
     binField: 'value',
-    binWidth: 2,
-    meta: {
-      range: {
-        tickInterval: 10,
-      },
-      count: {
-        max: 40,
-        nice: false,
-      },
-    },
-    xAxis: {
-      tickInterval: 5,
-    },
+    binWidth: 5,
   }
 
   return (
     <Histogram
       style={{
-        width: 800,
-        height: '100%',
+        width: 300,
+        height: '50%',
       }}
       {...options}
     />
   )
 }
 
-export function HistogramExampleSuperBasic() {
+export function HistogramExampleBoxesNumber() {
   const options: HistogramProps = {
     data,
     binField: 'value',
+    binNumber: 8,
   }
 
   return (
     <Histogram
       style={{
-        width: 800,
-        height: '100%',
+        width: 300,
+        height: '50%',
       }}
       {...options}
     />
