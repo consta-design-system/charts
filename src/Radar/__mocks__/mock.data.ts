@@ -20,3 +20,39 @@ export const data = [
   { name: 'UX', user: 'Person 1', star: 48134 },
   { name: 'UX', user: 'Person 2', star: 63198 },
 ]
+
+export const dataWin = [
+  { person: 'Винни-Пух', skill: 'Сила', star: 8 },
+  { person: 'Винни-Пух', skill: 'Ловкость', star: 2 },
+  { person: 'Винни-Пух', skill: 'Ум', star: 7 },
+  { person: 'Винни-Пух', skill: 'Хитрость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Доброта', star: 10 },
+  { person: 'Винни-Пух', skill: 'Харизма', star: 10 },
+  { person: 'Винни-Пух', skill: 'Упрямство', star: 10 },
+  { person: 'Винни-Пух', skill: 'Красота', star: 3 },
+  { person: 'Винни-Пух', skill: 'Выносливость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Пушистость', star: 4 },
+]
+
+export const dataMulti = [
+  { person: 'Винни-Пух', skill: 'Сила', star: 8 },
+  { person: 'Винни-Пух', skill: 'Ловкость', star: 2 },
+  { person: 'Винни-Пух', skill: 'Ум', star: 7 },
+  { person: 'Винни-Пух', skill: 'Хитрость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Доброта', star: 7 },
+  { person: 'Винни-Пух', skill: 'Харизма', star: 10 },
+  { person: 'Винни-Пух', skill: 'Упрямство', star: 10 },
+  { person: 'Винни-Пух', skill: 'Красота', star: 3 },
+  { person: 'Винни-Пух', skill: 'Выносливость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Пушистость', star: 9 },
+  { person: 'Пятачок', skill: 'Сила', star: 2 },
+  { person: 'Пятачок', skill: 'Ловкость', star: 5 },
+  { person: 'Пятачок', skill: 'Ум', star: 5 },
+  { person: 'Пятачок', skill: 'Хитрость', star: 3 },
+  { person: 'Пятачок', skill: 'Доброта', star: 10 },
+  { person: 'Пятачок', skill: 'Харизма', star: 3 },
+  { person: 'Пятачок', skill: 'Упрямство', star: 4 },
+  { person: 'Пятачок', skill: 'Красота', star: 7 },
+  { person: 'Пятачок', skill: 'Выносливость', star: 5 },
+  { person: 'Пятачок', skill: 'Пушистость', star: 4 },
+]
