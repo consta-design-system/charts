@@ -1,16 +1,19 @@
-import { GaugeExample, GaugeExampleSimple} from './examples/GaugeExample/GaugeExample';
-import { GaugeExampleIndicator} from './examples/GaugeExampleIndicator/GaugeExampleIndicator';
-import { GaugeExampleColor, GaugeExampleScale } from './examples/GaugeExampleScale/GaugeExampleScale';
-import { GaugeExampleStatistic} from './examples/GaugeExampleStatistic/GaugeExampleStatistic';
+import { GaugeExample, GaugeExampleSimple } from './examples/GaugeExample/GaugeExample'
+import { GaugeExampleIndicator } from './examples/GaugeExampleIndicator/GaugeExampleIndicator'
+import {
+  GaugeExampleColor,
+  GaugeExampleScale,
+} from './examples/GaugeExampleScale/GaugeExampleScale'
+import { GaugeExampleStatistic } from './examples/GaugeExampleStatistic/GaugeExampleStatistic'
 
-import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
 # Gauge
 
-<RemadeInfo
-    commponentName="Gauge"
-    apiUrl="https://g2plot.antv.vision/en/docs/api/plots/gauge"
-/>
+<RemadeInfo commponentName="Gauge" apiUrl="https://g2plot.antv.vision/en/docs/api/plots/gauge" />
 
 Круговая шкала, подходит, если вам нужно отобразить показатели скорости, процент выполненной работы или похожие данные.
 
@@ -33,9 +36,8 @@ import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/
 
 ```tsx
 export function GaugeExample() {
-
   const options = {
-    percent: 0.75
+    percent: 0.75,
   }
 
   return <Gauge {...options} />
@@ -44,15 +46,15 @@ export function GaugeExample() {
 
 <GaugeExampleSimple />
 
-###  Внешний вид индикатора
+### Внешний вид индикатора
 
-За внешний вид стрелочки-индикатора отвечает свойство  `indicator`. Отдельно можно поменять:
+За внешний вид стрелочки-индикатора отвечает свойство `indicator`. Отдельно можно поменять:
+
 - внешний вид самой стрелочки — `pointer`,
 - и внешний вид диска, к которому она крепится — `pin`.
 
 ```tsx
 export function GaugeExample() {
-
   const vars = useThemeVars()
 
   const options = {
@@ -88,7 +90,6 @@ export function GaugeExample() {
 
 ```tsx
 export function GaugeExample() {
-
   const vars = useThemeVars()
 
   const options = {
@@ -112,7 +113,6 @@ export function GaugeExample() {
 
 ```tsx
 export function GaugeExample() {
-
   const vars = useThemeVars()
 
   const options = {
@@ -123,7 +123,7 @@ export function GaugeExample() {
     axis: {
       label: {
         formatter(v) {
-          return Number(v) * 100;
+          return Number(v) * 100
         },
       },
       subTickLine: {
@@ -144,7 +144,6 @@ export function GaugeExample() {
 
 ```tsx
 export function GaugeExample() {
-
   const customFormatter = (data: Record<string, number> | undefined): string => {
     return data && typeof data.percent === 'number'
       ? `${(Number(data.percent) * 100).toFixed(0)}%`
@@ -180,76 +179,74 @@ export function GaugeExample() {
 }
 ```
 
-
 <GaugeExampleStatistic />
 
 ## Свойства
 
 <RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/gauge" />
 
-| Свойство | Тип и значения | По умолчанию | Описание |
-| -------- | -------------- | ------------ | -------- |
-| [`percent`](#положение-индикатора)  | `number`       | -            | Данные для отметки на шкале, значение от 0 до 1         |
-| [`indicator`](#внешний-вид-индикатора)  | `object`       | -            |  Объект описанием с индикатора (стрелочки)        |
-| [`range`](#цвет-шкалы)  | `object`       | -            | Объект с описанием внешнего вида дуги    |
-| [`axis`](#деления)  | `string`       | -            |  Объект с описанием сетки       |
-| [`statistic`](#статистика)  | `string`       | -            |  Объект с описанием статистики       |
-
+| Свойство                               | Тип и значения | По умолчанию | Описание                                        |
+| -------------------------------------- | -------------- | ------------ | ----------------------------------------------- |
+| [`percent`](#положение-индикатора)     | `number`       | -            | Данные для отметки на шкале, значение от 0 до 1 |
+| [`indicator`](#внешний-вид-индикатора) | `object`       | -            | Объект описанием с индикатора (стрелочки)       |
+| [`range`](#цвет-шкалы)                 | `object`       | -            | Объект с описанием внешнего вида дуги           |
+| [`axis`](#деления)                     | `string`       | -            | Объект с описанием сетки                        |
+| [`statistic`](#статистика)             | `string`       | -            | Объект с описанием статистики                   |
 
 ## Пример
 
 ```tsx
 export function GaugeExample() {
+  const vars = useThemeVars()
 
-    const vars = useThemeVars()
-
-    const options = {
-      percent: 0.75,
+  const options = {
+    percent: 0.75,
+    radius: 0.75,
+    range: {
+      color: vars.color.primary['--color-bg-success'],
+    },
+    statistic: {
+      content: {
+        formatter: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
+        style: {
+          color: vars.color.primary['--color-bg-default'],
+          fontSize: 54,
+          fontWeight: 'bold',
+        },
+      },
       radius: 0.75,
-      range: {
-        color: vars.color.primary['--color-bg-success'],
+    },
+    gaugeStyle: {
+      lineCap: 'round',
+    },
+    axis: {
+      subTickLine: {
+        count: 3,
       },
-      statistic: {
-        content: {
-          formatter: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
-          style: {
-            color: vars.color.primary['--color-bg-default'],
-            fontSize: 54,
-            fontWeight: 'bold'
-          },
-        },radius: 0.75,
-      },
-      gaugeStyle: {
-        lineCap: 'round',
-      },
-      axis: {
-        subTickLine: {
-          count: 3,
+      label: {
+        style: {
+          fontSize: 12,
         },
-        label: {
-          style: {
-            fontSize: 12
-          }
-        }
       },
-      indicator: {
-        pin: {
-          style: {
-            r: 16,
-            stroke: vars.color.primary['--color-bg-border'],
-            lineWidth: 6,
-          }
+    },
+    indicator: {
+      pin: {
+        style: {
+          r: 16,
+          stroke: vars.color.primary['--color-bg-border'],
+          lineWidth: 6,
         },
-        pointer: {
-          style: {
-            stroke: vars.color.primary['--color-bg-border'],
-            lineWidth: 6
-          }
-        }
-      }
-    }
+      },
+      pointer: {
+        style: {
+          stroke: vars.color.primary['--color-bg-border'],
+          lineWidth: 6,
+        },
+      },
+    },
+  }
 
-    return <Gauge {...options} />
+  return <Gauge {...options} />
 }
 ```
 
