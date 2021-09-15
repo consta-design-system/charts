@@ -22,15 +22,7 @@ export function HistogramExampleBasic() {
     },
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }
 
 export function HistogramExampleSuperBasic() {
@@ -39,13 +31,5 @@ export function HistogramExampleSuperBasic() {
     binField: 'value',
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }

@@ -1,15 +1,21 @@
-import { HistogramExampleBasic, HistogramExampleSuperBasic } from './examples/HistogramExampleBasic/HistogramExampleBasic'
+import {
+  HistogramExampleBasic,
+  HistogramExampleSuperBasic,
+} from './examples/HistogramExampleBasic/HistogramExampleBasic'
 import { HistogramExampleStacked } from './examples/HistogramExampleStacked/HistogramExampleStacked'
-import { HistogramExampleBoxesNumber, HistogramExampleBoxesWidth  } from './examples/HistogramExampleBoxes/HistogramExampleBoxes'
-import { HistogramExampleColor  } from './examples/HistogramExampleColor/HistogramExampleColor'
+import {
+  HistogramExampleBoxesNumber,
+  HistogramExampleBoxesWidth,
+} from './examples/HistogramExampleBoxes/HistogramExampleBoxes'
+import { HistogramExampleColor } from './examples/HistogramExampleColor/HistogramExampleColor'
 
 import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
 # Histogram
 
 <RemadeInfo
-    commponentName="Histogram"
-    apiUrl="https://g2plot.antv.vision/en/docs/api/plots/histogram"
+  commponentName="Histogram"
+  apiUrl="https://g2plot.antv.vision/en/docs/api/plots/histogram"
 />
 
 Гистограмма берет ряд данных и считает их количественное распределение.
@@ -17,7 +23,7 @@ import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/Remade
 - [Данные](#данные)
 - [Столбцы](#столбцы)
   - [Количество](#количество-столбцов)
-  - [Цвет](#цвет-столбцов)  
+  - [Цвет](#цвет-столбцов)
 - [Группы значений](#группы-значений)
 - [Сетка](#сетка)
 - [Список свойств](#свойства)
@@ -38,26 +44,16 @@ export const data = [
 
 Укажите, из какого объекта брать данные, в свойстве `data`.
 
- В свойстве `binField` укажите поле, по которому нужно построить гистограмму.
+В свойстве `binField` укажите поле, по которому нужно построить гистограмму.
 
 ```tsx
 export function HistogramExampleBasic() {
-
   const options = {
     data,
     binField: 'value',
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      renderer="svg"
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }
 ```
 
@@ -71,8 +67,8 @@ export function HistogramExampleBasic() {
 
 Вместе не работают, нужно выбрать что-то одно.
 
-| `binNumber: 8` | `binWidth:5` |
-| ------------ | ------------ |
+| `binNumber: 8`                  | `binWidth:5`                   |
+| ------------------------------- | ------------------------------ |
 | <HistogramExampleBoxesNumber /> | <HistogramExampleBoxesWidth /> |
 
 ### Цвет столбцов
@@ -99,16 +95,11 @@ export function HistogramExampleColor() {
     color: vars.color.primary['--color-bg-success'],
   }
 
-  return (
-    <Histogram
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }
 ```
 
 <HistogramExampleColor />
-
 
 ## Группы значений
 
@@ -127,7 +118,6 @@ export const data = [
 ]
 
 export function HistogramExampleBasic() {
-
   const options = {
     data,
     binField: 'value',
@@ -149,23 +139,14 @@ export function HistogramExampleBasic() {
       marker: {
         symbol: 'square',
       },
-    }
+    },
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      renderer="svg"
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }
 ```
 
-<HistogramExampleStacked/>
+<HistogramExampleStacked />
 
 ## Сетка
 
@@ -183,7 +164,6 @@ export const data = [
 ]
 
 export function HistogramExampleBasic() {
-
   const options = {
     data,
     binField: 'value',
@@ -202,32 +182,22 @@ export function HistogramExampleBasic() {
     },
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      renderer="svg"
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }
 ```
 
-<HistogramExampleBasic/>
-
+<HistogramExampleBasic />
 
 ## Свойства
 
 <RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/histogram" />
 
-| Свойство | Тип и значения | По умолчанию | Описание |
-| -------- | -------------- | ------------ | -------- |
-| [`data`](#данные)  | `Data[]`   | -            | Объект с данными для гистограммы |
-| [`binField`](#данные)  | `string`       | -            | Поле, по которому строится гистограмма  |
-| [`binNumber?`](#столбцы)  | `string`       | -            | Количество столбцов      |
-| [`binWidth?`](#столбцы)  | `string`       | -            | Ширина столбца      |
-| [`xAxis?`](#сетка)  | `object`       | -            | Объект с описанием сетки для горизонтальной оси     |
-| [`yAxis?`](#сетка)  | `string`       | -            | Объект с описанием сетки для вертикальной оси     |
-| [`meta?`](#сетка)  | `string`       | -            | Объект с форматом любых данных на графике    |
+| Свойство                 | Тип и значения | По умолчанию | Описание                                        |
+| ------------------------ | -------------- | ------------ | ----------------------------------------------- |
+| [`data`](#данные)        | `Data[]`       | -            | Объект с данными для гистограммы                |
+| [`binField`](#данные)    | `string`       | -            | Поле, по которому строится гистограмма          |
+| [`binNumber?`](#столбцы) | `string`       | -            | Количество столбцов                             |
+| [`binWidth?`](#столбцы)  | `string`       | -            | Ширина столбца                                  |
+| [`xAxis?`](#сетка)       | `object`       | -            | Объект с описанием сетки для горизонтальной оси |
+| [`yAxis?`](#сетка)       | `string`       | -            | Объект с описанием сетки для вертикальной оси   |
+| [`meta?`](#сетка)        | `string`       | -            | Объект с форматом любых данных на графике       |

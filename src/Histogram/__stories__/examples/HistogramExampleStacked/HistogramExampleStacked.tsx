@@ -35,13 +35,5 @@ export function HistogramExampleStacked() {
     },
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }

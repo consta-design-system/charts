@@ -14,13 +14,5 @@ export function HistogramExampleColor() {
     color: vars.color.primary['--color-bg-success'],
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 800,
-        height: '100%',
-      }}
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }

@@ -10,15 +10,7 @@ export function HistogramExampleBoxesWidth() {
     binWidth: 5,
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 300,
-        height: '50%',
-      }}
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }
 
 export function HistogramExampleBoxesNumber() {
@@ -28,13 +20,5 @@ export function HistogramExampleBoxesNumber() {
     binNumber: 8,
   }
 
-  return (
-    <Histogram
-      style={{
-        width: 300,
-        height: '50%',
-      }}
-      {...options}
-    />
-  )
+  return <Histogram {...options} />
 }
