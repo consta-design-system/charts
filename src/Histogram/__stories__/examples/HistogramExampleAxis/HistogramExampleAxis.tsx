@@ -3,7 +3,7 @@ import React from 'react'
 import { Histogram, HistogramProps } from '@/Histogram'
 import { data } from '@/Histogram/__mocks__/mock.data'
 
-export function HistogramExampleBasic() {
+export function HistogramExampleAxis() {
   const options: HistogramProps = {
     data,
     binField: 'value',
