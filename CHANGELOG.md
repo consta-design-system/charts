@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.2.2 (15/09/2021)
+Мы стилизовали и добавили подробную документацию для еще нескольких графиков:
+- Круговая шкала `Gauge`
+- Гистограмма `Histogram`
+- Диаграмма Радар `Radar`
+
+---
+
+- [docs(Gauge): edit docs (#20)](https://github.com/gazprom-neft/consta-charts/commit/6dc69685911d57f8a8adb29fd4f2593f98e94769) - [@arhayka](https://github.com/arhayka)
+- [docs(Histogram): edit docs, add examples (#21)](https://github.com/gazprom-neft/consta-charts/commit/53a92438c70b67fb4a558ab1a1e629ebacea4c94) - [@arhayka](https://github.com/arhayka)
+- [docs(Radar): edit docs (#22)](https://github.com/gazprom-neft/consta-charts/commit/ccd7e3db110e2a16f51a47abab4dd673135e247d) - [@arhayka](https://github.com/arhayka)
+- [docs(Gauge): add documentation page for gauge chart (#17)](https://github.com/gazprom-neft/consta-charts/commit/6630f0c7268e3ed95cdafadef72d71b5fbfd1492) - [@N1MBER](https://github.com/N1MBER)
+- [docs(Radar): change example in playground (#18)](https://github.com/gazprom-neft/consta-charts/commit/a9d58e39fec330539a30f88bacc0949aebf139ef) - [@N1MBER](https://github.com/N1MBER)
+- [docs(Histogram): add documentation page for histogram (#19)](https://github.com/gazprom-neft/consta-charts/commit/f7a3b3f58753b6e67a3daf5addb0be8f5e077afb) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.2.1 (25/08/2021)
 - [docs(Waterfall): edit docs, add props table and examples (#16)](https://github.com/gazprom-neft/consta-charts/commit/ad446f26e6db5590aab05e188f75f353017b06ad) - [@arhayka](https://github.com/arhayka)
 - [docs(Bar): add link to Column, add ? to the props table](https://github.com/gazprom-neft/consta-charts/commit/46cbbfb526293650f643714f42df62334080d40c) - [@arhayka](https://github.com/arhayka)
