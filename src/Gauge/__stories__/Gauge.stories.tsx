@@ -66,7 +66,6 @@ const Default = () => {
         width: 300,
         height: '100%',
       }}
-      renderer="svg"
       {...options}
     />
   )

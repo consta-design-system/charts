@@ -4,6 +4,14 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { Gauge } from '@/Gauge'
 
+export const GaugeExampleSimple = () => {
+  const options = {
+    percent: 0.75,
+  }
+
+  return <Gauge {...options} gaugeStyle={{ lineCap: 'round' }} style={{ height: '140px' }} />
+}
+
 export const GaugeExample = () => {
   const customFormatter = (data: Record<string, number> | undefined): string => {
     return data && typeof data.percent === 'number'
