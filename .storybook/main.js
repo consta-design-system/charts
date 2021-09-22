@@ -19,9 +19,15 @@ module.exports = {
     const isDevelop = process.env.NODE_ENV === 'development'
 
     const paths = await glob(
-      ['src/**/*.stories.tsx', !isDevelop && '!src/core/**/*.stories.tsx', 'docs/**/*.mdx'].filter(
+      [
+        'src/**/*.stories.tsx',
+        !isDevelop && '!src/core/**/*.stories.tsx',
+        '**/*.stories.mdx',
+      ].filter(
         Boolean
-      )
+      ), {
+        ignore: ['node_modules']
+      }
     )
 
     return paths.map(path => `../${path}`)

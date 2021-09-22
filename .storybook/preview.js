@@ -12,7 +12,7 @@ import {
 } from '@/__private__/storybook'
 
 import './storybook.css'
-import mdx from './stub.mdx'
+import mdx from './stub.stories.mdx'
 
 addDecorator(withPropsTable)
 addDecorator(withKnobs)
