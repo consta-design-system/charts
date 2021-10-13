@@ -1,6 +1,6 @@
 {
   "name": "@consta/charts",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "scripts": {
     "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
     "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps",
@@ -68,9 +68,9 @@
     ]
   },
   "peerDependencies": {
-    "@consta/uikit": "1.12.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@consta/uikit": "^1.12.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "dependencies": {
     "@antv/g2plot": "2.3.27",
