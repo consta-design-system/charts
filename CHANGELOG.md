@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.3 (13/10/2021)
+- [chore(deps): edit deps](https://github.com/gazprom-neft/consta-charts/commit/f98fd77e0e81095a2077891e853a6fdeb0d86d30) - [@gizeasy](https://github.com/gizeasy)
+- [chore(Builer): builder logic change (#23)](https://github.com/gazprom-neft/consta-charts/commit/7aa8de5e2ea762da9240995343047dbf893d948d) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.2.2 (15/09/2021)
 Мы стилизовали и добавили подробную документацию для еще нескольких графиков:
 - Круговая шкала `Gauge`
