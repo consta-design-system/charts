@@ -68,9 +68,9 @@
     ]
   },
   "peerDependencies": {
-    "@consta/uikit": "1.12.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@consta/uikit": "^1.12.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "dependencies": {
     "@antv/g2plot": "2.3.27",
