@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0 (01/12/2021)
+- [chore(deps): change peerDependencies](https://github.com/gazprom-neft/consta-charts/commit/5f5015d828da4803ecba51bf7ddad7adb256ac63) - [@gizeasy](https://github.com/gizeasy)
+- [docs(common): edit main page](https://github.com/gazprom-neft/consta-charts/commit/8a54c044f0813192bf2e25fcdc528d57559c3ab3) - [@arhayka](https://github.com/arhayka)
+
+--------------------
+
 ## v0.2.3 (13/10/2021)
 - [chore(deps): edit deps](https://github.com/gazprom-neft/consta-charts/commit/f98fd77e0e81095a2077891e853a6fdeb0d86d30) - [@gizeasy](https://github.com/gizeasy)
 - [chore(Builer): builder logic change (#23)](https://github.com/gazprom-neft/consta-charts/commit/7aa8de5e2ea762da9240995343047dbf893d948d) - [@N1MBER](https://github.com/N1MBER)
