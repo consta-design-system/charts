@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
+import { array, boolean, number, object } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
 
@@ -9,7 +10,19 @@ import { Pie } from '../Pie'
 
 import mdx from './Pie.docs.mdx'
 
+const getKnobs = () => ({
+  radius: number('radius', 1),
+  innerRadius: number('innerRadius', 0.64),
+  withFormatter: boolean('withFormatter', true),
+  startAngle: number('startAngle', 0),
+  endAngle: number('endAngle', 360),
+  colors: array('colors', ['#22C38E', '#F2C94C', '#F38B00', '#EB5757', '#56B9F2', '#0071B2']),
+  data: object('data', data),
+})
+
 const Default = () => {
+  const { data, withFormatter, radius, innerRadius, colors, startAngle, endAngle } = getKnobs()
+
   const vars = useThemeVars()
 
   return (
@@ -21,16 +34,19 @@ const Default = () => {
       data={data}
       angleField="value"
       colorField="type"
-      radius={1}
+      radius={radius}
+      color={colors}
+      startAngle={startAngle * (Math.PI / 180)}
+      endAngle={endAngle * (Math.PI / 180)}
       statistic={{
         title: {
-          formatter: v => v?.type || 'Всего',
+          formatter: withFormatter ? v => v?.type || 'Всего' : undefined,
           style: {
             color: vars.color.primary['--color-typo-primary'],
           },
         },
       }}
-      innerRadius={0.64}
+      innerRadius={innerRadius}
       label={{
         type: 'inner',
         offset: '-50%',

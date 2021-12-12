@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
+import { number, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
 
@@ -9,7 +10,23 @@ import { Waterfall } from '../Waterfall'
 
 import mdx from './Waterfall.docs.mdx'
 
+const getKnobs = () => ({
+  risingFill: select('risingFill', ['success', 'warning', 'alert', 'brand'], 'success'),
+  fallingFill: select('fallingFill', ['success', 'warning', 'alert', 'brand'], 'alert'),
+  columnWidthRatio: number('columnWidthRatio', 0.5),
+  labelMode: select('labelMode', ['absolute', 'difference'], 'difference'),
+  data: object('data', data),
+})
+
+type ColorSignature =
+  | '--color-bg-success'
+  | '--color-bg-warning'
+  | '--color-bg-alert'
+  | '--color-bg-brand'
+
 const Default = () => {
+  const { data, risingFill, fallingFill, columnWidthRatio, labelMode } = getKnobs()
+
   const vars = useThemeVars()
   return (
     <Waterfall
@@ -18,7 +35,9 @@ const Default = () => {
         height: '100%',
       }}
       data={data}
+      labelMode={labelMode}
       xField="type"
+      columnWidthRatio={columnWidthRatio}
       yField="money"
       legend={{
         layout: 'horizontal',
@@ -27,8 +46,8 @@ const Default = () => {
           symbol: 'square',
         },
       }}
-      risingFill={vars.color.primary['--color-bg-success']}
-      fallingFill={vars.color.primary['--color-bg-alert']}
+      risingFill={vars.color.primary[`--color-bg-${risingFill}` as ColorSignature]}
+      fallingFill={vars.color.primary[`--color-bg-${fallingFill}` as ColorSignature]}
       total={{
         style: {
           fill: vars.color.primary['--color-bg-system'],

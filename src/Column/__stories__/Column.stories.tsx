@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { array, boolean, object, select } from '@storybook/addon-knobs'
+
 import { createMetadata } from '@/__private__/storybook'
 
 import { data } from '../__mocks__/mock.data'
@@ -7,19 +9,48 @@ import { Column } from '../Column'
 
 import mdx from './Column.docs.mdx'
 
+const getKnobs = () => ({
+  xField: select('xField', ['name', 'month'], 'month'),
+  yField: select('yField', ['value', 'group'], 'value'),
+  seriesField: select('seriesField', ['name', 'month', 'value', 'group'], 'name'),
+  colors: array('colors', ['#F38B00', '#22C38E']),
+  isGroup: boolean('isGroup', false),
+  isStack: boolean('isStack', false),
+  isRange: boolean('isRange', false),
+  isPercent: boolean('isPercent', false),
+  data: object('data', data),
+})
+
 const Default = () => {
+  const {
+    data,
+    xField,
+    yField,
+    seriesField,
+    isGroup,
+    isPercent,
+    isRange,
+    isStack,
+    colors,
+  } = getKnobs()
+
   return (
     <Column
       style={{
         width: 800,
         height: '100%',
       }}
+      color={colors}
+      isPercent={isPercent}
+      isStack={isStack}
+      isRange={isRange}
+      isGroup={isGroup}
       data={data}
       renderer="svg"
       padding="auto"
-      xField="month"
-      yField="value"
-      seriesField="name"
+      xField={xField}
+      yField={yField}
+      seriesField={seriesField}
     />
   )
 }
