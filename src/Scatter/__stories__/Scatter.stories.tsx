@@ -11,7 +11,7 @@ import { Scatter } from '../Scatter'
 import mdx from './Scatter.docs.mdx'
 
 const getKnobs = () => ({
-  type: select('type', ['jitter', 'stack', 'symmetric', 'dodge'], 'jitter'),
+  type: select('type', ['jitter', 'stack', 'symmetric'], 'jitter'),
   size: number('size', 5),
   color: select('color', ['success', 'warning', 'alert', 'brand'], 'brand'),
   shape: select(

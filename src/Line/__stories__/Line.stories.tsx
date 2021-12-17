@@ -13,7 +13,6 @@ import mdx from './Line.docs.mdx'
 const getKnobs = () => ({
   xField: select('xField', ['year', 'country'], 'year'),
   yField: select('yField', ['value', 'age'], 'value'),
-  seriesField: select('seriesField', ['country', 'value', 'year', 'age'], 'country'),
   smooth: boolean('smooth', false),
   dashWidth: number('dashWidth', 0),
   connectNulls: boolean('connectNulls', false),
@@ -27,16 +26,7 @@ const newData = data.map(item => {
 })
 
 const Default = () => {
-  const {
-    xField,
-    yField,
-    seriesField,
-    lineColor,
-    smooth,
-    connectNulls,
-    isStack,
-    dashWidth,
-  } = getKnobs()
+  const { xField, yField, lineColor, smooth, connectNulls, isStack, dashWidth } = getKnobs()
 
   const vars = useThemeVars()
 
@@ -53,7 +43,7 @@ const Default = () => {
       data={newData}
       xField={xField}
       yField={yField}
-      seriesField={seriesField}
+      seriesField="country"
       color={({ country }) => {
         return lineColor[country]
       }}
