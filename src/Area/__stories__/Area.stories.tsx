@@ -1,13 +1,30 @@
 import React from 'react'
 
+import { object, select } from '@storybook/addon-knobs'
+
 import { createMetadata } from '@/__private__/storybook'
 
-import { data } from '../__mocks__/mock.data'
+import { colorMapArea, colorMapLine, data } from '../__mocks__/mock.data'
 import { Area } from '../Area'
 
 import mdx from './Area.docs.mdx'
 
+const getKnobs = () => ({
+  xField: select('xField', ['year', 'country'], 'year'),
+  yField: select('yField', ['value', 'age'], 'value'),
+  seriesField: select('seriesField', ['country', 'value', 'year', 'age'], 'country'),
+  areaColor: object('areaColor', colorMapArea),
+  lineColor: object('lineColor', colorMapLine),
+})
+
+const newData = data.map(item => {
+  item.age = new Date().getFullYear() - (Number(item.year) || 0)
+  return item
+})
+
 export function Playground() {
+  const { xField, yField, seriesField, areaColor, lineColor } = getKnobs()
+
   return (
     <Area
       style={{
@@ -15,10 +32,23 @@ export function Playground() {
         height: '100%',
       }}
       renderer="svg"
-      data={data}
-      xField="year"
-      yField="value"
-      seriesField="country"
+      data={newData}
+      xField={xField}
+      yField={yField}
+      seriesField={seriesField}
+      line={{
+        style: ({ country }) => {
+          return {
+            stroke: lineColor[country],
+          }
+        },
+      }}
+      areaStyle={({ country }) => {
+        return {
+          stroke: areaColor[country],
+          fill: areaColor[country],
+        }
+      }}
     />
   )
 }

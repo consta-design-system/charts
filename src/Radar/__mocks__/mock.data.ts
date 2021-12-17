@@ -1,3 +1,9 @@
+export type DataType = {
+  name: string
+  user: string
+  star: number
+}
+
 export const data = [
   { name: 'Design', user: 'Person 1', star: 70431 },
   { name: 'Design', user: 'Person 2', star: 29411 },

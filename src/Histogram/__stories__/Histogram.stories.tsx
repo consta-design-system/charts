@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useThemeVars } from '@consta/uikit/useThemeVars'
+import { array, number, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
 
@@ -9,18 +9,22 @@ import { Histogram, HistogramProps } from '../Histogram'
 
 import mdx from './Histogram.docs.mdx'
 
+const getKnobs = () => ({
+  binWidth: number('binWidth', 4),
+  stackField: select('stackField', ['name', 'value'], 'name'),
+  colors: array('colors', ['#22C38E', '#56B9F2', '#F38B00']),
+  data: object('data', stackedData),
+})
+
 const Default = () => {
-  const vars = useThemeVars()
+  const { data, colors, binWidth, stackField } = getKnobs()
+
   const options: HistogramProps = {
-    data: stackedData,
+    data,
     binField: 'value',
-    stackField: 'name',
-    binWidth: 4,
-    color: [
-      vars.color.primary['--color-bg-success'],
-      vars.color.primary['--color-bg-normal'],
-      vars.color.primary['--color-bg-warning'],
-    ],
+    stackField,
+    binWidth,
+    color: colors,
     meta: {
       range: {
         tickInterval: 10,

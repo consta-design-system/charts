@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
+import { boolean, number, select, text } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
 
@@ -8,7 +9,37 @@ import { Gauge, GaugeProps } from '../Gauge'
 
 import mdx from './Gauge.docs.mdx'
 
+const getKnobs = () => ({
+  percent: number('percent', 0.75),
+  radius: number('radius', 0.75),
+  withFormatter: boolean('withFormatter', true),
+  type: select('type', ['default', 'meter'], 'default'),
+  rangeColor: select('rangeColor', ['success', 'warning', 'alert', 'brand'], 'success'),
+  statisticColor: select(
+    'statisticColor',
+    ['success', 'warning', 'alert', 'brand', 'system'],
+    'system'
+  ),
+  indicatorColor: text('indicatorColor', '#ccd9e0'),
+})
+
+type ColorSignature =
+  | '--color-bg-success'
+  | '--color-bg-warning'
+  | '--color-bg-alert'
+  | '--color-bg-brand'
+  | '--color-bg-system'
+
 const Default = () => {
+  const {
+    percent,
+    rangeColor,
+    statisticColor,
+    withFormatter,
+    indicatorColor,
+    radius,
+    type,
+  } = getKnobs()
   const customFormatter = (data: Record<string, number> | undefined): string => {
     return data && typeof data.percent === 'number'
       ? `${(Number(data.percent) * 100).toFixed(0)}%`
@@ -18,16 +49,17 @@ const Default = () => {
   const vars = useThemeVars()
 
   const options: GaugeProps = {
-    percent: 0.75,
-    radius: 0.75,
+    percent,
+    radius,
+    type,
     range: {
-      color: vars.color.primary['--color-bg-success'],
+      color: vars.color.primary[`--color-bg-${rangeColor}` as ColorSignature],
     },
     statistic: {
       content: {
-        formatter: customFormatter,
+        formatter: withFormatter ? customFormatter : undefined,
         style: {
-          color: vars.color.primary['--color-bg-default'],
+          color: vars.color.primary[`--color-bg-${statisticColor}` as ColorSignature],
           fontSize: '54px',
           fontWeight: 'bold',
         },
@@ -47,13 +79,13 @@ const Default = () => {
       pin: {
         style: {
           r: 16,
-          stroke: vars.color.primary['--color-bg-border'],
+          stroke: indicatorColor,
           lineWidth: 6,
         },
       },
       pointer: {
         style: {
-          stroke: vars.color.primary['--color-bg-border'],
+          stroke: indicatorColor,
           lineWidth: 6,
         },
       },

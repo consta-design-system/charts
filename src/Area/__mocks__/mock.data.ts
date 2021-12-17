@@ -1,4 +1,34 @@
-export type Item = { country: string; year: string; value: null | number }
+export type Item = { country: string; year: string; value: null | number; age?: number }
+
+export const colorMapArea: { [key: string]: string } = {
+  Austria: '#ff7514',
+  Canada: '#ad4800',
+  France: '#ca3a27',
+  Germany: '#470d0b',
+  Japan: '#ffc0cb',
+  Netherlands: '#ffd88a',
+  'New Zealand': '#b39929',
+  Spain: '#c5e384',
+  Sweden: '#8c4566',
+  Switzerland: '#924e7d',
+  'United Kingdom': '#905d5d',
+  'United States': '#a2a2d0',
+}
+
+export const colorMapLine: { [key: string]: string } = {
+  Austria: '#007514',
+  Canada: '#ad48F0',
+  France: '#cF3aF7',
+  Germany: '#070d00',
+  Japan: '#ffc000',
+  Netherlands: '#1fd08a',
+  'New Zealand': '#059a29',
+  Spain: '#c53F84',
+  Sweden: '#800566',
+  Switzerland: '#92007d',
+  'United Kingdom': '#9a0d5d',
+  'United States': '#a0a0d0',
+}
 
 export const data: Item[] = [
   { country: 'Austria', year: '1875', value: null },
