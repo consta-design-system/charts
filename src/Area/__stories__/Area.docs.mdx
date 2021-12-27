@@ -5,7 +5,7 @@ import {
   AreaExampleColorMultiLine,
 } from './examples/AreaExampleColorLine/AreaExampleColorLine'
 import { AreaExampleMeta} from './examples/AreaExampleMeta/AreaExampleMeta'
-
+import { AreaExampleSlider } from './examples/AreaExampleSlider/AreaExampleSlider'
 import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
 # Area
@@ -181,6 +181,28 @@ function LineExampleMeta() {
 }
 ```
 
+## Масштабирование
+
+<AreaExampleSlider />
+
+```tsx
+export function AreaExampleSlider() {
+  return (
+    <Area
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={data}
+      xField="year"
+      yField="value"
+      seriesField="country"
+      slider={{
+        start: 0,
+        end: 0.5,
+      }}
+    />
+  )
+}
+```
+
 ## Свойства
 
 <RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/line" />
@@ -192,4 +214,5 @@ function LineExampleMeta() {
 | [`yField`](#одна-линия)  | `string`       | -            |  Поле с данными для отображения на вертикальной оси      |
 | [`seriesField`](#несколько-линий)  | `string`       | -            | Поле с данными для группировки линий        |
 | [`meta`](#формат-данных)  | `string`       | -            |  Объект с форматом данных для тултипа       |
+| [`slider`](#масштабирование)  | `object`       | -            |  Объект с форматом данных для слайдера       |
 | `className`       | `string`       | -            | Дополнительный CSS-класс компонента         |

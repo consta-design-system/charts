@@ -5,7 +5,7 @@ import {
   LineExampleColorMultiLine,
 } from './examples/LineExampleColorLine/LineExampleColorLine'
 import { LineExampleMeta } from './examples/LineExampleMeta/LineExampleMeta'
-
+import { LineExampleSlider } from './examples/LineExampleSlider/LineExampleSlider'
 import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
 # Line
@@ -166,6 +166,28 @@ function LineExampleMeta() {
 }
 ```
 
+## Масштабирование
+
+<LineExampleSlider />
+
+```tsx
+export function LineExampleSlider() {
+  return (
+    <Line
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={data}
+      xField="year"
+      yField="value"
+      seriesField="country"
+      slider={{
+        start: 0.1,
+        end: 0.5,
+      }}
+    />
+  )
+}
+```
+
 ## Свойства
 
 <RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/line" />
@@ -177,4 +199,5 @@ function LineExampleMeta() {
 | [`yField`](#одна-линия)  | `string`       | -            |  Поле с данными для отображения на вертикальной оси      |
 | [`seriesField`](#несколько-линий)  | `string`       | -            | Поле с данными для группировки линий        |
 | [`meta`](#формат-данных)  | `string`       | -            |  Объект с форматом данных для тултипа       |
+| [`slider`](#масштабирование)  | `object`       | -            |  Объект с форматом данных для слайдера       |
 | `className`       | `string`       | -            | Дополнительный CSS-класс компонента         |

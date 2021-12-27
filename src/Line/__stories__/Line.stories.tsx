@@ -10,10 +10,22 @@ import { Line } from '../Line'
 
 import mdx from './Line.docs.mdx'
 
+const sliderCfg = {
+  start: 0,
+  end: 1,
+  height: 20,
+  trendCfg: {
+    smooth: true,
+    isArea: true,
+  },
+}
+
 const getKnobs = () => ({
   xField: select('xField', ['year', 'country'], 'year'),
   yField: select('yField', ['value', 'age'], 'value'),
   smooth: boolean('smooth', false),
+  withSlider: boolean('withSlider', false),
+  slider: object('slider', sliderCfg),
   dashWidth: number('dashWidth', 0),
   connectNulls: boolean('connectNulls', false),
   isStack: boolean('isStack', false),
@@ -26,7 +38,17 @@ const newData = data.map(item => {
 })
 
 const Default = () => {
-  const { xField, yField, lineColor, smooth, connectNulls, isStack, dashWidth } = getKnobs()
+  const {
+    xField,
+    yField,
+    lineColor,
+    smooth,
+    connectNulls,
+    isStack,
+    dashWidth,
+    withSlider,
+    slider,
+  } = getKnobs()
 
   const vars = useThemeVars()
 
@@ -43,6 +65,7 @@ const Default = () => {
       data={newData}
       xField={xField}
       yField={yField}
+      slider={withSlider && slider}
       seriesField="country"
       color={({ country }) => {
         return lineColor[country]
