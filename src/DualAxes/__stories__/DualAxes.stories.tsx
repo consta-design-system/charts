@@ -9,6 +9,16 @@ import { DualAxes, DualAxesProps } from '../DualAxes'
 
 import mdx from './DualAxes.docs.mdx'
 
+const sliderCfg = {
+  start: 0,
+  end: 1,
+  height: 20,
+  trendCfg: {
+    smooth: true,
+    isArea: true,
+  },
+}
+
 const getKnobs = () => ({
   xField: select('xField', ['value', 'count', 'year', 'age'], 'year'),
   yField: array('yField', ['value', 'count']),
@@ -20,6 +30,8 @@ const getKnobs = () => ({
   isStack: boolean('isStack', false),
   isRange: boolean('isRange', false),
   isPercent: boolean('isPercent', false),
+  withSlider: boolean('withSlider', false),
+  slider: object('slider', sliderCfg),
   data: object('data', data),
 })
 
@@ -36,6 +48,8 @@ export function Playground() {
     isRange,
     isStack,
     colors,
+    withSlider,
+    slider,
   } = getKnobs()
 
   const options: DualAxesProps = {
@@ -72,6 +86,7 @@ export function Playground() {
         },
       },
     ],
+    slider: withSlider && slider,
   }
 
   return (

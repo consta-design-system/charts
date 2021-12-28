@@ -1,6 +1,7 @@
 import { DualAxesExampleDualLine } from './examples/DualAxesExampleDualLine/DualAxesExampleDualLine'
 import { DualAxesExampleStackedColumnLine } from './examples/DualAxesExampleStackedColumnLine/DualAxesExampleStackedColumnLine'
 import { DualAxesExampleDualLineWithStyle } from './examples/DualAxesExampleDualLineWithStyle/DualAxesExampleDualLineWithStyle'
+import { DualAxesExampleSlider } from './examples/DualAxesExampleSlider/DualAxesExampleSlider'
 
 import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
@@ -151,3 +152,25 @@ export function DualAxesExampleStackedColumnLine() {
 ```
 
 <DualAxesExampleStackedColumnLine />
+
+
+### Масштабирование
+
+```tsx
+export function DualAxesExampleSlider() {
+  return (
+    <DualAxes
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={[data, data]}
+      xField="year"
+      slider={{
+        start: 0,
+        end: 0.5,
+      }}
+      yField={['value', 'count']}
+    />
+  )
+}
+```
+
+<DualAxesExampleSlider />

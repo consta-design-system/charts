@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { object, select } from '@storybook/addon-knobs'
+import { boolean, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
 
@@ -9,10 +9,22 @@ import { Area } from '../Area'
 
 import mdx from './Area.docs.mdx'
 
+const sliderCfg = {
+  start: 0,
+  end: 1,
+  height: 20,
+  trendCfg: {
+    smooth: true,
+    isArea: true,
+  },
+}
+
 const getKnobs = () => ({
   xField: select('xField', ['year', 'country'], 'year'),
   yField: select('yField', ['value', 'age'], 'value'),
   seriesField: select('seriesField', ['country', 'value', 'year', 'age'], 'country'),
+  withSlider: boolean('withSlider', false),
+  slider: object('slider', sliderCfg),
   areaColor: object('areaColor', colorMapArea),
   lineColor: object('lineColor', colorMapLine),
 })
@@ -23,7 +35,7 @@ const newData = data.map(item => {
 })
 
 export function Playground() {
-  const { xField, yField, seriesField, areaColor, lineColor } = getKnobs()
+  const { xField, yField, seriesField, areaColor, lineColor, withSlider, slider } = getKnobs()
 
   return (
     <Area
@@ -36,6 +48,7 @@ export function Playground() {
       xField={xField}
       yField={yField}
       seriesField={seriesField}
+      slider={withSlider && slider}
       line={{
         style: ({ country }) => {
           return {
