@@ -1,6 +1,6 @@
 export type DataType = {
   name: string
-  user: string
+  user: 'Person 1' | 'Person 2'
   star: number
 }
 

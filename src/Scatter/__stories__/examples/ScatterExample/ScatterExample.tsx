@@ -7,6 +7,7 @@ import { Scatter } from '../../../Scatter'
 
 export function ScatterExample() {
   const vars = useThemeVars()
+
   return (
     <Scatter
       data={data}
@@ -17,6 +18,11 @@ export function ScatterExample() {
       size={[4, 30]}
       shape="circle"
       colorField="continent"
+      color={[
+        vars.color.primary['--color-bg-success'],
+        vars.color.primary['--color-bg-warning'],
+        vars.color.primary['--color-bg-caution'],
+      ]}
       legend={{
         layout: 'horizontal',
         position: 'top-left',
@@ -53,10 +59,13 @@ export function ScatterExample() {
 }
 
 export function ScatterExampleSimple() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataSimple}
+      color={vars.color.primary['--color-bg-success']}
       xField="x"
       yField="y"
     />
@@ -64,13 +73,15 @@ export function ScatterExampleSimple() {
 }
 
 export function ScatterExampleColor() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataColor}
       xField="temperature"
       yField="ufo"
-      color={'#ffd500'}
+      color={vars.color.primary['--color-bg-warning']}
       size={5}
       shape="circle"
       pointStyle={{
@@ -81,6 +92,8 @@ export function ScatterExampleColor() {
 }
 
 export function ScatterExampleColorField() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
@@ -88,7 +101,11 @@ export function ScatterExampleColorField() {
       xField="temperature"
       yField="ufo"
       colorField="place"
-      color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+      color={[
+        vars.color.primary['--color-bg-success'],
+        vars.color.primary['--color-bg-warning'],
+        vars.color.primary['--color-bg-caution'],
+      ]}
       size={5}
       shape="circle"
       pointStyle={{
@@ -99,10 +116,13 @@ export function ScatterExampleColorField() {
 }
 
 export function ScatterExampleSize() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataColor}
+      color={vars.color.primary['--color-bg-normal']}
       xField="temperature"
       yField="ufo"
       size={20}
@@ -115,6 +135,8 @@ export function ScatterExampleSize() {
 }
 
 export function ScatterExampleSizeField() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
@@ -122,7 +144,11 @@ export function ScatterExampleSizeField() {
       xField="temperature"
       yField="ufo"
       colorField="place"
-      color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+      color={[
+        vars.color.primary['--color-bg-success'],
+        vars.color.primary['--color-bg-warning'],
+        vars.color.primary['--color-bg-caution'],
+      ]}
       size={[4, 20]}
       sizeField="ufo"
       shape="circle"
@@ -134,10 +160,13 @@ export function ScatterExampleSizeField() {
 }
 
 export function ScatterExampleShape() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataColor}
+      color={vars.color.primary['--color-bg-normal']}
       xField="temperature"
       yField="ufo"
       shape="triangle"
@@ -150,10 +179,13 @@ export function ScatterExampleShape() {
 }
 
 export function ScatterExampleShapeField() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataColor}
+      color={vars.color.primary['--color-bg-normal']}
       xField="temperature"
       yField="ufo"
       shapeField="place"
@@ -167,14 +199,23 @@ export function ScatterExampleShapeField() {
 }
 
 export function ScatterExamplePseudo() {
+  const vars = useThemeVars()
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
-      data={dataColor}
+      data={data}
       xField="temperature"
       yField="ufo"
       colorField="place"
-      color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+      color={[
+        vars.color.primary['--color-bg-success'],
+        vars.color.primary['--color-bg-warning'],
+        vars.color.primary['--color-bg-caution'],
+        vars.color.primary['--color-bg-alert'],
+        vars.color.primary['--color-bg-normal'],
+        vars.color.primary['--color-bg-brand'],
+      ]}
       size={[4, 20]}
       sizeField="ufo"
       shape="circle"

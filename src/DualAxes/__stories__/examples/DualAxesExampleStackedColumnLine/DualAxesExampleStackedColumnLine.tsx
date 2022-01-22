@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useThemeVars } from '@consta/uikit/useThemeVars'
+
 import { DualAxes } from '@/DualAxes'
 
 const uvBillData = [
@@ -24,6 +26,8 @@ const transformData = [
 ]
 
 export function DualAxesExampleStackedColumnLine() {
+  const vars = useThemeVars()
+
   return (
     <DualAxes
       style={{ marginBottom: 'var(--space-m)' }}
@@ -34,9 +38,11 @@ export function DualAxesExampleStackedColumnLine() {
         {
           geometry: 'column',
           isStack: true,
+          color: vars.color.primary['--color-bg-normal'],
           seriesField: 'type',
         },
         {
+          color: vars.color.primary['--color-bg-success'],
           geometry: 'line',
         },
       ]}

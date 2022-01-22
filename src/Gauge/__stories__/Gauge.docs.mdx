@@ -203,25 +203,34 @@ export function GaugeExample() {
     percent: 0.75,
     radius: 0.75,
     range: {
-      color: vars.color.primary['--color-bg-success'],
-    },
-    statistic: {
-      content: {
-        formatter: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
-        style: {
-          color: vars.color.primary['--color-bg-default'],
-          fontSize: 54,
-          fontWeight: 'bold',
-        },
-      },
-      radius: 0.75,
+      color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-ghost']],
     },
     gaugeStyle: {
       lineCap: 'round',
     },
+    statistic: {
+      content: {
+        formatter: customFormatter,
+        style: {
+          color: vars.color.primary['--color-typo-primary'],
+          fontSize: '24px',
+          fontWeight: 'bold',
+        },
+      },
+    },
     axis: {
       subTickLine: {
         count: 3,
+        length: -8,
+        style: {
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+        },
+      },
+      tickLine: {
+        length: -12,
+        style: {
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+        },
       },
       label: {
         style: {
@@ -232,15 +241,16 @@ export function GaugeExample() {
     indicator: {
       pin: {
         style: {
-          r: 16,
-          stroke: vars.color.primary['--color-bg-border'],
-          lineWidth: 6,
+          r: 9,
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+          lineWidth: 4,
+          fill: vars.color.primary['--color-bg-default'],
         },
       },
       pointer: {
         style: {
-          stroke: vars.color.primary['--color-bg-border'],
-          lineWidth: 6,
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+          lineWidth: 4,
         },
       },
     },

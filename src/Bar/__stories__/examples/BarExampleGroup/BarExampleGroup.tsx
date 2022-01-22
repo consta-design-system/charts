@@ -11,6 +11,7 @@ export function BarExampleGroup() {
       xField="value"
       yField="month"
       seriesField="name"
+      color={['#56B9F2', '#F38B00', '#22C38E']}
       isGroup
       label={{
         position: 'middle',

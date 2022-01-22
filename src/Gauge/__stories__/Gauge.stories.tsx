@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
-import { boolean, number, select, text } from '@storybook/addon-knobs'
+import { boolean, number, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
 
@@ -17,29 +17,20 @@ const getKnobs = () => ({
   rangeColor: select('rangeColor', ['success', 'warning', 'alert', 'brand'], 'success'),
   statisticColor: select(
     'statisticColor',
-    ['success', 'warning', 'alert', 'brand', 'system'],
-    'system'
+    ['ghost', 'primary', 'brand', 'secondary', 'system'],
+    'primary'
   ),
-  indicatorColor: text('indicatorColor', '#ccd9e0'),
 })
 
 type ColorSignature =
-  | '--color-bg-success'
-  | '--color-bg-warning'
-  | '--color-bg-alert'
-  | '--color-bg-brand'
-  | '--color-bg-system'
+  | '--color-typo-ghost'
+  | '--color-typo-primary'
+  | '--color-typo-brand'
+  | '--color-typo-secondary'
+  | '--color-typo-system'
 
 const Default = () => {
-  const {
-    percent,
-    rangeColor,
-    statisticColor,
-    withFormatter,
-    indicatorColor,
-    radius,
-    type,
-  } = getKnobs()
+  const { percent, rangeColor, statisticColor, withFormatter, radius, type } = getKnobs()
   const customFormatter = (data: Record<string, number> | undefined): string => {
     return data && typeof data.percent === 'number'
       ? `${(Number(data.percent) * 100).toFixed(0)}%`
@@ -52,15 +43,21 @@ const Default = () => {
     percent,
     radius,
     type,
+    gaugeStyle: {
+      lineCap: 'round',
+    },
     range: {
-      color: vars.color.primary[`--color-bg-${rangeColor}` as ColorSignature],
+      color: [
+        vars.color.primary[`--color-bg-${rangeColor}` as ColorSignature],
+        vars.color.primary['--color-bg-ghost'],
+      ],
     },
     statistic: {
       content: {
         formatter: withFormatter ? customFormatter : undefined,
         style: {
-          color: vars.color.primary[`--color-bg-${statisticColor}` as ColorSignature],
-          fontSize: '54px',
+          color: vars.color.primary[`--color-typo-${statisticColor}` as ColorSignature],
+          fontSize: '24px',
           fontWeight: 'bold',
         },
       },
@@ -68,6 +65,16 @@ const Default = () => {
     axis: {
       subTickLine: {
         count: 3,
+        length: -8,
+        style: {
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+        },
+      },
+      tickLine: {
+        length: -12,
+        style: {
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+        },
       },
       label: {
         style: {
@@ -78,15 +85,16 @@ const Default = () => {
     indicator: {
       pin: {
         style: {
-          r: 16,
-          stroke: indicatorColor,
-          lineWidth: 6,
+          r: 9,
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+          lineWidth: 4,
+          fill: vars.color.primary['--color-bg-default'],
         },
       },
       pointer: {
         style: {
-          stroke: indicatorColor,
-          lineWidth: 6,
+          stroke: vars.color.primary['--color-control-bg-border-default'],
+          lineWidth: 4,
         },
       },
     },

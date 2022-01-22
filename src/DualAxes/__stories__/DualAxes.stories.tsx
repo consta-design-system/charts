@@ -3,6 +3,7 @@ import React from 'react'
 import { array, boolean, number, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
+import { getLegend } from '@/__private__/utils/legend'
 
 import { data } from '../__mocks__/mock.data'
 import { DualAxes, DualAxesProps } from '../DualAxes'
@@ -56,6 +57,7 @@ export function Playground() {
     data: [data, data],
     xField,
     yField,
+    legend: getLegend({}),
     geometryOptions: [
       {
         geometry,
