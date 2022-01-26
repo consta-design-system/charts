@@ -1,6 +1,6 @@
 {
   "name": "@consta/charts",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
     "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps",
