@@ -8,7 +8,7 @@ export function LineExampleMultiLine() {
     <Line
       style={{ marginBottom: 'var(--space-m)' }}
       data={data}
-      xField="year"
+      xField="date"
       yField="value"
       seriesField="country"
     />

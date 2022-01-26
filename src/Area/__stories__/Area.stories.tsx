@@ -3,8 +3,9 @@ import React from 'react'
 import { boolean, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
+import { getLegend } from '@/__private__/utils/legend'
 
-import { colorMapArea, colorMapLine, data } from '../__mocks__/mock.data'
+import { colorMapLine, data } from '../__mocks__/mock.data'
 import { Area } from '../Area'
 
 import mdx from './Area.docs.mdx'
@@ -20,22 +21,21 @@ const sliderCfg = {
 }
 
 const getKnobs = () => ({
-  xField: select('xField', ['year', 'country'], 'year'),
+  xField: select('xField', ['date', 'country'], 'date'),
   yField: select('yField', ['value', 'age'], 'value'),
-  seriesField: select('seriesField', ['country', 'value', 'year', 'age'], 'country'),
+  seriesField: select('seriesField', ['country', 'value', 'date', 'age'], 'country'),
   withSlider: boolean('withSlider', false),
   slider: object('slider', sliderCfg),
-  areaColor: object('areaColor', colorMapArea),
   lineColor: object('lineColor', colorMapLine),
 })
 
 const newData = data.map(item => {
-  item.age = new Date().getFullYear() - (Number(item.year) || 0)
+  item.age = new Date().getFullYear() - (Number(item.date) || 0)
   return item
 })
 
 export function Playground() {
-  const { xField, yField, seriesField, areaColor, lineColor, withSlider, slider } = getKnobs()
+  const { xField, yField, seriesField, lineColor, withSlider, slider } = getKnobs()
 
   return (
     <Area
@@ -44,24 +44,19 @@ export function Playground() {
         height: '100%',
       }}
       renderer="svg"
+      legend={getLegend({
+        layout: 'horizontal',
+        offsetY: -10,
+        offsetX: 0,
+        position: 'top-left',
+        colors: lineColor,
+      })}
       data={newData}
       xField={xField}
       yField={yField}
       seriesField={seriesField}
+      color={Object.keys(lineColor).map(key => lineColor[key])}
       slider={withSlider && slider}
-      line={{
-        style: ({ country }) => {
-          return {
-            stroke: lineColor[country],
-          }
-        },
-      }}
-      areaStyle={({ country }) => {
-        return {
-          stroke: areaColor[country],
-          fill: areaColor[country],
-        }
-      }}
     />
   )
 }

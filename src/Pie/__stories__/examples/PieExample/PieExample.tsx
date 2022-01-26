@@ -31,6 +31,14 @@ export function PieExample() {
       angleField="value"
       colorField="type"
       radius={1}
+      color={[
+        vars.color.primary['--color-bg-success'],
+        vars.color.primary['--color-bg-warning'],
+        vars.color.primary['--color-bg-caution'],
+        vars.color.primary['--color-bg-alert'],
+        vars.color.primary['--color-bg-normal'],
+        vars.color.primary['--color-bg-brand'],
+      ]}
       statistic={{
         title: {
           formatter: v => v?.type || 'Всего',
@@ -58,6 +66,8 @@ export function PieExample() {
 }
 
 export function PieExampleDonut() {
+  const vars = useThemeVars()
+
   return (
     <Pie
       style={{
@@ -65,6 +75,14 @@ export function PieExampleDonut() {
         height: '100%',
         marginBottom: 'var(--space-xl)',
       }}
+      color={[
+        vars.color.primary['--color-bg-success'],
+        vars.color.primary['--color-bg-warning'],
+        vars.color.primary['--color-bg-caution'],
+        vars.color.primary['--color-bg-alert'],
+        vars.color.primary['--color-bg-normal'],
+        vars.color.primary['--color-bg-brand'],
+      ]}
       data={data}
       angleField="value"
       colorField="type"

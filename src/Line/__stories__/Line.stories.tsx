@@ -4,6 +4,7 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 import { boolean, number, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
+import { getLegend } from '@/__private__/utils/legend'
 
 import { colorMapLine, data } from '../__mocks__/mock.data'
 import { Line } from '../Line'
@@ -21,7 +22,7 @@ const sliderCfg = {
 }
 
 const getKnobs = () => ({
-  xField: select('xField', ['year', 'country'], 'year'),
+  xField: select('xField', ['date', 'country'], 'date'),
   yField: select('yField', ['value', 'age'], 'value'),
   smooth: boolean('smooth', false),
   withSlider: boolean('withSlider', false),
@@ -33,7 +34,7 @@ const getKnobs = () => ({
 })
 
 const newData = data.map(item => {
-  item.age = new Date().getFullYear() - (Number(item.year) || 0)
+  item.age = new Date().getFullYear() - (Number(item.date) || 0)
   return item
 })
 
@@ -61,6 +62,13 @@ const Default = () => {
       renderer="svg"
       smooth={smooth}
       connectNulls={connectNulls}
+      legend={getLegend({
+        layout: 'horizontal',
+        offsetY: -10,
+        offsetX: 0,
+        position: 'top-left',
+        colors: lineColor,
+      })}
       isStack={isStack}
       data={newData}
       xField={xField}

@@ -1,24 +1,15 @@
 import React from 'react'
 
+import { useThemeVars } from '@consta/uikit/useThemeVars'
 import { boolean, number, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
+import { getLegend } from '@/__private__/utils/legend'
 
 import { data, DataType } from '../__mocks__/mock.data'
 import { Radar, RadarProps } from '../Radar'
 
 import mdx from './Radar.docs.mdx'
-
-const colorScheme: { [key: string]: { [key: string]: string } } = {
-  'Person 1': {
-    line: '#ffc0cb',
-    area: '#ffc0cb',
-  },
-  'Person 2': {
-    line: '#ffd88a',
-    area: '#ffd88a',
-  },
-}
 
 const getKnobs = () => ({
   seriesField: select('seriesField', ['name', 'star', 'user'], 'user'),
@@ -27,18 +18,26 @@ const getKnobs = () => ({
   round: boolean('round', false),
   withArea: boolean('withArea', true),
   lineDashed: boolean('lineDashed', false),
-  color: object('colorScheme', colorScheme),
   data: object('data', data),
 })
 
 const Default = () => {
-  const { data, seriesField, dotsSize, color, smooth, lineDashed, withArea, round } = getKnobs()
+  const { data, seriesField, dotsSize, smooth, lineDashed, withArea, round } = getKnobs()
+
+  const vars = useThemeVars()
+
+  const colors = {
+    'Person 1': vars.color.primary['--color-bg-success'],
+    'Person 2': vars.color.primary['--color-bg-normal'],
+  }
 
   const options: RadarProps = {
     data,
     xField: 'name',
     yField: 'star',
     seriesField,
+    color: [colors['Person 1'], colors['Person 2']],
+    legend: getLegend({ colors, offsetX: -50, offsetY: 50 }),
     xAxis: !round
       ? {
           line: null,
@@ -68,7 +67,7 @@ const Default = () => {
       : undefined,
     lineStyle: (element: DataType) => {
       return {
-        stroke: color[element.user]?.line,
+        stroke: colors[element.user],
         lineDash: lineDashed ? [10] : [],
       }
     },
@@ -76,14 +75,13 @@ const Default = () => {
       ? {
           style: (element: DataType) => {
             return {
-              fill: color[element.user]?.area,
+              fill: colors[element.user],
             }
           },
         }
       : undefined,
     point: {
       size: dotsSize,
-      color: '#000',
     },
     smooth,
     meta: {

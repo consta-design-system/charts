@@ -3,6 +3,7 @@ import React from 'react'
 import { array, boolean, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
+import { getLegend } from '@/__private__/utils/legend'
 
 import { data } from '../__mocks__/mock.data'
 import { Bar } from '../Bar'
@@ -15,7 +16,7 @@ const getKnobs = () => ({
   isStack: boolean('isStack', true),
   isGroup: boolean('isGroup', false),
   isPercent: boolean('isPercent', false),
-  colors: array('colors', ['#22C38E', '#F2C94C', '#F38B00', '#EB5757']),
+  colors: array('colors', ['#56B9F2', '#F38B00', '#22C38E']),
   data: object('data', data),
 })
 
@@ -34,6 +35,7 @@ const Default = () => {
       isPercent={isPercent}
       isStack={isStack}
       color={colors}
+      legend={getLegend({ layout: 'horizontal', offsetY: -10, offsetX: 0, position: 'top-left' })}
       label={
         withLabel && {
           position: 'middle',

@@ -1,11 +1,16 @@
 import React from 'react'
 
+import { useThemeVars } from '@consta/uikit/useThemeVars'
+
 import { Radar, RadarProps } from '@/Radar'
 import { dataMulti as data } from '@/Radar/__mocks__/mock.data'
 
 export function RadarExampleMulti() {
+  const vars = useThemeVars()
+
   const options: RadarProps = {
     data,
+    color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-normal']],
     xField: 'skill',
     yField: 'star',
     seriesField: 'person',
@@ -15,8 +20,11 @@ export function RadarExampleMulti() {
 }
 
 export function RadarExampleArea() {
+  const vars = useThemeVars()
+
   const options: RadarProps = {
     data,
+    color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-normal']],
     xField: 'skill',
     yField: 'star',
     seriesField: 'person',
@@ -30,10 +38,13 @@ export function RadarExampleArea() {
 }
 
 export function RadarExampleAxis() {
+  const vars = useThemeVars()
+
   const options: RadarProps = {
     data,
     xField: 'skill',
     yField: 'star',
+    color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-normal']],
     seriesField: 'person',
     xAxis: {
       line: null,

@@ -24,7 +24,7 @@ export function DualAxesExampleDualLineWithStyle() {
             },
           },
           lineStyle: {
-            lineWidth: 3,
+            lineWidth: 2,
             lineDash: [5, 5],
           },
         },
@@ -33,8 +33,7 @@ export function DualAxesExampleDualLineWithStyle() {
           smooth: true,
           color: vars.color.primary['--color-typo-success'],
           lineStyle: {
-            lineWidth: 4,
-            opacity: 0.5,
+            lineWidth: 2,
           },
           label: {
             formatter: datum => {
@@ -45,7 +44,6 @@ export function DualAxesExampleDualLineWithStyle() {
             shape: 'circle',
             size: 4,
             style: {
-              opacity: 0.5,
               stroke: vars.color.primary['--color-typo-success'],
               fill: vars.color.primary['--color-bg-default'],
             },
