@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.4.0 (26/01/2022)
+Самое важное:
+- добавили `MixPlot`, теперь есть возможность группировки графиков в одной канве
+- обновили документацию
+---
+- [feat(MixPlot): add new chart (#40)](https://github.com/consta-design-system/charts/commit/f6d33ac10083b2f51b19f0b17668ea4bad9e9c36) - [@N1MBER](https://github.com/N1MBER)
+- [feat(Docs): add default colors, fix some moments and others (#34)](https://github.com/consta-design-system/charts/commit/4615c1b93453721168aaba9e374e40142ddad78f) - [@N1MBER](https://github.com/N1MBER)
+- [feat(Slider): add knobs, examples for lines scale (#32)](https://github.com/consta-design-system/charts/commit/5bd32b55cbfda0d3e5ad5e37bd3956dc0cbb75cc) - [@N1MBER](https://github.com/N1MBER)
+- [docs(Knobs): add knobs to all components (#29)](https://github.com/consta-design-system/charts/commit/452e7d1301384ab7e6c8b254e3fd5b1324536f3c) - [@N1MBER](https://github.com/N1MBER)
+- [chore(deps): edit deps (#30)](https://github.com/consta-design-system/charts/commit/1dc081469c74f3ce14101b4a375417c982cb165b) - [@gizeasy](https://github.com/gizeasy)
+
+--------------------
+
 ## v0.3.0 (01/12/2021)
 - [chore(deps): change peerDependencies](https://github.com/gazprom-neft/consta-charts/commit/5f5015d828da4803ecba51bf7ddad7adb256ac63) - [@gizeasy](https://github.com/gizeasy)
 - [docs(common): edit main page](https://github.com/gazprom-neft/consta-charts/commit/8a54c044f0813192bf2e25fcdc528d57559c3ab3) - [@arhayka](https://github.com/arhayka)
