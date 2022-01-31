@@ -3,9 +3,9 @@ import React, { useEffect, useImperativeHandle } from 'react'
 import { Gauge as G2plotGauge, GaugeOptions as G2plotGaugeProps } from '@antv/g2plot'
 import { useForkRef } from '@consta/uikit/useForkRef'
 
-import { useChart } from '@/__private__/hooks/useChart'
-import { useChartTheme } from '@/__private__/hooks/useChartTheme'
-import { getChart } from '@/__private__/utils/getChart'
+import { useChart } from '@/hooks/useChart'
+import { useChartTheme } from '@/hooks/useChartTheme'
+import { getChart } from '@/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
 export type GaugeProps = ChartProps<G2plotGaugeProps>

@@ -3,7 +3,7 @@ import React from 'react'
 import { View } from '@antv/g2'
 import { PieOptions as G2plotPieProps, ShapeStyle } from '@antv/g2plot'
 
-import { ContainerProps, Tooltip } from '@/__private__/hooks/useChart'
+import { ContainerProps, Tooltip } from '@/hooks/useChart'
 
 type ExcludeProps =
   | 'tooltip'

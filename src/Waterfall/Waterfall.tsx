@@ -7,9 +7,9 @@ import {
 import { useForkRef } from '@consta/uikit/useForkRef'
 import { useThemeVars } from '@consta/uikit/useThemeVars'
 
-import { useChart } from '@/__private__/hooks/useChart'
-import { getChartTheme } from '@/__private__/hooks/useChartTheme'
-import { getChart } from '@/__private__/utils/getChart'
+import { useChart } from '@/hooks/useChart'
+import { getChartTheme } from '@/hooks/useChartTheme'
+import { getChart } from '@/utils/getChart'
 import { ChartProps } from '@/__private__/utils/types/ChartProps'
 
 export type WaterfallProps = Omit<ChartProps<G2plotWaterfallProps>, 'label'>

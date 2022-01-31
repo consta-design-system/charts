@@ -1,7 +1,7 @@
 import { DualAxesOptions as G2plotDualAxesProps } from '@antv/g2plot'
 import { Annotation } from '@antv/g2plot/src/types/annotation'
 
-import { ContainerProps, Tooltip } from '@/__private__/hooks/useChart'
+import { ContainerProps, Tooltip } from '@/hooks/useChart'
 
 type ExcludeProps = 'tooltip' | 'children' | 'theme' | 'annotations'
 

@@ -3,9 +3,9 @@ import React, { useEffect, useImperativeHandle } from 'react'
 import { Bar as G2plotBar } from '@antv/g2plot'
 import { useForkRef } from '@consta/uikit/useForkRef'
 
-import { useChart } from '@/__private__/hooks/useChart'
-import { useChartTheme } from '@/__private__/hooks/useChartTheme'
-import { getChart } from '@/__private__/utils/getChart'
+import { useChart } from '@/hooks/useChart'
+import { useChartTheme } from '@/hooks/useChartTheme'
+import { getChart } from '@/utils/getChart'
 
 import { BarComponentType } from './types'
 

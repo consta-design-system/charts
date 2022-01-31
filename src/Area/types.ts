@@ -1,6 +1,6 @@
 import { AreaOptions as G2plotAreaProps, ShapeStyle } from '@antv/g2plot'
 
-import { ContainerProps, Tooltip } from '@/__private__/hooks/useChart'
+import { ContainerProps, Tooltip } from '@/hooks/useChart'
 import { MappingOptions } from '@/__private__/utils/types/MappingOptions'
 
 type ExcludeProps =

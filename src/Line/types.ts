@@ -1,6 +1,6 @@
 import { LineOptions as G2plotLineProps, ShapeStyle } from '@antv/g2plot'
 
-import { ContainerProps, Tooltip } from '@/__private__/hooks/useChart'
+import { ContainerProps, Tooltip } from '@/hooks/useChart'
 
 type ExcludeProps =
   | 'tooltip'
