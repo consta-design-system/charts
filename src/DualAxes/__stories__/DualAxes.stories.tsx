@@ -21,8 +21,6 @@ const sliderCfg = {
 }
 
 const getKnobs = () => ({
-  xField: select('xField', ['value', 'count', 'year', 'age'], 'year'),
-  yField: array('yField', ['value', 'count']),
   smooth: boolean('smooth', false),
   geometry: select('geometry', ['line', 'column'], 'line'),
   colors: array('colors', ['#F38B00', '#22C38E']),
@@ -39,8 +37,6 @@ const getKnobs = () => ({
 export function Playground() {
   const {
     data,
-    xField,
-    yField,
     smooth,
     geometry,
     pointSize,
@@ -55,8 +51,8 @@ export function Playground() {
 
   const options: DualAxesProps = {
     data: [data, data],
-    xField,
-    yField,
+    xField: 'year',
+    yField: ['value', 'count'],
     legend: getLegend({}),
     geometryOptions: [
       {
