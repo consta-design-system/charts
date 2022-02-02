@@ -2,20 +2,21 @@
 
 Consta — дизайн-система для разработки интерфейсов, написана на [React](https://reactjs.org/), сделана и поддерживается в «Газпром нефти».
 
-**В этом репозитории — библиотека графиков:** линейные, столбчатые, круговые диаграммы и другие компоненты, с помощью которых удобно показывать статистику. Библиотека сделана на основе [G2Plot](https://g2plot.antv.vision/en), добавлена стилизация для Consta.
+В дизайн-систему входит несколько библиотек. **В этом репозитории — библиотека графиков:** линейные, столбчатые, круговые диаграммы и другие компоненты, с помощью которых удобно показывать статистику. Библиотека сделана на основе [G2Plot](https://g2plot.antv.vision/en), добавлена стилизация для Consta.
 
-В другом репозитории — [библиотека интерфейсных компонентов](https://github.com/gazprom-neft/consta-uikit): простые контролы, сложные блоки, темы и хуки. Обе библиотеки представлены в виде компонентов и макетов в Figma.
-
+Все библиотеки представлены в виде компонентов и макетов в Figma.
 
 ## Что входит в дизайн-систему
 
 ### Библиотека компонентов
 
-[Репозиторий](https://github.com/gazprom-neft/consta-uikit) | [NPM](https://www.npmjs.com/package/@consta/uikit) | [Документация и стенд](https://consta-uikit.vercel.app/?path=/story/common-about--page) | [Макеты](https://www.figma.com/community/file/853774806786762374)
+[Репозиторий](https://github.com/consta-design-system/uikit) | [NPM](https://www.npmjs.com/package/@consta/uikit) | [Документация и стенд](https://consta-uikit.vercel.app/?path=/story/common-about--page) | [Макеты](https://www.figma.com/community/file/853774806786762374)
 
 ### Библиотека графиков
 
-[В этом репозитории](https://github.com/gazprom-neft/consta-charts) | [NPM](https://www.npmjs.com/package/@consta/charts) | [Документация и стенд](https://consta-charts.vercel.app/) | [Макеты](https://www.figma.com/community/file/982611119114314434)
+[В этом репозитории](https://github.com/consta-design-system/charts) | [NPM](https://www.npmjs.com/package/@consta/charts) | [Документация и стенд](https://consta-charts.vercel.app/) | [Макеты](https://www.figma.com/community/file/982611119114314434)
+
+[>> Посмотреть все библиотеки](https://consta-uikit.vercel.app/?path=/docs/common-about-github--page)
 
 <hr>
 
