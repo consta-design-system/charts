@@ -71,7 +71,7 @@
     "@consta/uikit": ">= 3.0.0"
   },
   "dependencies": {
-    "@antv/g2plot": "2.3.27",
+    "@antv/g2plot": "2.4.7",
     "@bem-react/classname": "^1.5.8"
   },
   "resolutions": {
