@@ -1,1 +1,1 @@
-export * from './Column'
+export * from '@/__private__/components/Column'

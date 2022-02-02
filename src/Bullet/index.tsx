@@ -1,1 +1,1 @@
-export * from './Bullet'
+export * from '@/__private__/components/Bullet'

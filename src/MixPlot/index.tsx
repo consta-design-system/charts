@@ -1,1 +1,1 @@
-export * from './MixPlot'
+export * from '@/__private__/components/MixPlot'

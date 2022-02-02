@@ -1,1 +1,1 @@
-export * from './Area'
+export * from '@/__private__/components/Area'

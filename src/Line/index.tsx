@@ -1,1 +1,1 @@
-export * from './Line'
+export * from '@/__private__/components/Line'
