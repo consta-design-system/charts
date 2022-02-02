@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "scripts": {
     "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
-    "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps",
+    "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps --ignore '**/__mocks__/*','**/__stories__/*','**/__tests__/*','**/__private__/storybook/*'",
     "build:types": "NODE_ENV=production ttsc --declaration --outDir lib/ --emitDeclarationOnly -p tsconfig.build.json",
     "build:package.json": "node scripts/prepare-package-json.js",
     "build:docs": "cp README.md lib/README.md",
@@ -137,7 +137,6 @@
     "webpack-merge": "4.2.2"
   },
   "engines": {
-    "node": "12.x",
     "yarn": ">=1.19.1"
   }
 }
