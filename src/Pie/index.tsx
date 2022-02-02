@@ -1,1 +1,1 @@
-export * from './Pie'
+export * from '@/__private__/components/Pie'

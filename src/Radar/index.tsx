@@ -1,1 +1,1 @@
-export * from './Radar'
+export * from '@/__private__/components/Radar'

@@ -1,1 +1,1 @@
-export * from './DualAxes'
+export * from '@/__private__/components/DualAxes'

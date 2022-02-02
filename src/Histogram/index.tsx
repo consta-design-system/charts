@@ -1,1 +1,1 @@
-export * from './Histogram'
+export * from '@/__private__/components/Histogram'
