@@ -18,7 +18,7 @@ const views: MixOptions['views'] = [
       cfg: { radius: 0.85 },
     },
     axes: {
-      value: { title: { text: 'Drinks' }, grid: null, tickLine: null, line: null, ticks: [] },
+      value: { title: { text: 'Напитки' }, grid: null, tickLine: null, line: null, ticks: [] },
     },
     geometries: [
       {
@@ -34,8 +34,8 @@ const views: MixOptions['views'] = [
   },
   {
     data: [
-      ...data.map(item => ({ type: item[0], gender: 'male', value: item[2] })),
-      ...data.map(item => ({ type: item[0], gender: 'female', value: item[3] })),
+      ...data.map(item => ({ type: item[0], gender: 'мужчины', value: item[2] })),
+      ...data.map(item => ({ type: item[0], gender: 'женщины', value: item[3] })),
     ],
     region: { start: { x: 0.5, y: 0 }, end: { x: 1, y: 0.45 } },
     axes: { value: false },
@@ -55,7 +55,7 @@ const views: MixOptions['views'] = [
     region: { start: { x: 0, y: 0.52 }, end: { x: 0.48, y: 1 } },
     axes: {
       year: {
-        title: { text: 'Drinks ordered' },
+        title: { text: 'Заказано напитков' },
       },
     },
     meta: {
@@ -83,13 +83,13 @@ const views: MixOptions['views'] = [
   },
   {
     data: [
-      ...yearData.map(item => ({ year: item[0], gender: 'male', turnout: item[3] })),
-      ...yearData.map(item => ({ year: item[0], gender: 'female', turnout: item[4] })),
+      ...yearData.map(item => ({ year: item[0], gender: 'мужчины', turnout: item[3] })),
+      ...yearData.map(item => ({ year: item[0], gender: 'женщины', turnout: item[4] })),
     ],
     region: { start: { x: 0.52, y: 0.52 }, end: { x: 1, y: 1 } },
     axes: {
       year: {
-        title: { text: 'Turnout by gender' },
+        title: { text: 'Распределение по полу' },
       },
     },
     geometries: [
