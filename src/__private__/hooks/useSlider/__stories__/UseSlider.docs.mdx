@@ -1,0 +1,69 @@
+import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
+
+# useSlider
+
+<RemadeInfo commponentName="Slider" apiUrl="https://g2plot.antv.vision/en/docs/api/components/slider" />
+
+#### Создание стилизованного компонента
+
+Чтобы стилизовать слайдер, нужно подключить хук `useChart` — хук для создания стилизованного слайдера. 
+Он принмает все свойства для стилизации слайдера
+
+```tsx
+const slider = useSlider({})
+
+...
+<Line slider={slider} />
+...
+```
+
+Хук вернет свойства для стилизации слайдера.
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/components/slider" />
+
+#### Пример использования
+
+```tsx
+import React, { useEffect, useImperativeHandle } from 'react'
+import { SomeChart as G2PlotSomeChart, SomeChartOptions } from '@antv/g2plot'
+import { useForkRef } from '@consta/uikit/useForkRef'
+
+import { useSlider } from '@consta/charts/useSlider'
+import { useChartTheme } from '@consta/charts/useChartTheme'
+import { getChart } from '@consta/charts/getChart'
+
+
+type ExcludeProps = 'tooltip' | 'children' | 'theme' ...
+
+type SomeChartProps<ITEM> = Omit<SomeChartOptions, ExcludeProps> & {
+  tooltip?: Tooltip<ITEM>
+} & ContainerProps
+
+type SomeChartComponentType = <ITEM>(props: SomeChartProps<ITEM>) => React.ReactElement | null
+
+export const SomeChart: SomeChartComponentType = React.forwardRef((props, ref) => {
+  const {
+    chartRef,
+    className,
+    ...rest
+  } = props
+
+  const slider = useSlider({
+      start: 0,
+      end: 0.5,
+  })
+
+  const theme = useChartTheme()
+  const { chart, container } = useChart(G2PlotSomeChart, { ...rest, theme, slider })
+  
+  useEffect(() => {
+    getChart(chartRef, chart.current)
+  }, [chart.current])
+
+  useImperativeHandle(chartRef, () => ({
+    getChart: () => chart.current,
+  }))
+
+  return <div style={style} ref={useForkRef([ref, container])} className={className} />
+})
+```

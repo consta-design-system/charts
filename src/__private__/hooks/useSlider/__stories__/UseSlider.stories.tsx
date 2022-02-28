@@ -1,32 +1,26 @@
 import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
-import { boolean, number, object, select } from '@storybook/addon-knobs'
+import { object } from '@storybook/addon-knobs'
 
+import { Line } from '@/__private__/components/Line'
+import { colorMapLine, data } from '@/__private__/components/Line/__mocks__/mock.data'
 import { useSlider } from '@/__private__/hooks/useSlider/useSlider'
 import { createMetadata } from '@/__private__/storybook'
 import { getLegend } from '@/__private__/utils/legend'
 
-import { colorMapLine, data } from '../__mocks__/mock.data'
-import { Line } from '../Line'
-
-import mdx from './Line.docs.mdx'
+import mdx from './UseSlider.docs.mdx'
 
 const sliderCfg = {
   start: 0.1,
   end: 0.6,
+  trendCfg: {
+    smooth: true,
+  },
 }
 
 const getKnobs = () => ({
-  xField: select('xField', ['date', 'country'], 'date'),
-  yField: select('yField', ['value', 'age'], 'value'),
-  smooth: boolean('smooth', false),
-  withSlider: boolean('withSlider', true),
   slider: object('slider', sliderCfg),
-  dashWidth: number('dashWidth', 0),
-  connectNulls: boolean('connectNulls', false),
-  isStack: boolean('isStack', false),
-  lineColor: object('lineColor', colorMapLine),
 })
 
 const newData = data.map(item => {
@@ -35,17 +29,7 @@ const newData = data.map(item => {
 })
 
 const Default = () => {
-  const {
-    xField,
-    yField,
-    lineColor,
-    smooth,
-    connectNulls,
-    isStack,
-    dashWidth,
-    withSlider,
-    slider: sliderProp,
-  } = getKnobs()
+  const { slider: sliderProp } = getKnobs()
 
   const slider = useSlider(sliderProp)
 
@@ -58,26 +42,23 @@ const Default = () => {
         height: '100%',
       }}
       renderer="svg"
-      smooth={smooth}
-      connectNulls={connectNulls}
+      smooth={false}
+      connectNulls={false}
       legend={getLegend({
         layout: 'horizontal',
         offsetY: -10,
         offsetX: 0,
         position: 'top-left',
-        colors: lineColor,
+        colors: colorMapLine,
       })}
-      isStack={isStack}
+      isStack={false}
       data={newData}
-      xField={xField}
-      yField={yField}
-      slider={withSlider && slider}
+      xField="date"
+      yField="value"
+      slider={slider}
       seriesField="country"
       color={({ country }) => {
-        return lineColor[country]
-      }}
-      lineStyle={{
-        lineDash: [dashWidth],
+        return colorMapLine[country]
       }}
       annotations={[
         {
@@ -99,8 +80,8 @@ export function Playground() {
 }
 
 export default createMetadata({
-  title: 'Компоненты|/Line',
-  id: 'components/Line',
+  title: 'hooks|/useSlider',
+  id: 'hooks/useSlider',
   parameters: {
     docs: {
       page: mdx,

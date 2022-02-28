@@ -2,6 +2,7 @@ import React from 'react'
 
 import { boolean, object, select } from '@storybook/addon-knobs'
 
+import { useSlider } from '@/__private__/hooks/useSlider/useSlider'
 import { createMetadata } from '@/__private__/storybook'
 import { getLegend } from '@/__private__/utils/legend'
 
@@ -13,11 +14,6 @@ import mdx from './Area.docs.mdx'
 const sliderCfg = {
   start: 0,
   end: 1,
-  height: 20,
-  trendCfg: {
-    smooth: true,
-    isArea: true,
-  },
 }
 
 const getKnobs = () => ({
@@ -35,7 +31,9 @@ const newData = data.map(item => {
 })
 
 export function Playground() {
-  const { xField, yField, seriesField, lineColor, withSlider, slider } = getKnobs()
+  const { xField, yField, seriesField, lineColor, withSlider, slider: sliderProp } = getKnobs()
+
+  const slider = useSlider(sliderProp)
 
   return (
     <Area
