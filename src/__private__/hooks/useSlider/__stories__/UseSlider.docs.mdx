@@ -10,10 +10,11 @@ import { UseSliderExample } from './examples/UseSliderExample/UseSliderExample'
 
 Вы можете добавить слайдер к графикам [Line](?path=/docs/components-line--playground), [Area](?path=/docs/components-area--playground) и [DualAxes](?path=/docs/components-dualaxes--playground).
 
+С помощью этого хука можно применить к слайдеру стили дизайн-системы Consta.
+
 - [Создание стилизованного слайдера](#создание-стилизованного-слайдера)
 - [Список свойств](#свойства)
 - [Пример использования](#пример)
-- [Примеры компонентов со слайдером](#примеры-компонентов-со-слайдером)
 
 ## Создание стилизованного слайдера
 
@@ -87,10 +88,3 @@ export const SomeChart: SomeChartComponentType = React.forwardRef((props, ref) =
   return <div style={style} ref={useForkRef([ref, container])} className={className} />
 })
 ```
-
-## Примеры компонентов со слайдером
-
-Посмотреть примеры работы слайдера с разными компонентами можно в разделе масштабирование:
-- [Area](?path=/docs/components-area--playground)
-- [DualAxes](?path=/docs/components-dualaxes--playground)
-- [Line](?path=/docs/components-line--playground)

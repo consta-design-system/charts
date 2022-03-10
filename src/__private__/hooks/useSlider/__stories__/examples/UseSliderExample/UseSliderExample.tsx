@@ -5,10 +5,9 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 import { Line } from '@/__private__/components/Line'
 import { colorMapLine, data } from '@/__private__/components/Line/__mocks__/mock.data'
 import { useSlider } from '@/__private__/hooks/useSlider/useSlider'
-import { createMetadata } from '@/__private__/storybook'
 import { getLegend } from '@/__private__/utils/legend'
 
-const slider = {
+const sliderCfg = {
   start: 0.1,
   end: 0.6,
   trendCfg: {
@@ -23,6 +22,8 @@ export function UseSliderExample() {
   })
 
   const vars = useThemeVars()
+
+  const slider = useSlider(sliderCfg)
 
   return (
     <Line
