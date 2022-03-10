@@ -2,6 +2,7 @@ import React from 'react'
 
 import { array, boolean, number, object, select } from '@storybook/addon-knobs'
 
+import { useSlider } from '@/__private__/hooks/useSlider/useSlider'
 import { createMetadata } from '@/__private__/storybook'
 import { getLegend } from '@/__private__/utils/legend'
 
@@ -46,8 +47,10 @@ export function Playground() {
     isStack,
     colors,
     withSlider,
-    slider,
+    slider: sliderProp,
   } = getKnobs()
+
+  const slider = useSlider(sliderProp)
 
   const options: DualAxesProps = {
     data: [data, data],
