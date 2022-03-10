@@ -1,13 +1,23 @@
 import { RemadeInfo, RemadeTableInfo } from '@/__private__/storybook/components/RemadeInfo/RemadeInfo'
 
+import { UseSliderExample } from './examples/UseSliderExample/UseSliderExample'
+
 # useSlider
 
 <RemadeInfo commponentName="Slider" apiUrl="https://g2plot.antv.vision/en/docs/api/components/slider" />
 
-#### Создание стилизованного компонента
+Слайдер появляется внизу графика и позволяет перемещаться между его отрезками. Это удобно, если на графике много данных и он не помещается в контейнер по ширине.
 
-Чтобы стилизовать слайдер, нужно подключить хук `useChart` — хук для создания стилизованного слайдера. 
-Он принмает все свойства для стилизации слайдера
+Вы можете добавить слайдер к графикам [Line](?path=/docs/components-line--playground), [Area](?path=/docs/components-area--playground) и [DualAxes](?path=/docs/components-dualaxes--playground).
+
+- [Создание стилизованного слайдера](#создание-стилизованного-слайдера)
+- [Список свойств](#свойства)
+- [Пример использования](#пример)
+- [Примеры компонентов со слайдером](#примеры-компонентов-со-слайдером)
+
+## Создание стилизованного слайдера
+
+Чтобы стилизовать слайдер, подключите хук `useSliedr`. Передайте объект с описанием слайдера в свойстве `slider`.
 
 ```tsx
 const slider = useSlider({})
@@ -17,11 +27,21 @@ const slider = useSlider({})
 ...
 ```
 
-Хук вернет свойства для стилизации слайдера.
+Хук вернёт свойства для стилизации слайдера.
 
-<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/components/slider" />
+<UseSliderExample />
 
-#### Пример использования
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/components/slider#properties---slidercfg" />
+
+| Свойство | Тип и значения | По умолчанию | Описание |
+| -------- | -------------- | ------------ | -------- |
+| `start`  | `number`       | -            | Начало слайдера |
+| `end`    | `number`       | -            | Конец слайдера  |
+
+
+## Пример
 
 ```tsx
 import React, { useEffect, useImperativeHandle } from 'react'
@@ -55,7 +75,7 @@ export const SomeChart: SomeChartComponentType = React.forwardRef((props, ref) =
 
   const theme = useChartTheme()
   const { chart, container } = useChart(G2PlotSomeChart, { ...rest, theme, slider })
-  
+
   useEffect(() => {
     getChart(chartRef, chart.current)
   }, [chart.current])
@@ -67,3 +87,10 @@ export const SomeChart: SomeChartComponentType = React.forwardRef((props, ref) =
   return <div style={style} ref={useForkRef([ref, container])} className={className} />
 })
 ```
+
+## Примеры компонентов со слайдером
+
+Посмотреть примеры работы слайдера с разными компонентами можно в разделе масштабирование:
+- [Area](?path=/docs/components-area--playground)
+- [DualAxes](?path=/docs/components-dualaxes--playground)
+- [Line](?path=/docs/components-line--playground)

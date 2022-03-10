@@ -16,7 +16,12 @@ import { RemadeInfo } from '@/__private__/storybook/components/RemadeInfo/Remade
 с большим количеством значений. На такой диаграмме хорошо видно, как значения меняются,
 и удобно сравнивать изменения в разных процессах.
 
-### Две линии
+- [Две линии](#две-линии)
+- [Две линии со стилизацией](#две-линии-со-стилизацией)
+- [Линия и столбцы](#линия-и-столбцы)
+- [Масштабирование](#масштабирование)
+
+## Две линии
 
 ```tsx
 export const data = [
@@ -106,7 +111,7 @@ export function DualAxesExampleDualLineWithStyle() {
 
 <DualAxesExampleDualLineWithStyle />
 
-### Линия и колонки
+## Линия и столбцы
 
 ```tsx
 const uvBillData = [
@@ -155,6 +160,8 @@ export function DualAxesExampleStackedColumnLine() {
 
 
 ### Масштабирование
+
+Если график не помещается в контейнер по ширине, вы можете добавить к нему слайдер — элемент, который позволяет перемещаться между частями графика. Описать объект со слайдером можно в свойстве `slider`, стилизовать его — с помощью хука [useSlider](?path=/docs/hooks-useslider--playground).
 
 ```tsx
 export function DualAxesExampleSlider() {
