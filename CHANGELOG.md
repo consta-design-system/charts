@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.0 (10/03/2022)
+- [feat(Legend): add styling for legend (#49)](https://github.com/consta-design-system/charts/commit/8f521b1ea7c09b97cb4b53b8fa4165ed0693cd49) - [@N1MBER](https://github.com/N1MBER)
+- [feat(useSlider): add hook for slider styling (#48)](https://github.com/consta-design-system/charts/commit/cf3e4c187a83e741b48b414819c74c12e80e6a91) - [@N1MBER](https://github.com/N1MBER)
+- [docs(common): edit doc about custom charts (#47)](https://github.com/consta-design-system/charts/commit/10ed0fa91560bd3a4c417b1c42ba0be0d2a29788) - [@arhayka](https://github.com/arhayka)
+- [docs(MixPlot): edit docs (#46)](https://github.com/consta-design-system/charts/commit/bec2eb84108a523aef436d8ed13c1f54b2d9d27f) - [@arhayka](https://github.com/arhayka)
+
+--------------------
+
 ## v0.5.0 (02/02/2022)
 Самое важное:
 - обновили `G2Plots` до последней версии, 
