@@ -1,4 +1,4 @@
-name: Тесты
+name: Tests
 on:
   push:
     branches: master
