@@ -2539,10 +2539,10 @@
     react-transition-group "^4.4.1"
     tslib "^2.1.0"
 
-"@consta/widgets-configs@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@consta/widgets-configs/-/widgets-configs-1.5.0.tgz#19e51ec9328d614825a8b53bfdc9cae5ff9b385c"
-  integrity sha512-t4ydsYScaC1nqLsuGbnM57+Grw3YOml8tp9vG24iBzXw4dVpqEfu5mb+nfcZ2WyKxxH6lLMdHLYqt/gQzeJHhA==
+"@consta/widgets-configs@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@consta/widgets-configs/-/widgets-configs-1.5.1.tgz#e2075bfe42a4340566709e56863fcf51699c3536"
+  integrity sha512-OUdCln4YBn5a7+Aj7VgGcs6mSeFwjsN1RlJigWNKwPmjlhSw6F/P4pje7i6PZpFpXobd81xle/HR2HKncWRpnQ==
   dependencies:
     "@babel/core" "7.4.5"
     "@babel/plugin-proposal-class-properties" "7.4.4"
@@ -2614,11 +2614,6 @@
     webpack "4.40.2"
     webpack-cli "3.3.9"
     webpack-merge "4.2.1"
-
-"@consta/widgets-utils@0.2.14":
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/@consta/widgets-utils/-/widgets-utils-0.2.14.tgz#e06b2461b69cbe89ef49470b6a8754d23361dfb2"
-  integrity sha512-ZBoX148PIDN13hotbH4cgQmqJo2DrYQ6UM1t7iFzHirbQeN+CtRUm9CBfY8necBLjG2URA1NT3n5a9bN2FOILA==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
