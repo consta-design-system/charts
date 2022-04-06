@@ -10,13 +10,13 @@ Consta — дизайн-система для разработки интерф�
 
 ### Библиотека компонентов
 
-[Репозиторий](https://github.com/consta-design-system/uikit) | [NPM](https://www.npmjs.com/package/@consta/uikit) | [Документация и стенд](https://consta-uikit.vercel.app/?path=/story/common-about--page) | [Макеты](https://www.figma.com/community/file/853774806786762374)
+[Репозиторий](https://github.com/consta-design-system/uikit) | [NPM](https://www.npmjs.com/package/@consta/uikit) | [Документация и стенд](http://uikit.gizeasy.ru/) | [Макеты](https://www.figma.com/community/file/853774806786762374)
 
 ### Библиотека графиков
 
-[В этом репозитории](https://github.com/consta-design-system/charts) | [NPM](https://www.npmjs.com/package/@consta/charts) | [Документация и стенд](https://consta-charts.vercel.app/) | [Макеты](https://www.figma.com/community/file/982611119114314434)
+[В этом репозитории](https://github.com/consta-design-system/charts) | [NPM](https://www.npmjs.com/package/@consta/charts) | [Документация и стенд](http://charts.gizeasy.ru/) | [Макеты](https://www.figma.com/community/file/982611119114314434)
 
-[>> Посмотреть все библиотеки](https://consta-uikit.vercel.app/?path=/docs/common-about-github--page)
+[>> Посмотреть все библиотеки](http://uikit.gizeasy.ru/?path=/docs/common-about-github--page)
 
 <hr>
 
@@ -38,7 +38,7 @@ $ yarn add @consta/charts
 
 ## Подключите зависимости
 
-Чтобы начать работу, установите библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настройте тему](https://consta-uikit.vercel.app/?path=/docs/components-theme--playground).
+Чтобы начать работу, установите библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настройте тему](http://uikit.gizeasy.ru/?path=/docs/components-theme--playground).
 
 ### Можно использовать компоненты
 
@@ -121,11 +121,11 @@ $ yarn test
 
 На стенде можно посмотреть примеры графиков. Документация — во вкладке у каждого компонента.
 
-[Вперёд, к стенду](https://consta-charts.vercel.app/?path=/story/*)
+[Вперёд, к стенду](http://charts.gizeasy.ru/)
 
 ## Контрибьюторам
 
-Будем рады, если вы захотите принять участие в разработке дизайн-системы =) Но сначала прочитайте [инструкцию для контрибьюторов](https://consta-charts.vercel.app/?path=/docs/common-develop-contributors--page).
+Будем рады, если вы захотите принять участие в разработке дизайн-системы =) Но сначала прочитайте [инструкцию для контрибьюторов](http://charts.gizeasy.ru/?path=/docs/common-develop-contributors--page).
 
 ## Лицензия
 
