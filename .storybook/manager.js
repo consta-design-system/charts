@@ -43,7 +43,6 @@ export const theme = create({
   inputTextColor: colors['--color-control-typo-default'],
   inputBorderRadius: 4,
   brandTitle: 'Consta Charts storybook',
-  brandUrl: 'https://consta-charts.vercel.app',
   brandImage: logo,
 })
 
