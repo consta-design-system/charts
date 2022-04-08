@@ -6,7 +6,7 @@ labels: 'bug'
 assignees: 'kolebayev'
 ---
 
-> Полные [правила оформления issue](https://consta-uikit.vercel.app/?path=/docs/common-develop-issues--page)
+> Полные [правила оформления issue](http://uikit.gizeasy.ru/?path=/docs/common-develop-issues--page)
 
 **Описание бага**
 Мы будем рады:

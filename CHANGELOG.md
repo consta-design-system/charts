@@ -89,7 +89,7 @@
 
 Уже очень скоро так же доработаем оставшиеся графики. Следите за новостями!
 
-Посмотрите, как выглядят и работают новые компоненты на [стенде](https://consta-charts.vercel.app/?path=/story/components-bar--playground).
+Посмотрите, как выглядят и работают новые компоненты на [стенде](http://charts.gizeasy.ru/?path=/story/components-bar--playground).
 Если вы уже работаете с Consta, просто подключите [npm-пакет](https://github.com/gazprom-neft/consta-charts) или библиотеку из  [Figma Community](https://www.figma.com/community/file/982611119114314434), чтобы использовать графики в своих проектах.
 
 ---
