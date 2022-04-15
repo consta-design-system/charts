@@ -33,7 +33,7 @@ export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = 
           className={cnRemadeInfo('Link')}
           as="a"
           view="link"
-          href="https://consta.gazprom-neft.ru"
+          href="https://consta.design/"
           target="_blank"
         >
           дизайн-системы Consta
