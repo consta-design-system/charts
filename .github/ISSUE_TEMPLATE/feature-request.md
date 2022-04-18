@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 ---
 
-> Полные [правила оформления issue](http://uikit.gizeasy.ru/?path=/docs/common-develop-issues--page)
+> Полные [правила оформления issue](http://uikit.consta.design/?path=/docs/common-develop-issues--page)
 
 **Описание фичи или улучшения**
 Мы будем рады:
