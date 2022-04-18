@@ -10,13 +10,13 @@ Consta — дизайн-система для разработки интерф�
 
 ### Библиотека компонентов
 
-[Репозиторий](https://github.com/consta-design-system/uikit) | [NPM](https://www.npmjs.com/package/@consta/uikit) | [Документация и стенд](http://uikit.gizeasy.ru/) | [Макеты](https://www.figma.com/community/file/853774806786762374)
+[Репозиторий](https://github.com/consta-design-system/uikit) | [NPM](https://www.npmjs.com/package/@consta/uikit) | [Документация и стенд](http://uikit.consta.design/) | [Макеты](https://www.figma.com/community/file/853774806786762374)
 
 ### Библиотека графиков
 
-[В этом репозитории](https://github.com/consta-design-system/charts) | [NPM](https://www.npmjs.com/package/@consta/charts) | [Документация и стенд](http://charts.gizeasy.ru/) | [Макеты](https://www.figma.com/community/file/982611119114314434)
+[В этом репозитории](https://github.com/consta-design-system/charts) | [NPM](https://www.npmjs.com/package/@consta/charts) | [Документация и стенд](http://charts.consta.design/) | [Макеты](https://www.figma.com/community/file/982611119114314434)
 
-[>> Посмотреть все библиотеки](http://uikit.gizeasy.ru/?path=/docs/common-about-github--page)
+[>> Посмотреть все библиотеки](http://uikit.consta.design/?path=/docs/common-about-github--page)
 
 <hr>
 
@@ -38,15 +38,15 @@ $ yarn add @consta/charts
 
 ## Подключите зависимости
 
-Чтобы начать работу, установите библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настройте тему](http://uikit.gizeasy.ru/?path=/docs/components-theme--playground).
+Чтобы начать работу, установите библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настройте тему](http://uikit.consta.design/?path=/docs/components-theme--playground).
 
 ### Можно использовать компоненты
 
 Например, так:
 
 ```js
-import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
-import { Pie, PieProps } from '@consta/charts/Pie';
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme'
+import { Pie, PieProps } from '@consta/charts/Pie'
 
 export const data = [
   { type: 'Option-1', value: 27 },
@@ -77,7 +77,7 @@ const MyComponent = () => {
 
   return (
     <Theme preset={presetGpnDefault}>
-      <Pie {...options}/>
+      <Pie {...options} />
     </Theme>
   )
 }
@@ -121,11 +121,11 @@ $ yarn test
 
 На стенде можно посмотреть примеры графиков. Документация — во вкладке у каждого компонента.
 
-[Вперёд, к стенду](http://charts.gizeasy.ru/)
+[Вперёд, к стенду](http://charts.consta.design/)
 
 ## Контрибьюторам
 
-Будем рады, если вы захотите принять участие в разработке дизайн-системы =) Но сначала прочитайте [инструкцию для контрибьюторов](http://charts.gizeasy.ru/?path=/docs/common-develop-contributors--page).
+Будем рады, если вы захотите принять участие в разработке дизайн-системы =) Но сначала прочитайте [инструкцию для контрибьюторов](http://charts.consta.design/?path=/docs/common-develop-contributors--page).
 
 ## Лицензия
 

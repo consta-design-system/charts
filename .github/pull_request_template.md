@@ -17,4 +17,4 @@
 ## Опционально
 
 - [ ] Доработки: заведены задачи для дальнейшей работы, если что-то решено не править в текущем пулл-реквесте
-- [ ] Коммиты: проименованы в соответствии с [правилами](http://uikit.gizeasy.ru/?path=/docs/common-develop-commits-style--page)
+- [ ] Коммиты: проименованы в соответствии с [правилами](http://uikit.consta.design/?path=/docs/common-develop-commits-style--page)
