@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.6.1 (20/04/2022)
+Самое важное:
+- Обновили докуменацию
+
+---
+
+- [docs(Pie): add formatter description (#57)](https://github.com/consta-design-system/charts/commit/0399e9ef51a1d9c9307d141dabfab4c114312da9) - [@arhayka](https://github.com/arhayka)
+- [docs(global): replace url (#55)](https://github.com/consta-design-system/charts/commit/4baa0f0b00f7940fe12e25e641363517f0224a58) - [@gizeasy](https://github.com/gizeasy)
+- [docs: change links to the landing (#54)](https://github.com/consta-design-system/charts/commit/f9b52070fb49ac227ef0ab554895765cef01cf93) - [@arhayka](https://github.com/arhayka)
+- [docs(common): change links to vercel (#53)](https://github.com/consta-design-system/charts/commit/5d65360ea2206218adbe3cb2aa3678c84e4c9712) - [@arhayka](https://github.com/arhayka)
+- [chore(deploy): add deploy automatization (#52)](https://github.com/consta-design-system/charts/commit/c7bf11b2265285b62c5d7e3ce9cb579a0bbac13b) - [@gizeasy](https://github.com/gizeasy)
+- [docs(useSlider): edit docs (#51)](https://github.com/consta-design-system/charts/commit/68fc861830387f724209178192aa5cab89d1e5d4) - [@arhayka](https://github.com/arhayka)
+
+--------------------
+
 ## v0.6.0 (10/03/2022)
 - [feat(Legend): add styling for legend (#49)](https://github.com/consta-design-system/charts/commit/8f521b1ea7c09b97cb4b53b8fa4165ed0693cd49) - [@N1MBER](https://github.com/N1MBER)
 - [feat(useSlider): add hook for slider styling (#48)](https://github.com/consta-design-system/charts/commit/cf3e4c187a83e741b48b414819c74c12e80e6a91) - [@N1MBER](https://github.com/N1MBER)
@@ -89,7 +104,7 @@
 
 Уже очень скоро так же доработаем оставшиеся графики. Следите за новостями!
 
-Посмотрите, как выглядят и работают новые компоненты на [стенде](http://charts.consta.design/?path=/story/components-bar--playground).
+Посмотрите, как выглядят и работают новые компоненты на [стенде](https://consta-charts.vercel.app/?path=/story/components-bar--playground).
 Если вы уже работаете с Consta, просто подключите [npm-пакет](https://github.com/gazprom-neft/consta-charts) или библиотеку из  [Figma Community](https://www.figma.com/community/file/982611119114314434), чтобы использовать графики в своих проектах.
 
 ---
