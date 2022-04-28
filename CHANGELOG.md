@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.6.2 (28/04/2022)
+- [docs(global): remove gpn (#58)](https://github.com/consta-design-system/charts/commit/97b799b21284eaa1725bd3430d8ccb608a1df5dc) - [@arhayka](https://github.com/arhayka)
+- [chore(deploy): update config](https://github.com/consta-design-system/charts/commit/12ad4c7f5063df7765152640063c0a8f683b6db5) - [@gizeasy](https://github.com/gizeasy)
+
+--------------------
+
 ## v0.6.1 (20/04/2022)
 Самое важное:
 - Обновили докуменацию
