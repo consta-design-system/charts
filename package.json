@@ -1,6 +1,6 @@
 {
   "name": "@consta/charts",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "scripts": {
     "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
     "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps --ignore '**/__mocks__/*','**/__stories__/*','**/__tests__/*','**/__private__/storybook/*'",
@@ -134,8 +134,5 @@
     "storybook-addon-smart-knobs": "6.0.2",
     "storybook-addon-themes": "5.4.1",
     "webpack-merge": "4.2.2"
-  },
-  "engines": {
-    "yarn": ">=1.19.1"
   }
 }
