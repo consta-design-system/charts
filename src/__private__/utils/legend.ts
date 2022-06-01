@@ -24,7 +24,7 @@ export function getLegend<TYPE extends ColorNode>(params: Params<TYPE>): Legend 
           ['a', 4, 4, 0, 1, 0, -8, 0],
         ]
       },
-      spacing: 5,
+      spacing: 4,
       style: {
         fill: colors?.[name],
         fillOpacity: 1,
