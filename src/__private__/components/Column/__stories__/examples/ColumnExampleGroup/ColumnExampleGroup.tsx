@@ -4,6 +4,7 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { Column } from '@/__private__/components/Column'
 import { data } from '@/__private__/components/Column/__mocks__/mock.data'
+import { getLegend } from '@/__private__/utils/legend'
 
 export function ColumnExampleGroup() {
   const vars = useThemeVars()
@@ -19,6 +20,8 @@ export function ColumnExampleGroup() {
       ]}
       xField="month"
       yField="value"
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       seriesField="name"
       isGroup
       label={{

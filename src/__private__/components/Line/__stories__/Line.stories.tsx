@@ -62,7 +62,7 @@ const Default = () => {
       connectNulls={connectNulls}
       legend={getLegend({
         layout: 'horizontal',
-        offsetY: -10,
+        offsetY: -4,
         offsetX: 0,
         position: 'top-left',
         colors: lineColor,

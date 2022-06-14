@@ -4,6 +4,7 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { Bar } from '@/__private__/components/Bar'
 import { data, dataSimple } from '@/__private__/components/Bar/__mocks__/mock.data'
+import { getLegend } from '@/__private__/utils/legend'
 
 export function BarExample() {
   const vars = useThemeVars()
@@ -13,6 +14,8 @@ export function BarExample() {
       style={{ marginBottom: 'var(--space-m)' }}
       data={data}
       xField="value"
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       color={[
         vars.color.primary['--color-bg-normal'],
         vars.color.primary['--color-bg-warning'],
@@ -54,6 +57,8 @@ export function BarExampleSeriesField() {
     <Bar
       style={{ marginBottom: 'var(--space-m)', maxWidth: 400, maxHeight: 200 }}
       data={dataSimple}
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       xField="number"
       yField="parameter"
       color={vars.color.primary['--color-bg-normal']}
@@ -72,6 +77,8 @@ export function BarExampleLabel() {
       color={vars.color.primary['--color-bg-normal']}
       xField="number"
       yField="parameter"
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       label={{
         position: 'middle',
         layout: [

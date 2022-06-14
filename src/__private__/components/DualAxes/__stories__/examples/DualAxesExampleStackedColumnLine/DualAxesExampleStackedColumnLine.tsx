@@ -3,6 +3,7 @@ import React from 'react'
 import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { DualAxes } from '@/__private__/components/DualAxes'
+import { getLegend } from '@/__private__/utils/legend'
 
 const uvBillData = [
   { time: '2019-03', value: 350, type: 'uv' },
@@ -32,14 +33,19 @@ export function DualAxesExampleStackedColumnLine() {
     <DualAxes
       style={{ marginBottom: 'var(--space-m)' }}
       data={[uvBillData, transformData]}
+      renderer="svg"
       xField="time"
       yField={['value', 'count']}
       geometryOptions={[
         {
           geometry: 'column',
           isStack: true,
-          color: vars.color.primary['--color-bg-normal'],
+          color: [
+            vars.color.primary['--color-bg-normal'],
+            vars.color.primary['--color-bg-warning'],
+          ],
           seriesField: 'type',
+          legend: getLegend({ layout: 'horizontal', position: 'top-right' }),
         },
         {
           color: vars.color.primary['--color-bg-success'],

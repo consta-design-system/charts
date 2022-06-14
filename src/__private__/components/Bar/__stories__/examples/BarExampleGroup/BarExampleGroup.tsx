@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Bar } from '@/__private__/components/Bar'
 import { data } from '@/__private__/components/Bar/__mocks__/mock.data'
+import { getLegend } from '@/__private__/utils/legend'
 
 export function BarExampleGroup() {
   return (
@@ -13,6 +14,8 @@ export function BarExampleGroup() {
       seriesField="name"
       color={['#56B9F2', '#F38B00', '#22C38E']}
       isGroup
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       label={{
         position: 'middle',
         layout: [

@@ -2,11 +2,21 @@ import React from 'react'
 
 import { useThemeVars } from '@consta/uikit/useThemeVars'
 
+import { getLegend } from '@/__private__/utils/legend'
+
 import { data, dataColor, dataSimple } from '../../../__mocks__/bigData.mock'
 import { Scatter } from '../../../Scatter'
 
 export function ScatterExample() {
   const vars = useThemeVars()
+
+  const colors: Record<string, string> = {
+    Asia: vars.color.primary['--color-bg-success'],
+    Americas: vars.color.primary['--color-bg-warning'],
+    Oceania: vars.color.primary['--color-bg-caution'],
+    Europe: vars.color.primary['--color-bg-alert'],
+    Africa: vars.color.primary['--color-bg-normal'],
+  }
 
   return (
     <Scatter
@@ -15,21 +25,12 @@ export function ScatterExample() {
       appendPadding={30}
       yField="change in male rate"
       sizeField="pop"
+      color={Object.keys(colors).map(key => colors[key])}
+      legend={getLegend({ position: 'top-left', layout: 'horizontal' })}
+      renderer="svg"
       size={[4, 30]}
       shape="circle"
       colorField="continent"
-      color={[
-        vars.color.primary['--color-bg-success'],
-        vars.color.primary['--color-bg-warning'],
-        vars.color.primary['--color-bg-caution'],
-      ]}
-      legend={{
-        layout: 'horizontal',
-        position: 'top-left',
-        marker: {
-          symbol: 'square',
-        },
-      }}
       meta={{
         pop: { alias: 'население' },
         'change in female rate': { alias: 'занятость женщин' },
@@ -94,6 +95,12 @@ export function ScatterExampleColor() {
 export function ScatterExampleColorField() {
   const vars = useThemeVars()
 
+  const colors: Record<string, string> = {
+    Тмутаракань: vars.color.primary['--color-bg-success'],
+    Бобруйск: vars.color.primary['--color-bg-warning'],
+    Урюпинск: vars.color.primary['--color-bg-caution'],
+  }
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
@@ -101,11 +108,9 @@ export function ScatterExampleColorField() {
       xField="temperature"
       yField="ufo"
       colorField="place"
-      color={[
-        vars.color.primary['--color-bg-success'],
-        vars.color.primary['--color-bg-warning'],
-        vars.color.primary['--color-bg-caution'],
-      ]}
+      color={Object.keys(colors).map(key => colors[key])}
+      legend={getLegend({ position: 'top-left', layout: 'horizontal' })}
+      renderer="svg"
       size={5}
       shape="circle"
       pointStyle={{
@@ -137,6 +142,12 @@ export function ScatterExampleSize() {
 export function ScatterExampleSizeField() {
   const vars = useThemeVars()
 
+  const colors: Record<string, string> = {
+    Тмутаракань: vars.color.primary['--color-bg-success'],
+    Бобруйск: vars.color.primary['--color-bg-warning'],
+    Урюпинск: vars.color.primary['--color-bg-caution'],
+  }
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
@@ -144,11 +155,9 @@ export function ScatterExampleSizeField() {
       xField="temperature"
       yField="ufo"
       colorField="place"
-      color={[
-        vars.color.primary['--color-bg-success'],
-        vars.color.primary['--color-bg-warning'],
-        vars.color.primary['--color-bg-caution'],
-      ]}
+      color={Object.keys(colors).map(key => colors[key])}
+      legend={getLegend({ position: 'top-left', layout: 'horizontal' })}
+      renderer="svg"
       size={[4, 20]}
       sizeField="ufo"
       shape="circle"
@@ -181,11 +190,23 @@ export function ScatterExampleShape() {
 export function ScatterExampleShapeField() {
   const vars = useThemeVars()
 
+  const colors: Record<string, string> = {
+    Тмутаракань: vars.color.primary['--color-bg-success'],
+    Бобруйск: vars.color.primary['--color-bg-warning'],
+    Урюпинск: vars.color.primary['--color-bg-caution'],
+  }
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={dataColor}
-      color={vars.color.primary['--color-bg-normal']}
+      color={Object.keys(colors).map(key => colors[key])}
+      legend={getLegend({
+        position: 'top-left',
+        layout: 'horizontal',
+        marker: [{ symbol: 'circle' }, { symbol: 'square' }, { symbol: 'triangle' }],
+      })}
+      renderer="svg"
       xField="temperature"
       yField="ufo"
       shapeField="place"
@@ -201,6 +222,14 @@ export function ScatterExampleShapeField() {
 export function ScatterExamplePseudo() {
   const vars = useThemeVars()
 
+  const colors: Record<string, string> = {
+    Asia: vars.color.primary['--color-bg-success'],
+    Americas: vars.color.primary['--color-bg-warning'],
+    Oceania: vars.color.primary['--color-bg-caution'],
+    Europe: vars.color.primary['--color-bg-alert'],
+    Africa: vars.color.primary['--color-bg-normal'],
+  }
+
   return (
     <Scatter
       style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
@@ -208,14 +237,9 @@ export function ScatterExamplePseudo() {
       xField="temperature"
       yField="ufo"
       colorField="place"
-      color={[
-        vars.color.primary['--color-bg-success'],
-        vars.color.primary['--color-bg-warning'],
-        vars.color.primary['--color-bg-caution'],
-        vars.color.primary['--color-bg-alert'],
-        vars.color.primary['--color-bg-normal'],
-        vars.color.primary['--color-bg-brand'],
-      ]}
+      color={Object.keys(colors).map(key => colors[key])}
+      legend={getLegend({ position: 'top-left', layout: 'horizontal' })}
+      renderer="svg"
       size={[4, 20]}
       sizeField="ufo"
       shape="circle"

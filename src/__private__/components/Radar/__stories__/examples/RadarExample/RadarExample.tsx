@@ -4,16 +4,24 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { Radar, RadarProps } from '@/__private__/components/Radar'
 import { data } from '@/__private__/components/Radar/__mocks__/mock.data'
+import { getLegend } from '@/__private__/utils/legend'
 
 export function RadarExample() {
   const vars = useThemeVars()
+
+  const colors: Record<string, string> = {
+    'Person 1': vars.color.primary['--color-bg-success'],
+    'Person 2': vars.color.primary['--color-bg-normal'],
+  }
 
   const options: RadarProps = {
     data,
     xField: 'name',
     yField: 'star',
+    color: Object.keys(colors).map(key => colors[key]),
+    legend: getLegend({ colors, offsetX: -50, offsetY: 50 }),
+    renderer: 'svg',
     seriesField: 'user',
-    color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-normal']],
     xAxis: {
       line: null,
       tickLine: null,

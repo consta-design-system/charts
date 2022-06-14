@@ -4,6 +4,7 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { Column } from '@/__private__/components/Column'
 import { data, dataSimple } from '@/__private__/components/Column/__mocks__/mock.data'
+import { getLegend } from '@/__private__/utils/legend'
 
 export function ColumnExample() {
   const vars = useThemeVars()
@@ -11,6 +12,8 @@ export function ColumnExample() {
   return (
     <Column
       data={data}
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       color={[
         vars.color.primary['--color-bg-normal'],
         vars.color.primary['--color-bg-warning'],
@@ -53,6 +56,8 @@ export function ColumnExampleSeriesField() {
     <Column
       style={{ marginBottom: 'var(--space-m)', maxWidth: 400, maxHeight: 200 }}
       data={dataSimple}
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       color={vars.color.primary['--color-bg-normal']}
       xField="parameter"
       yField="number"
@@ -68,6 +73,8 @@ export function ColumnExampleLabel() {
     <Column
       style={{ marginBottom: 'var(--space-m)', maxWidth: 300, maxHeight: 200 }}
       data={dataSimple}
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       color={vars.color.primary['--color-bg-normal']}
       xField="parameter"
       yField="number"
