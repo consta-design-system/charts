@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.6.3 (01/06/2022)
+- [fix(Legend): fix spacing on Legend (#60)](https://github.com/consta-design-system/charts/commit/7132a02dc5f244ec759be11b60fabe6fadefd38e) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.6.2 (28/04/2022)
 - [docs(global): remove gpn (#58)](https://github.com/consta-design-system/charts/commit/97b799b21284eaa1725bd3430d8ccb608a1df5dc) - [@arhayka](https://github.com/arhayka)
 - [chore(deploy): update config](https://github.com/consta-design-system/charts/commit/12ad4c7f5063df7765152640063c0a8f683b6db5) - [@gizeasy](https://github.com/gizeasy)
