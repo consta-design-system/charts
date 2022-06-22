@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.6.4 (22/06/2022)
+- [ fix(Legend): fix spacing on Legend](https://github.com/consta-design-system/charts/commit/5c27b60f6e7770f5a52ae0487ad9dae7ce487b2b) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.6.3 (01/06/2022)
 - [fix(Legend): fix spacing on Legend (#60)](https://github.com/consta-design-system/charts/commit/7132a02dc5f244ec759be11b60fabe6fadefd38e) - [@N1MBER](https://github.com/N1MBER)
 
