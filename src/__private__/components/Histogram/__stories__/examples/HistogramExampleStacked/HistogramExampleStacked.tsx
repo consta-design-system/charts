@@ -4,6 +4,7 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { Histogram, HistogramProps } from '@/__private__/components/Histogram'
 import { stackedData } from '@/__private__/components/Histogram/__mocks__/mock.data'
+import { getLegend } from '@/__private__/utils/legend'
 
 export function HistogramExampleStacked() {
   const vars = useThemeVars()
@@ -26,13 +27,8 @@ export function HistogramExampleStacked() {
         nice: false,
       },
     },
-    legend: {
-      layout: 'horizontal',
-      position: 'top-left',
-      marker: {
-        symbol: 'square',
-      },
-    },
+    legend: getLegend({ layout: 'horizontal', position: 'top-left' }),
+    renderer: 'svg',
   }
 
   return <Histogram {...options} />

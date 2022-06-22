@@ -56,7 +56,7 @@ export function Playground() {
     data: [data, data],
     xField: 'year',
     yField: ['value', 'count'],
-    legend: getLegend({}),
+    renderer: 'svg',
     geometryOptions: [
       {
         geometry,
@@ -68,6 +68,7 @@ export function Playground() {
         isPercent,
         isRange,
         isStack,
+        legend: getLegend({ layout: 'horizontal', position: 'top-right' }),
         point: {
           size: pointSize,
         },
@@ -81,6 +82,7 @@ export function Playground() {
         isGroup,
         isPercent,
         isRange,
+        legend: getLegend({ layout: 'horizontal', position: 'top-right' }),
         isStack,
         point: {
           size: pointSize,

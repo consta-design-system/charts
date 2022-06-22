@@ -4,16 +4,29 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 
 import { Radar, RadarProps } from '@/__private__/components/Radar'
 import { dataMulti as data } from '@/__private__/components/Radar/__mocks__/mock.data'
+import { getLegend } from '@/__private__/utils/legend'
+
+type ColorMap = Record<string, string>
 
 export function RadarExampleMulti() {
   const vars = useThemeVars()
 
+  const colors: ColorMap = {
+    'Винни-Пух': vars.color.primary['--color-bg-success'],
+    Пятачок: vars.color.primary['--color-bg-normal'],
+  }
+
   const options: RadarProps = {
     data,
-    color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-normal']],
+    color: Object.keys(colors).map(key => colors[key]),
+    legend: getLegend({ colors, offsetX: -50, offsetY: 50 }),
+    renderer: 'svg',
     xField: 'skill',
     yField: 'star',
     seriesField: 'person',
+    style: {
+      width: 800,
+    },
   }
 
   return <Radar {...options} />
@@ -22,15 +35,25 @@ export function RadarExampleMulti() {
 export function RadarExampleArea() {
   const vars = useThemeVars()
 
+  const colors: ColorMap = {
+    'Винни-Пух': vars.color.primary['--color-bg-success'],
+    Пятачок: vars.color.primary['--color-bg-normal'],
+  }
+
   const options: RadarProps = {
     data,
-    color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-normal']],
+    color: Object.keys(colors).map(key => colors[key]),
     xField: 'skill',
     yField: 'star',
+    legend: getLegend({ colors, offsetX: -50, offsetY: 50 }),
+    renderer: 'svg',
     seriesField: 'person',
     area: {},
     point: {
       size: 2,
+    },
+    style: {
+      width: 800,
     },
   }
 
@@ -40,12 +63,22 @@ export function RadarExampleArea() {
 export function RadarExampleAxis() {
   const vars = useThemeVars()
 
+  const colors: ColorMap = {
+    'Винни-Пух': vars.color.primary['--color-bg-success'],
+    Пятачок: vars.color.primary['--color-bg-normal'],
+  }
+
   const options: RadarProps = {
     data,
     xField: 'skill',
     yField: 'star',
-    color: [vars.color.primary['--color-bg-success'], vars.color.primary['--color-bg-normal']],
+    legend: getLegend({ colors, offsetX: -50, offsetY: 50 }),
+    renderer: 'svg',
+    color: Object.keys(colors).map(key => colors[key]),
     seriesField: 'person',
+    style: {
+      width: 800,
+    },
     xAxis: {
       line: null,
       tickLine: null,

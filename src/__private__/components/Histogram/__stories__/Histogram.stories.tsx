@@ -3,6 +3,7 @@ import React from 'react'
 import { array, number, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
+import { getLegend } from '@/__private__/utils/legend'
 
 import { stackedData } from '../__mocks__/mock.data'
 import { Histogram, HistogramProps } from '../Histogram'
@@ -34,17 +35,12 @@ const Default = () => {
         nice: false,
       },
     },
-    legend: {
-      layout: 'horizontal',
-      position: 'top-left',
-      marker: {
-        symbol: 'square',
-      },
-    },
   }
 
   return (
     <Histogram
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       style={{
         width: 800,
         height: '100%',

@@ -4,6 +4,7 @@ import { useThemeVars } from '@consta/uikit/useThemeVars'
 import { number, object, select } from '@storybook/addon-knobs'
 
 import { createMetadata } from '@/__private__/storybook'
+import { getLegend } from '@/__private__/utils/legend'
 
 import { data } from '../__mocks__/data.mock'
 import { Waterfall } from '../Waterfall'
@@ -28,6 +29,7 @@ const Default = () => {
   const { data, risingFill, fallingFill, columnWidthRatio, labelMode } = getKnobs()
 
   const vars = useThemeVars()
+
   return (
     <Waterfall
       style={{
@@ -39,13 +41,8 @@ const Default = () => {
       xField="type"
       columnWidthRatio={columnWidthRatio}
       yField="money"
-      legend={{
-        layout: 'horizontal',
-        position: 'top-left',
-        marker: {
-          symbol: 'square',
-        },
-      }}
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
       risingFill={vars.color.primary[`--color-bg-${risingFill}` as ColorSignature]}
       fallingFill={vars.color.primary[`--color-bg-${fallingFill}` as ColorSignature]}
       total={{
