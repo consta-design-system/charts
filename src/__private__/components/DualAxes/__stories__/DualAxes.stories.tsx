@@ -110,5 +110,9 @@ export default createMetadata({
     docs: {
       page: mdx,
     },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=8331%3A36879',
+    },
   },
 })

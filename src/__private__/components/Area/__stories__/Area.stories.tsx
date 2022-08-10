@@ -68,7 +68,7 @@ export default createMetadata({
     },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=3680%3A10824',
+      url: 'https://www.figma.com/file/lQJPpOcbtlRk18YSyb6inq/Consta-Charts?node-id=8180%3A23783',
     },
   },
 })
