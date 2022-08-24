@@ -1,3 +1,9 @@
 module.exports = {
-  ...require('@consta/widgets-configs/prettier.config.js'),
+  printWidth: 80,
+  singleQuote: true,
+  quoteProps: 'consistent',
+  trailingComma: 'all',
+  arrowParens: 'always',
+  jsxBracketSameLine: false,
+  tabWidth: 2,
 };

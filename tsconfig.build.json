@@ -1,5 +1,10 @@
 {
   "extends": "./tsconfig.json",
-  "plugins": [{ "transform": "typescript-transform-paths", "afterDeclarations": true }],
-  "exclude": ["**/__mocks__/*", "**/__stories__/*", "**/__tests__/*", "**/__private__/storybook/*"]
+  "exclude": [
+    "**/__mocks__/*",
+    "**/__stories__/*",
+    "**/__stand__/*",
+    "**/__tests__/*",
+    "**/src/stand/*"
+  ]
 }

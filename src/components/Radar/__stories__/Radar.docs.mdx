@@ -1,0 +1,265 @@
+import { RemadeInfo, RemadeTableInfo } from '##/stand/components/RemadeInfo/RemadeInfo'
+import {RadarExample} from "./examples/RadarExample/RadarExample";
+import {RadarExampleBasic} from "./examples/RadarExampleBasic/RadarExampleBasic";
+import {RadarExampleMulti, RadarExampleArea, RadarExampleAxis} from "./examples/RadarExampleMulti/RadarExampleMulti";
+# Radar
+<RemadeInfo
+    commponentName="Radar"
+    apiUrl="https://g2plot.antv.vision/en/docs/api/plots/radar"
+/>
+
+Эта диаграмма подходит, чтобы показать характеристики объекта по нескольким показателям или сравнить по этим показателям два-три объекта.
+
+- [Данные](#данные)
+  - [Один объект](#один-объект)
+  - [Несколько объектов](#несколько-объектов)
+- [Линии](#линии)
+- [Сетка](#сетка)
+- [Список свойств](#свойства)
+- [Пример использования](#пример)
+
+## Данные
+
+### Один объект
+
+Создайте объект с описанием данных и параметров. Например, такой:
+
+```tsx
+export const data = [
+  { person: 'Винни-Пух', skill: 'Сила', star: 8 },
+  { person: 'Винни-Пух', skill: 'Ловкость', star: 2 },
+  { person: 'Винни-Пух', skill: 'Ум', star: 7 },
+  { person: 'Винни-Пух', skill: 'Хитрость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Доброта', star: 10 },
+  { person: 'Винни-Пух', skill: 'Харизма', star: 10 },
+  { person: 'Винни-Пух', skill: 'Упрямство', star: 10 },
+  { person: 'Винни-Пух', skill: 'Красота', star: 3 },
+  { person: 'Винни-Пух', skill: 'Выносливость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Пушистость', star: 4 },
+];
+```
+
+Укажите имя поля, по которому нужно построить направляющие, в свойстве `xField`.
+А поле, из которого нужно отметить значения на этих направляющих, в свойтве `yField`.
+
+````tsx
+export function RadarExampleBasic() {
+  const options: RadarProps = {
+    data,
+    xField: 'skill',
+    yField: 'star',
+  };
+
+  return <Radar {...options} />;
+}
+```Что получилось:
+
+<RadarExampleBasic />
+
+### Несколько объектов
+
+Добавьте в описание информацию о нескольких объектах. Например, так:
+
+```tsx
+export const data = [
+  { person: 'Винни-Пух', skill: 'Сила', star: 8 },
+  { person: 'Винни-Пух', skill: 'Ловкость', star: 2 },
+  { person: 'Винни-Пух', skill: 'Ум', star: 7 },
+  { person: 'Винни-Пух', skill: 'Хитрость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Доброта', star: 7 },
+  { person: 'Винни-Пух', skill: 'Харизма', star: 10 },
+  { person: 'Винни-Пух', skill: 'Упрямство', star: 10 },
+  { person: 'Винни-Пух', skill: 'Красота', star: 3 },
+  { person: 'Винни-Пух', skill: 'Выносливость', star: 5 },
+  { person: 'Винни-Пух', skill: 'Пушистость', star: 9 },
+  { person: 'Пятачок', skill: 'Сила', star: 2 },
+  { person: 'Пятачок', skill: 'Ловкость', star: 5 },
+  { person: 'Пятачок', skill: 'Ум', star: 5 },
+  { person: 'Пятачок', skill: 'Хитрость', star: 3 },
+  { person: 'Пятачок', skill: 'Доброта', star: 10 },
+  { person: 'Пятачок', skill: 'Харизма', star: 3 },
+  { person: 'Пятачок', skill: 'Упрямство', star: 4 },
+  { person: 'Пятачок', skill: 'Красота', star: 7 },
+  { person: 'Пятачок', skill: 'Выносливость', star: 5 },
+  { person: 'Пятачок', skill: 'Пушистость', star: 4 },
+];
+````
+
+В свойстве `seriesField` укажите поле, по которому нужно объединить параметры в для каждой линии.
+
+```tsx
+export function RadarExampleMulti() {
+  const options: RadarProps = {
+    data,
+    xField: 'skill',
+    yField: 'star',
+    seriesField: 'person',
+  };
+
+  return <Radar {...options} />;
+}
+```
+
+Готово: на графике — два объекта, их можно сравнить.
+
+<RadarExampleMulti />
+
+## Линии
+
+Добавить фон под областью, описывающей объект, можно с помощью свойства `area`.
+
+Добавить точки на линии и обозначить их размер — в свойстве `point.size`.
+
+```tsx
+export function RadarExampleArea() {
+  const options: RadarProps = {
+    data,
+    xField: 'skill',
+    yField: 'star',
+    seriesField: 'person',
+    area: {},
+    point: {
+      size: 2,
+    },
+  };
+
+  return <Radar {...options} />;
+}
+```
+
+<RadarExampleArea />
+
+## Сетка
+
+Свойство `yAxis` отвечает за внешний вид направляющих, `xAxis` — за линии между ними.
+
+```tsx
+export function RadarExampleAxis() {
+  const options: RadarProps = {
+    data,
+    xField: 'skill',
+    yField: 'star',
+    seriesField: 'person',
+    xAxis: {
+      line: null,
+      tickLine: null,
+      grid: {
+        line: {
+          style: {
+            lineDash: null,
+          },
+        },
+      },
+    },
+    yAxis: {
+      line: null,
+      tickLine: null,
+      grid: {
+        line: {
+          type: 'line',
+          style: {
+            lineDash: null,
+          },
+        },
+      },
+    },
+    area: {},
+    point: {
+      size: 2,
+    },
+  };
+
+  return <Radar {...options} />;
+}
+```
+
+<RadarExampleAxis />
+
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/radar" />
+
+| Свойство                              | Тип и значения | По умолчанию | Описание                                                 |
+| ------------------------------------- | -------------- | ------------ | -------------------------------------------------------- | --------------------------------------------- |
+| [`data`](#данные)                     | `Data[]`       | -            | Объект с данными для диаграммы                           |
+| [`xField`](#один-объект)              | `string`       | -            |                                                          | Поле с описанием характеристик — направляющих |
+| [`yField`](#один-объект)              | `string`       | -            | Поле с описанием значений по каждой характеристике       |
+| [`seriesField?`](#несколько-объектов) | `string`       | -            | Поле с данными для группировки по линиям                 |
+| [`area?`](#линии)                     | `object`       | -            | Объект с описанием фона под линией                       |
+| [`point?`](#линии)                    | `object`       | -            | Объект с описанием точки на линии                        |
+| [`xAxis?`](#сетка)                    | `object`       | -            | Определяет, как выглядят направляющие                    |
+| [`yAxis?`](#сетка)                    | `object`       | -            | Определяет, как выглядят линии сетки между направляющими |
+
+## Пример
+
+```tsx
+export const data = [
+  { name: 'Design', user: 'Person 1', star: 70431 },
+  { name: 'Design', user: 'Person 2', star: 29411 },
+  { name: 'Development', user: 'Person 1', star: 61342 },
+  { name: 'Development', user: 'Person 2', star: 73312 },
+  { name: 'Marketing', user: 'Person 1', star: 50023 },
+  { name: 'Marketing', user: 'Person 2', star: 60946 },
+  { name: 'Users', user: 'Person 1', star: 39056 },
+  { name: 'Users', user: 'Person 2', star: 48616 },
+  { name: 'Test', user: 'Person 1', star: 60623 },
+  { name: 'Test', user: 'Person 2', star: 72319 },
+  { name: 'Language', user: 'Person 1', star: 71321 },
+  { name: 'Language', user: 'Person 2', star: 50311 },
+  { name: 'Technology', user: 'Person 1', star: 49123 },
+  { name: 'Technology', user: 'Person 2', star: 40123 },
+  { name: 'Support', user: 'Person 1', star: 31302 },
+  { name: 'Support', user: 'Person 2', star: 40037 },
+  { name: 'Sales', user: 'Person 1', star: 60003 },
+  { name: 'Sales', user: 'Person 2', star: 39969 },
+  { name: 'UX', user: 'Person 1', star: 48134 },
+  { name: 'UX', user: 'Person 2', star: 63198 },
+];
+
+const radarOptions = {
+  data: data,
+  xField: 'name',
+  yField: 'star',
+  seriesField: 'user',
+  xAxis: {
+    line: null,
+    tickLine: null,
+    grid: {
+      line: {
+        style: {
+          lineDash: null,
+        },
+      },
+    },
+  },
+  yAxis: {
+    line: null,
+    tickLine: null,
+    grid: {
+      line: {
+        type: 'line',
+        style: {
+          lineDash: null,
+        },
+      },
+    },
+  },
+  area: {},
+  point: {
+    size: 2,
+  },
+  smooth: false,
+  meta: {
+    star: {
+      min: 0,
+      nice: true,
+    },
+  },
+};
+
+export function RadarExample() {
+  return <Radar {...radarOptions} />;
+}
+```
+
+<RadarExample />
