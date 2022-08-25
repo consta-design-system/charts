@@ -57,11 +57,12 @@ const generateReExport = async (src, reexport, ignore, distPath) => {
 
     // скрипт для солздания index.ts для всех компонентов
 
-    const exporte = getESMExportTemplate({
-      filePath: `./${componentName}`,
-    });
+    // const exporte = getESMExportTemplate({
+    //   filePath: `./${componentName}`,
+    // });
 
-    writeFile(join(src, blockDir, 'index.ts'), exporte);
+    // writeFile(join(src, blockDir, 'index.ts'), exporte);
+    
 
     if (!existsSync(join(src, blockDir, 'index.ts'))) {
       continue;
