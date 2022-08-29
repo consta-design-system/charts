@@ -1,0 +1,201 @@
+import { MdxMenu } from '@consta/stand';
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '../../../stand/components/RemadeInfo/RemadeInfo';
+import {
+  HistogramExampleBasic,
+  HistogramExampleSuperBasic,
+} from './examples/HistogramExampleBasic/HistogramExampleBasic';
+import { HistogramExampleStacked } from './examples/HistogramExampleStacked/HistogramExampleStacked';
+import {
+  HistogramExampleBoxesNumber,
+  HistogramExampleBoxesWidth,
+} from './examples/HistogramExampleBoxes/HistogramExampleBoxes';
+import { HistogramExampleColor } from './examples/HistogramExampleColor/HistogramExampleColor';
+
+<MdxMenu>
+
+- [Данные](#данные)
+- [Столбцы](#столбцы)
+  - [Количество](#количество-столбцов)
+  - [Цвет](#цвет-столбцов)
+- [Группы значений](#группы-значений)
+- [Сетка](#сетка)
+- [Список свойств](#свойства)
+
+</MdxMenu>
+
+## Данные
+
+Создайте объект с данными для гистограммы, достаточно одной переменной. Например, с числами от 0 до 17:
+
+```tsx
+export const data = [
+  { value: 0 },
+  { value: 0 },
+  //...
+  { value: 17 },
+  { value: 17 },
+];
+```
+
+Укажите, из какого объекта брать данные, в свойстве `data`.
+
+В свойстве `binField` укажите поле, по которому нужно построить гистограмму.
+
+```tsx
+export function HistogramExampleBasic() {
+  const options = {
+    data,
+    binField: 'value',
+  };
+
+  return <Histogram {...options} />;
+}
+```
+
+<HistogramExampleSuperBasic />
+
+## Столбцы
+
+### Количество столбцов
+
+Вы можете ограничить количество столбцов на гистограмме: установить количество столбиков в `binNumber` или ограничить ширину одного столбика в `binWidth`.
+
+Вместе не работают, нужно выбрать что-то одно.
+
+| `binNumber: 8`                  | `binWidth:5`                   |
+| ------------------------------- | ------------------------------ |
+| <HistogramExampleBoxesNumber /> | <HistogramExampleBoxesWidth /> |
+
+### Цвет столбцов
+
+Поменять цвет столбцов можно в свойстве `color`. Лучше использовать переменные.
+
+Если значения в гистограмме сгруппированы, можно указать [несколько цветов](#группы-значений).
+
+```tsx
+export const data = [
+  { value: 0 },
+  { value: 0 },
+  //...
+  { value: 17 },
+  { value: 17 },
+];
+
+export function HistogramExampleColor() {
+  const vars = useThemeVars();
+  const options: HistogramProps = {
+    data,
+    binField: 'value',
+    binWidth: 2,
+    color: vars.color.primary['--color-bg-success'],
+  };
+
+  return <Histogram {...options} />;
+}
+```
+
+<HistogramExampleColor />
+
+## Группы значений
+
+Вы можете построить гистограмму с несколькими группами значений. Для этого добавьте в объект с описанием гистограммы несколько полей и укажите в свойстве `stackField` имя поля, по которому нужно сгруппировать данные внутри столбца.
+
+```tsx
+export const data = [
+  { name: 'Blue', color: '#33ACF2', value: 4 },
+  { name: 'Blue', color: '#33ACF2', value: 5 },
+  //...
+  { name: 'Green', color: '#04BC7F', value: 0 },
+  { name: 'Green', color: '#04BC7F', value: 1 },
+  //...
+  { name: 'Orange', color: '#FFA217', value: 4 },
+  { name: 'Orange', color: '#FFA217', value: 5 },
+];
+
+export function HistogramExampleBasic() {
+  const options = {
+    data,
+    binField: 'value',
+    stackField: 'name',
+    binWidth: 4,
+    color: ['#33ACF2', '#FFA217', '#04BC7F'],
+    meta: {
+      range: {
+        tickInterval: 10,
+      },
+      count: {
+        max: 50,
+        nice: false,
+      },
+    },
+    legend: {
+      layout: 'horizontal',
+      position: 'top-left',
+      marker: {
+        symbol: 'square',
+      },
+    },
+  };
+
+  return <Histogram {...options} />;
+}
+```
+
+<HistogramExampleStacked />
+
+## Сетка
+
+Поменять внешний вид сетки можно с помощью свойств [`xAxis` и `yAxis`](https://g2plot.antv.vision/en/docs/api/plots/histogram#axis) или с помощью свойства [`meta`](https://g2plot.antv.vision/en/docs/api/plots/histogram#meta).
+
+Например, так:
+
+```tsx
+export const data = [
+  { value: 0 },
+  { value: 0 },
+  //...
+  { value: 17 },
+  { value: 17 },
+];
+
+export function HistogramExampleBasic() {
+  const options = {
+    data,
+    binField: 'value',
+    binWidth: 2,
+    meta: {
+      range: {
+        tickInterval: 10,
+      },
+      count: {
+        max: 40,
+        nice: false,
+      },
+    },
+    xAxis: {
+      tickInterval: 5,
+    },
+  };
+
+  return <Histogram {...options} />;
+}
+```
+
+<HistogramExampleBasic />
+
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/histogram" />
+
+| Свойство                 | Тип и значения | По умолчанию | Описание                                        |
+| ------------------------ | -------------- | ------------ | ----------------------------------------------- |
+| [`data`](#данные)        | `Data[]`       | -            | Объект с данными для гистограммы                |
+| [`binField`](#данные)    | `string`       | -            | Поле, по которому строится гистограмма          |
+| [`binNumber?`](#столбцы) | `string`       | -            | Количество столбцов                             |
+| [`binWidth?`](#столбцы)  | `string`       | -            | Ширина столбца                                  |
+| [`xAxis?`](#сетка)       | `object`       | -            | Объект с описанием сетки для горизонтальной оси |
+| [`yAxis?`](#сетка)       | `string`       | -            | Объект с описанием сетки для вертикальной оси   |
+| [`meta?`](#сетка)        | `string`       | -            | Объект с форматом любых данных на графике       |

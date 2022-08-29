@@ -1,0 +1,90 @@
+import { MdxMenu } from '@consta/stand';
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '../../../stand/components/RemadeInfo/RemadeInfo';
+import { UseSliderExample } from './examples/UseSliderExample/UseSliderExample';
+
+```tsx
+import { useSlider } from '@consta/charts/useSlider';
+```
+
+<MdxMenu>
+
+- [Создание стилизованного слайдера](#создание-стилизованного-слайдера)
+- [Список свойств](#свойства)
+- [Пример использования](#пример)
+
+</MdxMenu>
+
+## Создание стилизованного слайдера
+
+Чтобы стилизовать слайдер, подключите хук `useSlider`. Передайте объект с описанием слайдера в свойстве `slider`.
+
+```tsx
+const slider = useSlider({})
+
+...
+<Line slider={slider} />
+...
+```
+
+Хук вернёт свойства для стилизации слайдера.
+
+<UseSliderExample />
+
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/components/slider#properties---slidercfg" />
+
+| Свойство | Тип и значения | По умолчанию | Описание        |
+| -------- | -------------- | ------------ | --------------- |
+| `start`  | `number`       | -            | Начало слайдера |
+| `end`    | `number`       | -            | Конец слайдера  |
+
+## Пример
+
+```tsx
+import React, { useEffect, useImperativeHandle } from 'react'
+import { SomeChart as G2PlotSomeChart, SomeChartOptions } from '@antv/g2plot'
+import { useForkRef } from '@consta/uikit/useForkRef'
+
+import { useSlider } from '@consta/charts/useSlider'
+import { useChartTheme } from '@consta/charts/useChartTheme'
+import { getChart } from '@consta/charts/getChart'
+
+
+type ExcludeProps = 'tooltip' | 'children' | 'theme' ...
+
+type SomeChartProps<ITEM> = Omit<SomeChartOptions, ExcludeProps> & {
+  tooltip?: Tooltip<ITEM>
+} & ContainerProps
+
+type SomeChartComponentType = <ITEM>(props: SomeChartProps<ITEM>) => React.ReactElement | null
+
+export const SomeChart: SomeChartComponentType = React.forwardRef((props, ref) => {
+  const {
+    chartRef,
+    className,
+    ...rest
+  } = props
+
+  const slider = useSlider({
+      start: 0,
+      end: 0.5,
+  })
+
+  const theme = useChartTheme()
+  const { chart, container } = useChart(G2PlotSomeChart, { ...rest, theme, slider })
+
+  useEffect(() => {
+    getChart(chartRef, chart.current)
+  }, [chart.current])
+
+  useImperativeHandle(chartRef, () => ({
+    getChart: () => chart.current,
+  }))
+
+  return <div style={style} ref={useForkRef([ref, container])} className={className} />
+})
+```

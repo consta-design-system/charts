@@ -1,0 +1,241 @@
+import { MdxMenu } from '@consta/stand';
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '../../../stand/components/RemadeInfo/RemadeInfo';
+import {
+  WaterfallExample,
+  WaterfallExampleSimple,
+  WaterfallExampleColor,
+  WaterfallExampleLegend,
+  WaterfallExampleMeta,
+} from './examples/WaterfallExample/WaterfallExample';
+
+<MdxMenu>
+
+- [Столбцы](#столбцы)
+  - [Содержимое](#содержимое)
+  - [Цвета столбиков](#цвета-столбиков)
+- [Легенда](#легенда)
+- [Формат данных](#формат-данных)
+- [Сетка](#сетка)
+- [Список свойств](#свойства)
+
+</MdxMenu>
+
+## Столбцы
+
+### Содержимое
+
+Создайте объект с данными для столбцов. Для каждого столбика нужны хотя бы две переменные:
+
+- величина столбика по оси X (обычно это горизонтальная ось),
+- позиция или название столбца на оси Y (обычно это вертикальная ось).
+
+Например, так:
+
+```tsx
+const data = [
+  { type: 'Тип 1', money: 120 },
+  { type: 'Тип 2', money: 900 },
+  { type: 'Тип 3', money: 200 },
+  { type: 'Тип 4', money: 300 },
+  { type: 'Тип 5', money: 1200 },
+  { type: 'Тип 6', money: 1000 },
+  { type: 'Тип 7', money: -2000 },
+];
+```
+
+Укажите, из какого объекта брать данные, в свойстве `data`.
+
+Потом сообщите компоненту, какие элементы объекта за какие данные отвечают:
+
+- за величину столбика по оси X отвечает свойство `xField`,
+- за расположение и подпись на оси Y — `yField`.
+
+<WaterfallExampleSimple />
+
+```tsx
+export function WaterfallExampleSimple() {
+  const vars = useThemeVars();
+  return <Waterfall data={data} xField="type" yField="money" />;
+}
+```
+
+### Цвета столбиков
+
+Вы можете поменять цвета столбцов
+
+- обозначающих увеличение — с помощью свойства `risingFill`,
+- уменьшение — `fallingFill`,
+- общее количество — `total`.
+
+<WaterfallExampleColor />
+
+```tsx
+export function WaterfallExampleColor() {
+  const vars = useThemeVars();
+  return (
+    <Waterfall
+      data={data}
+      xField="type"
+      yField="money"
+      risingFill={vars.color.primary['--color-bg-success']}
+      fallingFill={vars.color.primary['--color-bg-alert']}
+      total={{
+        style: {
+          fill: vars.color.primary['--color-bg-system'],
+        },
+      }}
+    />
+  );
+}
+```
+
+## Легенда
+
+Чтобы поменять расположение и внешний вид легенды, используйте свойство `legend`. [Подробности](https://g2plot.antv.vision/en/docs/api/plots/waterfall#legend)
+
+<WaterfallExampleLegend />
+
+```tsx
+export function WaterfallExampleLegend() {
+  const vars = useThemeVars();
+  return (
+    <Waterfall
+      data={data}
+      xField="type"
+      yField="money"
+      legend={{
+        layout: 'horizontal',
+        position: 'top-left',
+        marker: {
+          symbol: 'square',
+        },
+      }}
+      risingFill={vars.color.primary['--color-bg-success']}
+      fallingFill={vars.color.primary['--color-bg-alert']}
+      total={{
+        style: {
+          fill: vars.color.primary['--color-bg-system'],
+        },
+      }}
+    />
+  );
+}
+```
+
+## Формат данных
+
+При наведении на столбец всплывает тултип со всеми данными о нём. Вы можете поменять названия полей и формат данных с помощью свойства `meta`. [Подробности](https://g2plot.antv.vision/en/docs/api/plots/waterfall#meta)
+
+Чтобы поменять название результирующего столбика, используйте `total.label`.
+
+<WaterfallExampleMeta />
+
+```tsx
+export function WaterfallExampleMeta() {
+  const vars = useThemeVars();
+  return (
+    <Waterfall
+      data={data}
+      xField="type"
+      yField="money"
+      legend={{
+        layout: 'horizontal',
+        position: 'top-left',
+        marker: {
+          symbol: 'square',
+        },
+      }}
+      risingFill={vars.color.primary['--color-bg-success']}
+      fallingFill={vars.color.primary['--color-bg-alert']}
+      total={{
+        style: {
+          fill: vars.color.primary['--color-bg-system'],
+        },
+        label: 'Всего',
+      }}
+      meta={{
+        money: {
+          alias: 'На счете',
+          formatter: (v) => {
+            return `${v} ₽`;
+          },
+        },
+      }}
+    />
+  );
+}
+```
+
+## Сетка
+
+Чтобы поменять свойства сетки, используйте `xAxys` (горизонтальные направляющие) и `yAxis` (вертикальные направляющие).
+
+<WaterfallExample />
+
+```tsx
+const data = [
+  { type: 'type-1', money: 120 },
+  { type: 'type-2', money: 900 },
+  { type: 'type-3', money: 200 },
+  { type: 'type-4', money: 300 },
+  { type: 'type-5', money: 1200 },
+  { type: 'type-6', money: 1000 },
+  { type: 'type-7', money: -2000 },
+];
+
+export function WaterfallExample() {
+  const vars = useThemeVars();
+  return (
+    <Waterfall
+      data={data}
+      xField="type"
+      yField="money"
+      legend={{
+        layout: 'horizontal',
+        position: 'top-left',
+        marker: {
+          symbol: 'square',
+        },
+      }}
+      risingFill={vars.color.primary['--color-bg-success']}
+      fallingFill={vars.color.primary['--color-bg-alert']}
+      total={{
+        style: {
+          fill: vars.color.primary['--color-bg-system'],
+        },
+      }}
+      yAxis={{
+        grid: {
+          line: {
+            style: {
+              lineDash: null,
+              stroke: vars.color.primary['--color-bg-system'],
+            },
+          },
+        },
+      }}
+    />
+  );
+}
+```
+
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/waterfall" />
+
+| Свойство                           | Тип и значения   | По умолчанию | Описание                               |
+| ---------------------------------- | ---------------- | ------------ | -------------------------------------- |
+| [`data`](#содержимое)              | `Data[]`         | -            | Объект с информацией о столбцах        |
+| [`xField`](#содержимое)            | `string`         | -            | Величина столбца по оси X              |
+| [`yField`](#содежимое)             | `string`         | -            | Расположение столбца по оси Y          |
+| [`risingFill?`](#цвета-столбиков)  | `string`         | -            | Цвет столбцов, показывающих увеличение |
+| [`fallingFill?`](#цвета-столбиков) | `string`         | -            | Цвет столбцов, показывающих уменьшение |
+| `total?`                           | `false \ object` | -            | Собирает столбцы в группы              |
+| [`meta?`](#формат-данных)          | `object`         | -            | Объект с форматом данных для тултипа   |
+| [`legend?`](#легенда)              | `false \ object` | -            | Легенда                                |
+| [`xAxys?`](#сетка)                 | `false \ object` | -            | Горизонтальные направляющие            |
+| [`yAxis?`](#сетка)                 | `false \ object` | -            | Вертикальные направляющие              |
+| `className`                        | `string`         | -            | Дополнительный CSS-класс компонента    |

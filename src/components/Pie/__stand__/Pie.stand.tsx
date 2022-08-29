@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'Pie',
+  id: 'Pie',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Круговая диаграмма.',
   version: '0.6.4',
   status: 'stable',
 });
