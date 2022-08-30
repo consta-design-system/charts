@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'MixPlot',
+  id: 'MixPlot',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Группа графиков.',
   version: '0.6.4',
   status: 'stable',
 });

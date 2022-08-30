@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'Radar',
+  id: 'Radar',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Характеристика по нескольким параметрам.',
   version: '0.6.4',
   status: 'stable',
 });

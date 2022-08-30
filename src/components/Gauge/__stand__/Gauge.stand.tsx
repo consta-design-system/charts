@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'Gauge',
+  id: 'Gauge',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Круговая шкала.',
   version: '0.6.4',
   status: 'stable',
 });

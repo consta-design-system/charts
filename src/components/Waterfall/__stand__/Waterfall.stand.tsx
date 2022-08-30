@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'Waterfall',
+  id: 'Waterfall',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Каскадная диаграмма.',
   version: '0.6.4',
   status: 'stable',
 });

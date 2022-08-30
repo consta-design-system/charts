@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'Column',
+  id: 'Column',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Вертикальная столбчатая диаграмма.',
   version: '0.6.4',
   status: 'stable',
 });

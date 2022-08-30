@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'Bullet',
+  id: 'Bullet',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Диаграмма-термометр (или диаграмма-шкала).',
   version: '0.6.4',
   status: 'stable',
 });

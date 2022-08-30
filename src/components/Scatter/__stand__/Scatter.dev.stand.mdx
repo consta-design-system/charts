@@ -1,0 +1,336 @@
+import { MdxMenu } from '@consta/stand';
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '../../../stand/components/RemadeInfo/RemadeInfo';
+import {
+  ScatterExample,
+  ScatterExampleSimple,
+  ScatterExampleColor,
+  ScatterExampleColorField,
+  ScatterExampleSizeField,
+  ScatterExampleSize,
+  ScatterExampleShapeField,
+  ScatterExampleShape,
+  ScatterExamplePseudo,
+} from './examples/ScatterExample/ScatterExample';
+
+<MdxMenu>
+
+- [Данные](#данные)
+- [Внешний вид точек](#внешний-вид-точек)
+  - [Цвет](#цвет)
+  - [Форма](#форма)
+  - [Размер](#размер)
+- [Формат данных](#формат-данных)
+- [Список свойств](#свойства)
+- [Пример использования](#пример)
+
+</MdxMenu>
+
+## Данные
+
+Значения переменных, которые нужно показать на диаграмме, можно описать в массиве `data`.
+
+Например, так:
+
+```tsx
+data = [
+  { x: 1, y: 2 },
+  { x: 2, y: 3 },
+  { x: 3, y: 4 },
+  { x: 4, y: 5 },
+  { x: 5, y: 6 },
+  { x: 6, y: 7 },
+  { x: 7, y: 8 },
+  { x: 8, y: 9 },
+];
+```
+
+Укажите, из какого массива брать данные, в свойстве `data`.
+
+Потом сообщите компоненту, какие элементы массива за какие значения отвечают:
+
+- в свойстве `xField` укажите название элемента с данными для горизонтальной оси,
+- в свойстве `yField` — название элемента с данными для вертикальной оси.
+
+```tsx
+<Scatter data={data} xField="x" yField="y" />
+```
+
+Что получилось:
+
+<ScatterExampleSimple />
+
+## Внешний вид точек
+
+Есть два варианта:
+
+- поменять внешний вид точек на всей диаграмме — цвет, размер, обводку, прозрачность и так далее (возможностей очень много, здесь описана только часть из них),
+- менять цвет, размер и форму в зависимости от информации об этой точке.
+
+### Цвет
+
+Поменять цвет всех точек можно с помощью свойства `color` (здесь ещё заодно поменяли размер и прозрачность).
+
+<ScatterExampleColor />
+
+```tsx
+const dataColor = [
+  { temperature: 0, ufo: 0, place: 'Тмутаракань' },
+  { temperature: 1, ufo: 0, place: 'Бобруйск' },
+  { temperature: 3, ufo: 5, place: 'Тмутаракань'},
+//..//..
+]
+
+<Scatter
+  style={{ marginBottom: 'var(--space-m)', width: 300, height: 200 }}
+  data={dataColor}
+  xField="temperature"
+  yField="ufo"
+  color={'#ffd500'}
+  size={5}
+  shape= 'circle'
+  pointStyle= {{
+    fillOpacity: 1,
+  }}
+/>
+```
+
+В свойстве `colorField` можно указать название поля, в зависимости от значения которого будет меняться цвет точек. А в свойстве `color` — набор цветов для разных значений.
+
+Например, на этой диаграмме показана зависимость количества наблюдений НЛО от температуры воздуха. В трёх городах —  Тмутаракани, Урюпинске и Бобруйске. Точки, которые соответствуют наблюдениям в разных городах, покрашены в разные цвета.
+
+<ScatterExampleColorField />
+
+```tsx
+const dataColor = [
+  { temperature: 0, ufo: 0, place: 'Тмутаракань' },
+  { temperature: 1, ufo: 0, place: 'Бобруйск' },
+  { temperature: 3, ufo: 5, place: 'Тмутаракань'},
+//..//..
+]
+
+<Scatter
+  style={{ marginBottom: 'var(--space-m)', width: 500, height: 300 }}
+  data={dataColor}
+  xField="temperature"
+  yField="ufo"
+  colorField="place"
+  color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+  size={5}
+  shape= 'circle'
+  pointStyle= {{
+    fillOpacity: 1,
+  }}
+/>
+```
+
+### Размер
+
+Поменять размер точек можно с помощью свойства `size`.
+
+<ScatterExampleSize />
+
+```tsx
+<Scatter
+  style={{ marginBottom: 'var(--space-m)', width: 300, height: 200 }}
+  data={dataColor}
+  xField="temperature"
+  yField="ufo"
+  size={20}
+  shape="circle"
+  pointStyle={{
+    fillOpacity: 1,
+  }}
+/>
+```
+
+В свойстве `colorSize` можно указать название поля, в зависимости от величины которого будет меняться размер точек. А в свойстве `size` — диапазон размеров (минимум и максимум).
+
+<ScatterExampleSizeField />
+
+```tsx
+<Scatter
+  style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+  data={dataColor}
+  xField="temperature"
+  yField="ufo"
+  colorField="place"
+  color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+  size={[4, 20]}
+  sizeField="ufo"
+  shape="circle"
+  pointStyle={{
+    fillOpacity: 1,
+  }}
+/>
+```
+
+### Форма
+
+Поменять форму точек можно с помощью свойства `shape`. [Посмотреть варианты форм](https://g2plot.antv.vision/en/docs/api/plots/scatter#shape)
+
+<ScatterExampleShape />
+
+```tsx
+<Scatter
+  style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+  data={dataColor}
+  xField="temperature"
+  yField="ufo"
+  shape="triangle"
+  size={5}
+  pointStyle={{
+    fillOpacity: 1,
+  }}
+/>
+```
+
+В свойстве `shapeField` можно указать название поля, в зависимости от значения которого будет меняться форма точек. А в свойстве `shape` — набор форм.
+
+<ScatterExampleShapeField />
+
+```tsx
+<Scatter
+  style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+  data={dataColor}
+  xField="temperature"
+  yField="ufo"
+  shapeField="place"
+  shape={['circle', 'square', 'triangle']}
+  size={5}
+  pointStyle={{
+    fillOpacity: 1,
+  }}
+/>
+```
+
+## Формат данных
+
+При наведении на точку всплывает тултип со всеми данными о ней. Вы можете поменять названия полей и формат данных с помощью свойства `meta`.
+
+<ScatterExamplePseudo />
+
+```tsx
+<Scatter
+  style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
+  data={dataColor}
+  xField="temperature"
+  yField="ufo"
+  colorField="place"
+  color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
+  size={[4, 20]}
+  sizeField="ufo"
+  shape="circle"
+  pointStyle={{
+    fillOpacity: 1,
+  }}
+  meta={{
+    temperature: {
+      alias: 'Воздух',
+      formatter: (v) => {
+        return `${v}°`;
+      },
+    },
+    ufo: {
+      alias: 'Видели НЛО',
+      formatter: (v) => {
+        return `${v} раз`;
+      },
+    },
+    place: { alias: 'Город' },
+  }}
+/>
+```
+
+## Свойства
+
+| Свойство                 | Тип и значения | По умолчанию       | Описание                                             |
+| ------------------------ | -------------- | ------------------ | ---------------------------------------------------- | ---------------------------------- |
+| [`data`](#данные)        | `Data[]`       | -                  | Массив с информацией о точках                        |
+| [`xField`](#данные)      | `string`       | -                  | Поле с данными для отображения на горизонтальной оси |
+| [`yField`](#данные)      | `string`       | -                  | Поле с данными для отображения на вертикальной оси   |
+| [`color`](#цвет)         | `string        | string[]`          | -                                                    | Цвет точки или набор цветов        |
+| [`colorField`](#цвет)    | `string`       | -                  | Поле, от которого зависит цвет точек                 |
+| [`size`](#размер)        | `number        | [number, number] ` | -                                                    | Размер точки или диапазон размеров |
+| [`sizeField`](#размер)   | `string`       | -                  | Поле, от которого зависит размер точек               |
+| [`shape`](#форма)        | `string        | string[]`          | -                                                    | Форма точек или набор форм         |
+| [`shapeField`](#форма)   | `string`       | -                  | Поле, от которого зависит форма точек                |
+| [`meta`](#формат-данных) | `string`       | -                  | Объект с форматом данных для тултипа                 |
+| `className`              | `string`       | -                  | Дополнительный CSS-класс компонента                  |
+
+### Пример
+
+```tsx
+import { useThemeVars } from '@consta/uikit/useThemeVars';
+
+const data = [
+  {
+    'iso3': 'ARE',
+    'change in female rate': -0.7,
+    'change in male rate': 3.3000000000000043,
+    'female_2000': 1.9,
+    'male_2000': 34.3,
+    'female_2015': 1.2,
+    'male_2015': 37.6,
+    'income': 'High income',
+    'pop': 9269612,
+    'EN': 'United Arab Emirates',
+    'DE': 'Vereinigte Arabische Emirate',
+    'FR': 'Émirats arabes unis',
+    'IT': 'Emirati Arabi Uniti',
+    'ES': 'Emiratos Árabes Unidos',
+    'PT': 'Emirados Árabes Unidos',
+    'RU': 'Объединенные Арабские Эмираты',
+    'ZH': '阿拉伯联合酋长国',
+    'JA': 'アラブ首長国連邦',
+    'AR': 'الإمارات العربية المتحدة',
+    'continent': 'Asia',
+  },
+  //..//..
+];
+
+export function ScatterExample() {
+  const vars = useThemeVars();
+  return (
+    <Scatter
+      data={data}
+      xField="change in female rate"
+      appendPadding={30}
+      yField="change in male rate"
+      sizeField="pop"
+      size={[4, 30]}
+      shape="circle"
+      colorField="continent"
+      legend={{
+        layout: 'horizontal',
+        position: 'top-left',
+        marker: {
+          symbol: 'square',
+        },
+      }}
+      pointStyle={{
+        fillOpacity: 0.6,
+        stroke: null,
+      }}
+      xAxis={{
+        grid: {
+          line: {
+            style: {
+              stroke: vars.color.primary['--color-bg-system'],
+            },
+          },
+        },
+        line: {
+          style: {
+            stroke: vars.color.primary['--color-bg-system'],
+          },
+        },
+      }}
+    />
+  );
+}
+```
+
+<ScatterExample />

@@ -1,10 +1,10 @@
 import { createStand } from '##/stand/standConfig';
 
 export default createStand({
-  title: 'Area',
-  id: 'Area',
+  title: 'Scatter',
+  id: 'Scatter',
   group: 'components',
-  description: 'Диаграмма с областями.',
+  description: 'Диаграмма рассеяния или точечная диаграмма.',
   version: '0.6.4',
   status: 'stable',
 });
