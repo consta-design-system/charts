@@ -1,0 +1,64 @@
+Здесь можно посмотреть документацию и примеры работы графиков и диаграмм из дизайн-системы Consta. Компоненты взяты из библиотеки
+[G2Plot](https://g2plot.antv.vision/en), стилизованы и адаптированы для Consta.
+
+[GitHub](https://github.com/consta-design-system/charts) |
+[NPM](https://www.npmjs.com/package/@consta/charts) |
+[Figma](https://www.figma.com/community/file/982611119114314434)
+
+## Быстрый старт
+
+#### Установите пакет и зависимости
+
+`yarn add @consta/uikit @consta/charts` или `npm install @consta/uikit @consta/charts`
+
+#### Подключите тему
+
+Тему обязательно нужно подключать в корне приложения, так, чтобы все компоненты `@consta/charts` были вложены в компонент `Theme`.
+
+```tsx
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
+import { Line } from '@consta/charts/Line';
+
+export const data: Item[] = [
+  {
+    Date: '2010-01',
+    scales: 1998,
+  },
+  {
+    Date: '2010-02',
+    scales: 1850,
+  },
+  {
+    Date: '2010-03',
+    scales: 1720,
+  },
+  {
+    Date: '2010-04',
+    scales: 1818,
+  },
+  {
+    Date: '2010-05',
+    scales: 1920,
+  },
+  {
+    Date: '2010-06',
+    scales: 1802,
+  },
+];
+
+const App = () => (
+  <Theme preset={presetGpnDefault}>
+    <Line data={data} xField="Date" yField="scales" />
+  </Theme>
+);
+```
+
+#### Всë!
+
+## Подробности о дизайн-системе Consta
+
+[Основная документация](http://uikit.consta.design/)
+
+[Сайт дизайн-системы](https://consta.design/)
+
+[Телеграм-канал с обновлениями](https://t.me/consta_ui_releases)

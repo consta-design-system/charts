@@ -4,6 +4,10 @@ import image from './ConstaImage.png';
 
 const groups = [
   {
+    title: 'Документация',
+    id: 'docs',
+  },
+  {
     title: 'Компоненты',
     id: 'components',
   },
@@ -14,11 +18,11 @@ const groups = [
 ] as const;
 
 export const { createStand } = createConfig({
-  title: 'Consta charts',
+  title: 'Consta Сharts',
   id: 'charts',
   groups,
-  group: 'Библиотека компонентов',
+  group: 'Библиотека графиков',
   image,
   description:
-    '[тут описание что это такое] Ультра топчик библиотеки с пацанскими кнопками и графиками, качай.',
+    'Диаграммы и графики из библиотеки G2Plot с тематизацией для Consta.',
 });
