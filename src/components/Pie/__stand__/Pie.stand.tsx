@@ -6,7 +6,6 @@ export default createStand({
   group: 'components',
   description: 'Круговая диаграмма.',
   version: '0.6.4',
-  sandbox:
-    'https://codesandbox.io/embed/pie-gpb4lr?fontsize=14&hidenavigation=1&theme=dark',
+  sandbox: 'pie-gpb4lr',
   status: 'stable',
 });

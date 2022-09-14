@@ -6,7 +6,6 @@ export default createStand({
   group: 'components',
   description: 'Диаграмма рассеяния или точечная диаграмма.',
   version: '0.6.4',
-  sandbox:
-    'https://codesandbox.io/embed/scatter-3rkjp3?fontsize=14&hidenavigation=1&theme=dark',
+  sandbox: 'scatter-3rkjp3',
   status: 'stable',
 });

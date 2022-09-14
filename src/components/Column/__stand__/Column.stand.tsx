@@ -6,7 +6,6 @@ export default createStand({
   group: 'components',
   description: 'Вертикальная столбчатая диаграмма.',
   version: '0.6.4',
-  sandbox:
-    'https://codesandbox.io/embed/column-c68bpv?fontsize=14&hidenavigation=1&theme=dark',
+  sandbox: 'column-c68bpv',
   status: 'stable',
 });

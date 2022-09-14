@@ -6,7 +6,6 @@ export default createStand({
   group: 'components',
   description: 'Горизонтальная столбчатая диаграмма.',
   version: '0.6.4',
-  sandbox:
-    'https://codesandbox.io/embed/bar-b3fvww?fontsize=14&hidenavigation=1&theme=dark',
+  sandbox: 'bar-b3fvww',
   status: 'stable',
 });

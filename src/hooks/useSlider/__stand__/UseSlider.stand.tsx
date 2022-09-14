@@ -6,7 +6,6 @@ export default createStand({
   group: 'hooks',
   description: 'Хук для подключения слайдера для графика.',
   version: '0.6.4',
-  sandbox:
-    'https://codesandbox.io/embed/useslider-7v6wrw?fontsize=14&hidenavigation=1&theme=dark',
+  sandbox: 'useslider-7v6wrw',
   status: 'stable',
 });

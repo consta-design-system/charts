@@ -6,7 +6,6 @@ export default createStand({
   group: 'components',
   description: 'Разные ряды и типы данных.',
   version: '0.6.4',
-  sandbox:
-    'https://codesandbox.io/embed/dualaxes-qcqymo?fontsize=14&hidenavigation=1&theme=dark',
+  sandbox: 'dualaxes-qcqymo',
   status: 'stable',
 });
