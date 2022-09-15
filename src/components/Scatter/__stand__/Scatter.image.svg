@@ -1,0 +1,67 @@
+<svg
+  width="200"
+  height="120"
+  viewBox="0 0 200 120"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_1889_16255)">
+    <rect width="200" height="120" rx="4" fill="white" />
+    <path
+      d="M21 25H178"
+      stroke="#002033"
+      stroke-opacity="0.08"
+      stroke-width="2"
+      stroke-dasharray="4 4"
+    />
+    <path
+      d="M21 60H178"
+      stroke="#002033"
+      stroke-opacity="0.08"
+      stroke-width="2"
+      stroke-dasharray="4 4"
+    />
+    <path
+      d="M21 94H178"
+      stroke="#002033"
+      stroke-opacity="0.08"
+      stroke-width="2"
+      stroke-dasharray="4 4"
+    />
+    <circle cx="44" cy="77" r="6" fill="#0078D2" />
+    <circle
+      cx="126"
+      cy="34"
+      r="6"
+      transform="rotate(90 126 34)"
+      fill="#0078D2"
+    />
+    <circle cx="84" cy="48" r="4" fill="#0078D2" />
+    <circle
+      cx="161"
+      cy="52"
+      r="4"
+      transform="rotate(90 161 52)"
+      fill="#0078D2"
+    />
+    <circle
+      cx="122.5"
+      cy="80.5"
+      r="9.5"
+      transform="rotate(90 122.5 80.5)"
+      fill="#0078D2"
+    />
+    <circle
+      cx="44.5"
+      cy="36.5"
+      r="2.5"
+      transform="rotate(90 44.5 36.5)"
+      fill="#0078D2"
+    />
+  </g>
+  <defs>
+    <clipPath id="clip0_1889_16255">
+      <rect width="200" height="120" rx="3" fill="white" />
+    </clipPath>
+  </defs>
+</svg>
