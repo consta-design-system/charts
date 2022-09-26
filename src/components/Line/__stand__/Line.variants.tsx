@@ -5,7 +5,7 @@ import React from 'react';
 import { useSlider } from '##/hooks/useSlider/useSlider';
 import { getLegend } from '##/utils/legend';
 
-import { colorMapLine, data } from '../__mocks__/mock.data';
+import { colorMapLine, data, Item } from '../__mocks__/mock.data';
 import { Line } from '../Line';
 
 const sliderCfg = {
@@ -23,7 +23,7 @@ const Variants = () => {
   const yField = useSelect('yField', ['value', 'age'], 'value');
   const smooth = useBoolean('smooth', false);
   const withSlider = useBoolean('withSlider', true);
-  const dashWidth = useNumber('dashWidth', 0);
+  const dashWidth = useNumber('dashWidth', 0) ?? 0;
   const connectNulls = useBoolean('connectNulls', false);
   const isStack = useBoolean('isStack', false);
   // const lineColor: object('lineColor', colorMapLine);
@@ -50,8 +50,8 @@ const Variants = () => {
       })}
       isStack={isStack}
       data={newData}
-      xField={xField}
-      yField={yField}
+      xField={xField as keyof Item}
+      yField={yField as keyof Item}
       slider={withSlider && slider}
       seriesField="country"
       color={({ country }) => {

@@ -12,7 +12,7 @@ type ColorSignature =
   | '--color-typo-system';
 
 const Variants = () => {
-  const percent = useNumber('percent', 0.75);
+  const percent = useNumber('percent', 0.75) ?? 0;
   const radius = useNumber('radius', 0.75);
   const withFormatter = useBoolean('withFormatter', true);
   const type = useSelect('type', ['default', 'meter'], 'default');

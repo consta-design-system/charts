@@ -3,7 +3,7 @@ import React from 'react';
 
 import { getLegend } from '##/utils/legend';
 
-import { data } from '../__mocks__/mock.data';
+import { data, Item } from '../__mocks__/mock.data';
 import { Column } from '../Column';
 
 const Variants = () => {
@@ -41,8 +41,8 @@ const Variants = () => {
       data={data}
       renderer="svg"
       padding="auto"
-      xField={xField}
-      yField={yField}
+      xField={xField as keyof Item}
+      yField={yField as keyof Item}
       seriesField={seriesField}
     />
   );
