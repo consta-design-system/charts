@@ -90,10 +90,9 @@ const Variants = () => {
   return (
     <Radar
       style={{
-        width: 800,
+        width: '100%',
         height: '100%',
       }}
-      renderer="svg"
       {...options}
     />
   );

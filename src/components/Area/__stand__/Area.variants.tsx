@@ -4,7 +4,7 @@ import React from 'react';
 import { useSlider } from '##/hooks/useSlider/useSlider';
 import { getLegend } from '##/utils/legend';
 
-import { colorMapLine, data, Item } from '../__mocks__/mock.data';
+import { colorMapLine, data } from '../__mocks__/mock.data';
 import { Area } from '../Area';
 
 const sliderCfg = {
@@ -32,7 +32,7 @@ export const Variants = () => {
   return (
     <Area
       style={{
-        width: 800,
+        width: '100%',
         height: '100%',
       }}
       renderer="svg"
@@ -44,8 +44,8 @@ export const Variants = () => {
         colors: colorMapLine,
       })}
       data={newData}
-      xField={xField as keyof Item}
-      yField={yField as keyof Item}
+      xField={xField || 'date'}
+      yField={yField || 'value'}
       seriesField={seriesField}
       color={Object.keys(colorMapLine).map((key) => colorMapLine[key])}
       slider={withSlider && slider}

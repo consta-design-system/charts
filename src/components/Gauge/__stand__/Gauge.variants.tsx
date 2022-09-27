@@ -16,7 +16,12 @@ const Variants = () => {
   const radius = useNumber('radius', 0.75);
   const withFormatter = useBoolean('withFormatter', true);
   const type = useSelect('type', ['default', 'meter'], 'default');
-  // const rangeColor = useSelect('rangeColor', ['success', 'warning', 'alert', 'brand'], 'success');
+  const rangeColor =
+    useSelect(
+      'rangeColor',
+      ['success', 'warning', 'alert', 'brand'],
+      'success',
+    ) || 'success';
   const statisticColor = useSelect(
     'statisticColor',
     ['ghost', 'primary', 'brand', 'secondary', 'system'],
@@ -42,8 +47,8 @@ const Variants = () => {
     },
     range: {
       color: [
-        // vars.color.primary[`--color-bg-${rangeColor}` as ColorSignature],
-        // vars.color.primary['--color-bg-ghost'],
+        vars.color.primary[`--color-bg-${rangeColor}` as ColorSignature],
+        vars.color.primary['--color-bg-ghost'],
       ],
     },
     statistic: {
@@ -100,7 +105,7 @@ const Variants = () => {
   return (
     <Gauge
       style={{
-        width: 300,
+        width: '100%',
         height: '100%',
       }}
       {...options}

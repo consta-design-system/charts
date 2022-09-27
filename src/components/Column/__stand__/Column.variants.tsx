@@ -3,7 +3,7 @@ import React from 'react';
 
 import { getLegend } from '##/utils/legend';
 
-import { data, Item } from '../__mocks__/mock.data';
+import { data } from '../__mocks__/mock.data';
 import { Column } from '../Column';
 
 const Variants = () => {
@@ -24,7 +24,7 @@ const Variants = () => {
   return (
     <Column
       style={{
-        width: 800,
+        width: '100%',
         height: '100%',
       }}
       legend={getLegend({
@@ -41,8 +41,8 @@ const Variants = () => {
       data={data}
       renderer="svg"
       padding="auto"
-      xField={xField as keyof Item}
-      yField={yField as keyof Item}
+      xField={xField || 'month'}
+      yField={yField || 'value'}
       seriesField={seriesField}
     />
   );

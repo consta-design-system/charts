@@ -14,8 +14,18 @@ import { Waterfall } from '../Waterfall';
 //   | '--color-bg-brand'
 
 const Variants = () => {
-  // const risingFill = useSelect('risingFill', ['success', 'warning', 'alert', 'brand'], 'success');
-  // const fallingFill = useSelect('fallingFill', ['success', 'warning', 'alert', 'brand'], 'alert');
+  const risingFill =
+    useSelect(
+      'risingFill',
+      ['success', 'warning', 'alert', 'brand'],
+      'success',
+    ) || 'success';
+  const fallingFill =
+    useSelect(
+      'fallingFill',
+      ['success', 'warning', 'alert', 'brand'],
+      'alert',
+    ) || 'alert';
   const columnWidthRatio = useNumber('columnWidthRatio', 0.5);
   const labelMode = useSelect(
     'labelMode',
@@ -28,7 +38,7 @@ const Variants = () => {
   return (
     <Waterfall
       style={{
-        width: 800,
+        width: '100%',
         height: '100%',
       }}
       data={data}
@@ -38,8 +48,8 @@ const Variants = () => {
       yField="money"
       legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
       renderer="svg"
-      // risingFill={vars.color.primary[`--color-bg-${risingFill}` as ColorSignature]}
-      // fallingFill={vars.color.primary[`--color-bg-${fallingFill}` as ColorSignature]}
+      risingFill={vars.color.primary[`--color-bg-${risingFill}`]}
+      fallingFill={vars.color.primary[`--color-bg-${fallingFill}`]}
       total={{
         style: {
           fill: vars.color.primary['--color-bg-system'],

@@ -5,7 +5,7 @@ import React from 'react';
 import { useSlider } from '##/hooks/useSlider/useSlider';
 import { getLegend } from '##/utils/legend';
 
-import { colorMapLine, data, Item } from '../__mocks__/mock.data';
+import { colorMapLine, data } from '../__mocks__/mock.data';
 import { Line } from '../Line';
 
 const sliderCfg = {
@@ -19,8 +19,8 @@ const newData = data.map((item) => {
 });
 
 const Variants = () => {
-  const xField = useSelect('xField', ['date', 'country'], 'date');
-  const yField = useSelect('yField', ['value', 'age'], 'value');
+  const xField = useSelect('xField', ['date', 'country'], 'date') || 'date';
+  const yField = useSelect('yField', ['value', 'age'], 'value') || 'value';
   const smooth = useBoolean('smooth', false);
   const withSlider = useBoolean('withSlider', true);
   const dashWidth = useNumber('dashWidth', 0) ?? 0;
@@ -35,10 +35,9 @@ const Variants = () => {
   return (
     <Line
       style={{
-        width: 800,
+        width: '100%',
         height: '100%',
       }}
-      renderer="svg"
       smooth={smooth}
       connectNulls={connectNulls}
       legend={getLegend({
@@ -50,8 +49,8 @@ const Variants = () => {
       })}
       isStack={isStack}
       data={newData}
-      xField={xField as keyof Item}
-      yField={yField as keyof Item}
+      xField={xField}
+      yField={yField}
       slider={withSlider && slider}
       seriesField="country"
       color={({ country }) => {

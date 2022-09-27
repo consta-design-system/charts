@@ -32,9 +32,8 @@ const Variants = () => {
   return (
     <Histogram
       legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
-      renderer="svg"
       style={{
-        width: 800,
+        width: '100%',
         height: '100%',
       }}
       {...options}

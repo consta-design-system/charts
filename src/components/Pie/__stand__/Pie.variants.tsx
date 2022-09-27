@@ -9,8 +9,8 @@ const Variants = () => {
   const radius = useNumber('radius', 1);
   const innerRadius = useNumber('innerRadius', 0.64);
   const withFormatter = useBoolean('withFormatter', true);
-  const startAngle = useNumber('startAngle', 0) ?? 0;
-  const endAngle = useNumber('endAngle', 360) ?? 360;
+  const startAngle = useNumber('startAngle', 0) || 0;
+  const endAngle = useNumber('endAngle', 360) || 360;
   const colors = [
     '#22C38E',
     '#F2C94C',
@@ -25,7 +25,7 @@ const Variants = () => {
   return (
     <Pie
       style={{
-        width: 800,
+        width: '100%',
         height: '100%',
       }}
       data={data}
