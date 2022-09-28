@@ -25,4 +25,5 @@ export const { createStand } = createConfig({
   image,
   description:
     'Диаграммы и графики из библиотеки G2Plot с тематизацией для Consta.',
+  repositoryUrl: 'https://github.com/consta-design-system/charts',
 });
