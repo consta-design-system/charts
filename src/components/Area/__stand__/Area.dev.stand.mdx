@@ -1,0 +1,208 @@
+import { MdxMenu } from '@consta/stand';
+import { AreaExampleOneLine } from './examples/AreaExampleOneLine/AreaExampleOneLine';
+import { AreaExampleMultiLine } from './examples/AreaExampleMultiLine/AreaExampleMultiLine';
+import {
+  AreaExampleColorLine,
+  AreaExampleColorMultiLine,
+} from './examples/AreaExampleColorLine/AreaExampleColorLine';
+import { AreaExampleMeta } from './examples/AreaExampleMeta/AreaExampleMeta';
+import { AreaExampleSlider } from './examples/AreaExampleSlider/AreaExampleSlider';
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '../../../stand/components/RemadeInfo/RemadeInfo';
+
+```tsx
+import { Area } from '@consta/charts/Area';
+```
+
+<MdxMenu>
+    
+- [Одна линия](#одна-линия)
+- [Несколько линий](#несколько-линий)
+- [Цвет линий](#цвет-линий)
+- [Формат данных](#формат-данных)
+- [Масштабирование](#масштабирование)
+- [Список свойств](#свойства)
+
+</MdxMenu>
+
+### Одна линия
+
+Создайте объект с данными для графика. Для каждой точки нужны хотя бы две координаты: по оси X и по оси Y.
+
+Укажите, из какого объекта брать данные, в свойстве `data`.
+
+Потом сообщите компоненту, какие элементы объекта за какие данные отвечают:
+
+- за координаты по оси X отвечает свойство `xField`,
+- за координаты по оси Y — `yField`.
+
+<AreaExampleOneLine />
+
+```tsx
+type Item = { Date: string; scales: number };
+
+const data: Item[] = [
+  {
+    Date: '2010-01',
+    scales: 1998,
+  },
+  // ...
+  {
+    Date: '2010-02',
+    scales: 1850,
+  },
+];
+
+function AreaExampleOneLine() {
+  return <Area data={data} xField="Date" yField="scales" />;
+}
+```
+
+## Несколько линий
+
+Если нужно сгруппировать данные по какому-то параметру — то есть показать несколько линий, используйте `seriesField`.
+
+Например, чтобы показать распределение по странам, укажите в `seriesField` поле `country`.
+
+<AreaExampleMultiLine />
+
+```tsx
+type Item = { country: string; year: string; value: null | number };
+
+const data: Item[] = [
+  { country: 'Россия', year: '1915', value: 2.2 },
+  // ...
+  { country: 'Турция', year: '1915', value: 0.7 },
+];
+
+function AreaExampleMultiLine() {
+  return (
+    <Area data={data} xField="date" yField="value" seriesField="country" />
+  );
+}
+```
+
+## Цвет линий
+
+Чтобы поменять цвет линии, используйте `areaStyle`.
+
+<AreaExampleColorLine />
+
+```tsx
+function AreaExampleColorLine() {
+  return (
+    <Area
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={oneAreaData}
+      xField="Date"
+      yField="scales"
+      areaStyle={{ stroke: 'red', fill: 'red' }}
+      line={{ style: { stroke: 'red' } }}
+    />
+  );
+}
+```
+
+Если линий несколько, создайте карту цветов. В качестве ключей используйте значения из поля, которое указали в `seriesField`.
+
+<AreaExampleColorMultiLine />
+
+```tsx
+export const colorMapLine: { [key: string]: string } = {
+  Канада: '#32b4ff',
+  США: '#ff7479',
+  Испания: '#ca3a27',
+  Россия: '#a1b018',
+  Германия: '#ffbd59',
+  Турция: '#3b4195',
+  Китай: '#12b47e',
+};
+
+export function AreaExampleColorMultiLine() {
+  return (
+    <Area
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={data}
+      xField="year"
+      yField="value"
+      seriesField="country"
+      color={Object.keys(colorMapLine).map((key) => colorMapLine[key])}
+    />
+  );
+}
+```
+
+## Формат данных
+
+При наведении на точку всплывает тултип со всеми данными о ней. Вы можете поменять названия полей и формат данных с помощью свойства `meta`.
+
+<AreaExampleMeta />
+
+```tsx
+type Item = { Date: string; scales: number };
+
+const data: Item[] = [
+  {
+    Date: '2010-01',
+    scales: 1998,
+  },
+  // ...
+  {
+    Date: '2010-02',
+    scales: 1850,
+  },
+];
+
+function LineExampleMeta() {
+  return;
+  <Line
+    data={data}
+    xField="Date"
+    yField="scales"
+    meta={{
+      Date: { alias: 'Дата' },
+      scales: { alias: 'Число' },
+    }}
+  />;
+}
+```
+
+## Масштабирование
+
+Если график не помещается в контейнер по ширине, вы можете добавить к нему слайдер — элемент, который позволяет перемещаться между частями графика. Описать объект со слайдером можно в свойстве `slider`, стилизовать его — с помощью хука [useSlider](?path=/docs/hooks-useslider--playground).
+
+<AreaExampleSlider />
+
+```tsx
+export function AreaExampleSlider() {
+  return (
+    <Area
+      style={{ marginBottom: 'var(--space-m)' }}
+      data={data}
+      xField="year"
+      yField="value"
+      seriesField="country"
+      slider={{
+        start: 0,
+        end: 0.5,
+      }}
+    />
+  );
+}
+```
+
+## Свойства
+
+<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/line" />
+
+| Свойство                          | Тип и значения | По умолчанию | Описание                                                                                                                  |
+| --------------------------------- | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| [`data`](#одна-линия)             | `Data[]`       | -            | Объект с информацией о линиях                                                                                             |
+| [`xField`](#одна-линия)           | `string`       | -            | Поле с данными для отображения на горизонтальной оси                                                                      |
+| [`yField`](#одна-линия)           | `string`       | -            | Поле с данными для отображения на вертикальной оси                                                                        |
+| [`seriesField`](#несколько-линий) | `string`       | -            | Поле с данными для группировки линий                                                                                      |
+| [`meta`](#формат-данных)          | `string`       | -            | Объект с форматом данных для тултипа                                                                                      |
+| [`slider`](#масштабирование)      | `object`       | -            | Объект с форматом данных для слайдера. Хук для стилизации — [useSlider](##LIBS.STAND/stand:charts-hooks-useslider-stable) |
+| `className`                       | `string`       | -            | Дополнительный CSS-класс компонента                                                                                       |

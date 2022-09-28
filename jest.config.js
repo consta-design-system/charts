@@ -1,23 +1,14 @@
-const SLASH = "[/\\\\]"
-
 module.exports = {
-  ...require('@consta/widgets-configs/jest.config.js'),
-  transformIgnorePatterns: [
-    // Транспайлим библиотеки на es-модулях в commonjs-модули
-    `${SLASH}node_modules${SLASH}(?!(react-dnd|dnd-core|react-dnd-html5-backend|@amcharts/amcharts4-geodata)${SLASH}).+\\.(js|jsx|ts|tsx)`,
-  ],
-  coverageThreshold: {
-    "./src/__private__/utils/": {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
-    },
-    "./src/**/helpers.ts": {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
-    },
-  }
+  verbose: true,
+  preset: 'ts-jest',
+  moduleNameMapper: {
+    '\\.css$': '<rootDir>/__mocks__/styleMock.js',
+    '##/(.*)$': '<rootDir>/src/$1',
+  },
+  coveragePathIgnorePatterns: ['/node_modules/', '/coverage/', '/types/'],
+  testMatch: ['**/*.test.{ts,tsx}'],
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
+  collectCoverageFrom: ['**/*.{ts,tsx}', '!**/*.stories.tsx'],
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['./jest.setup.ts'],
 };

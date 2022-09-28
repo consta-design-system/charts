@@ -2,39 +2,46 @@
   "name": "@consta/charts",
   "version": "0.6.4",
   "scripts": {
-    "build:css": "NODE_ENV=production postcss 'src/**/*.css' --base src --dir lib",
-    "build:js": "NODE_ENV=production BUILDING_JS=true babel src --out-dir lib --extensions '.ts,.tsx' --source-maps --ignore '**/__mocks__/*','**/__stories__/*','**/__tests__/*','**/__private__/storybook/*'",
-    "build:types": "NODE_ENV=production ttsc --declaration --outDir lib/ --emitDeclarationOnly -p tsconfig.build.json",
+    "postinstall": "husky install",
+    "tsc-dry-run": "tsc --noEmit",
+    "lint:js": "eslint --ext .js,.jsx,.tsx,.ts --fix . --quiet",
+    "lint:css": "stylelint ./src/**/*.css --fix",
+    "lint": "yarn run lint:js && yarn run lint:css",
+    "format:svg": "prettier --write '**/*.svg' --parser html",
+    "pre-push": "yarn run tsc-dry-run",
+    "pre-commit": "yarn run lint-staged",
+    "pre-build": "node scripts/preBuild.js --config=scripts/generateReExportsConfig.js",
+    "test": "yarn tsc-dry-run",
+    "unit": "jest",
+    "unit:watch": "jest --watch",
+    "unit:clear": "jest --clearCache",
+    "build:css": "NODE_ENV=buildProduction postcss 'src/**/*.css' --base src --dir dist/__internal__/src/",
+    "build:js": "NODE_ENV=buildProduction BUILDING_JS=true babel --extensions '.ts,.tsx' --config-file ./babel.config.js --source-maps --out-dir dist/__internal__/src/ ./src",
+    "build:types": "NODE_ENV=buildProduction ttsc --declaration --outDir dist/__internal__/src/ --emitDeclarationOnly -p tsconfig.build.json",
     "build:package.json": "node scripts/prepare-package-json.js",
-    "build:docs": "cp README.md lib/README.md",
-    "build": "rm -rf lib && yarn build:css && yarn build:js && yarn build:types && yarn build:package.json && yarn build:docs",
-    "start": "NODE_ENV=development ROOT_PATH=./ NODE_PATH=./node_modules start-storybook -s public -p 6006 --ci",
-    "build:storybook": "NODE_ENV=production ROOT_PATH=./ NODE_PATH=./node_modules build-storybook -s public -o build",
-    "lint": "npm-run-all --parallel lint:*",
-    "format": "prettier --write '{src,types,scripts}/**/*.{json,{j,t}s{,x},css,}'",
-    "lint-fix": "npm-run-all format lint-fix:*",
-    "lint:ts": "eslint '{src,types}/**/*.ts{,x}'",
-    "lint-fix:ts": "eslint '{src,types}/**/*.ts{,x}' --fix",
-    "lint:css": "stylelint 'src/**/*.css'",
-    "lint-fix:css": "stylelint 'src/**/*.css' --fix",
-    "checktypes": "tsc --noEmit --extendedDiagnostics",
-    "unit": "NODE_PATH=./node_modules TZ=Europe/Moscow jest",
-    "unit:watch": "yarn unit --watchAll",
-    "test": "npm-run-all --parallel lint checktypes",
+    "build:reexports": "node scripts/generateReExports.js --config=scripts/generateReExportsConfig.js",
+    "build:docs": "cp README.md dist/README.md",
+    "build": "rm -rf dist && yarn build:css && yarn build:js && yarn build:types && yarn build:reexports && yarn build:package.json && yarn build:docs",
+    "stand:generate": "node node_modules/@consta/stand/scripts/standGenerate.js --config=node_modules/@consta/stand/scripts/config.js",
+    "stand:build": "rm -rf ./build && yarn stand:generate && NODE_ENV=production webpack --mode production --config node_modules/@consta/stand/webpack.config.js",
+    "stand:start": "NODE_ENV=development webpack serve --open --progress --mode development --hot --progress --config node_modules/@consta/stand/webpack.config.js",
+    "stand:dev": "NODE_ENV=standDevelopment webpack serve --open --progress --mode development --hot --progress --config node_modules/@consta/stand/webpack.config.js",
+    "start": "yarn stand:generate && yarn stand:start",
+    "start:dev": "yarn stand:generate && yarn stand:dev",
     "prepare": "yarn install-peers"
   },
   "files": [
     "*",
-    "!*.css.d.ts",
-    "!**/__private__/storybook",
-    "!**/storybook",
     "!**/__mocks__",
     "!**/__stories__",
     "!**/__tests__",
-    "!**/*.test.d.ts",
-    "!**/*.spec.d.ts",
-    "!**/*.mock.d.ts",
-    "!**/*.stories.d.ts"
+    "!**/__stand__"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://consta.design/static/licence_mit.pdf"
+    }
   ],
   "publishConfig": {
     "access": "public"
@@ -42,97 +49,156 @@
   "browserslist": [
     "Chrome >= 75"
   ],
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn checktypes",
-      "post-checkout": "node node_modules/@consta/widgets-configs/scripts/checkout-clean.js"
-    }
-  },
-  "lint-staged": {
-    "{src,types}/**/*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "{src}/**/*.css": [
-      "prettier --write",
-      "stylelint --fix",
-      "git add"
-    ],
-    "{src,scripts,config}/**/*.{json,js}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "peerDependencies": {
-    "@consta/uikit": ">= 3.0.0"
+    "@consta/uikit": ">= 3.9.3"
   },
   "dependencies": {
-    "@antv/g2plot": "2.4.7",
-    "@bem-react/classname": "^1.5.8"
-  },
-  "resolutions": {
-    "@types/react": "16.9.34",
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "@antv/g2plot": "2.4.7"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "./commitizen.js"
+      "path": "./node_modules/cz-conventional-changelog",
+      "disableScopeLowerCase": true,
+      "types": {
+        "feat": {
+          "description": "Adding new feature"
+        },
+        "fix": {
+          "description": "Bug fix"
+        },
+        "refactor": {
+          "description": "Editing code without fixing bugs or adding new features"
+        },
+        "docs": {
+          "description": "Documentation Update"
+        },
+        "chore": {
+          "description": "Add / update / customize tools and libraries"
+        },
+        "changelog": {
+          "description": "Add / update / changelog"
+        },
+        "release": {
+          "description": "New release"
+        }
+      }
     }
   },
   "devDependencies": {
-    "@babel/cli": "7.10.5",
-    "@babel/plugin-transform-react-jsx": "7.3.0",
-    "@babel/preset-typescript": "7.10.4",
-    "@consta/uikit": ">= 3.0.0",
-    "@consta/widgets-configs": "1.5.1",
-    "@mdx-js/loader": "1.5.9",
-    "@storybook/addon-actions": "5.3.19",
-    "@storybook/addon-docs": "5.3.19",
-    "@storybook/addon-info": "5.3.19",
-    "@storybook/addon-knobs": "5.3.19",
-    "@storybook/react": "5.3.19",
-    "@storybook/theming": "5.3.19",
-    "@testing-library/react": "10.4.9",
-    "@types/classnames": "2.2.9",
-    "@types/react": "16.9.34",
-    "@types/react-dom": "16.9.7",
-    "@types/react-test-renderer": "16.9.2",
-    "babel-loader": "8.0.6",
-    "babel-plugin-module-resolver": "4.0.0",
-    "babel-plugin-transform-postcss": "0.3.0",
-    "babel-preset-minify": "0.5.1",
-    "commitizen": "^4.2.3",
-    "cssnano": "4.1.10",
-    "cz-customizable": "^6.3.0",
-    "eslint-plugin-todo-plz": "1.1.0",
-    "fast-glob": "3.2.2",
-    "husky": "3.0.0",
-    "install-peers-cli": "https://github.com/evless/install-peers-cli#fix-yarn-policies",
-    "mockdate": "2.0.5",
-    "npm-run-all": "4.1.5",
-    "postcss": "7.0.32",
-    "postcss-cli": "7.1.1",
-    "postcss-functions": "3.0.0",
-    "postcss-mixins": "6.2.3",
-    "postcss-modules": "3.2.0",
-    "postcss-nested": "4.2.1",
-    "postcss-preset-env": "6.6.0",
-    "postcss-url": "8.0.0",
-    "react-test-renderer": "16.8.6",
-    "remark-external-links": "6.0.0",
-    "remark-slug": "6.0.0",
-    "storybook-addon-designs": "^6.0.0",
-    "storybook-addon-react-docgen": "1.2.28",
-    "storybook-addon-smart-knobs": "6.0.2",
-    "storybook-addon-themes": "5.4.1",
-    "webpack-merge": "4.2.2"
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.18.9",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@bem/sdk.naming.cell.match": "^0.1.3",
+    "@bem/sdk.naming.presets": "^0.2.3",
+    "@consta/stand": "^0.0.48",
+    "@consta/uikit": ">= 3.9.3",
+    "@oclif/command": "^1.8.16",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+    "@svgr/core": "^6.3.1",
+    "@svgr/plugin-jsx": "^6.3.1",
+    "@svgr/plugin-prettier": "^6.3.1",
+    "@svgr/plugin-svgo": "^6.3.1",
+    "@svgr/webpack": "^5.5.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-transition-group": "^4.4.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "autoprefixer": "^10.4.4",
+    "babel-jest": "^27.4.2",
+    "babel-loader": "^8.2.4",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-named-asset-import": "^0.3.8",
+    "babel-preset-minify": "^0.5.2",
+    "babel-preset-react-app": "^10.0.1",
+    "bfj": "^7.0.2",
+    "browserslist": "^4.18.1",
+    "camelcase": "^6.2.1",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "commitizen": "^4.2.5",
+    "css-loader": "^6.5.1",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "cssnano": "^5.1.12",
+    "cz-conventional-changelog": "3.3.0",
+    "dotenv": "^10.0.0",
+    "dotenv-expand": "^5.1.0",
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "file-loader": "^6.2.0",
+    "fs-extra": "^10.0.1",
+    "github-release-notes": "^0.17.3",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "install-peers-cli": "^2.2.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "lint-staged": "^13.0.3",
+    "mini-css-extract-plugin": "^2.6.0",
+    "moment": "^2.29.3",
+    "postcss": "^8.4.12",
+    "postcss-cli": "^10.0.0",
+    "postcss-color-function": "^4.1.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^14.1.0",
+    "postcss-loader": "^6.2.1",
+    "postcss-mixins": "^9.0.2",
+    "postcss-nested": "^5.0.6",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^7.0.1",
+    "postcss-simple-vars": "^5.0.2",
+    "postcss-syntax": "^0.36.2",
+    "prettier": "^2.6.2",
+    "prompts": "^2.4.2",
+    "react": "^18.0.0",
+    "react-app-polyfill": "^3.0.0",
+    "react-dev-utils": "^12.0.0",
+    "react-dom": "^18.0.0",
+    "react-refresh": "^0.11.0",
+    "react-router5": "^8.0.1",
+    "react-test-renderer": "^18.0.0",
+    "resolve": "^1.20.0",
+    "resolve-url-loader": "^4.0.0",
+    "router5": "^8.0.1",
+    "router5-plugin-browser": "^8.0.1",
+    "sass-loader": "^12.3.0",
+    "semver": "^7.3.5",
+    "source-map-loader": "^3.0.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.1.1",
+    "svgo": "^2.8.0",
+    "tailwindcss": "^3.0.2",
+    "terser-webpack-plugin": "^5.2.5",
+    "ts-jest": "^28.0.7",
+    "ts-loader": "^9.2.8",
+    "ttypescript": "^1.5.13",
+    "typescript": "^4.6.3",
+    "typescript-eslint-parser": "^22.0.0",
+    "typescript-transform-paths": "^3.3.1",
+    "use-subscription": "^1.5.1",
+    "web-vitals": "^2.1.0",
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1",
+    "webpack-manifest-plugin": "^4.0.2",
+    "workbox-webpack-plugin": "^6.4.1"
   }
 }

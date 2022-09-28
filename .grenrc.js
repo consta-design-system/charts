@@ -16,4 +16,4 @@ module.exports = {
     release: '## {{release}} ({{date}})\n{{body}}',
     releaseSeparator: '\n--------------------\n\n',
   },
-}
+};

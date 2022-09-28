@@ -1,4 +1,3 @@
 build/*
 dist/*
-*.css.d.ts
-CHANGELOG.md
+CHANGELOG.md    
