@@ -5,7 +5,7 @@ export default createStand({
   id: 'DualAxes',
   group: 'components',
   description: 'Разные ряды и типы данных.',
-  version: '0.6.4',
+  version: '0.1.1',
   sandbox: 'dualaxes-qcqymo',
   status: 'stable',
 });

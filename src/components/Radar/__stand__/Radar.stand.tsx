@@ -5,7 +5,7 @@ export default createStand({
   id: 'Radar',
   group: 'components',
   description: 'Характеристика по нескольким параметрам.',
-  version: '0.6.4',
+  version: '0.1.0',
   sandbox: 'radar-gfo3qs',
   status: 'stable',
 });

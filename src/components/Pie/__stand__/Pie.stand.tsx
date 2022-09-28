@@ -5,7 +5,7 @@ export default createStand({
   id: 'Pie',
   group: 'components',
   description: 'Круговая диаграмма.',
-  version: '0.6.4',
+  version: '0.1.0',
   sandbox: 'pie-gpb4lr',
   status: 'stable',
 });

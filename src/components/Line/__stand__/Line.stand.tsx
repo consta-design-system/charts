@@ -5,7 +5,7 @@ export default createStand({
   id: 'Line',
   group: 'components',
   description: 'Гистограмма.',
-  version: '0.6.4',
+  version: '0.1.0',
   sandbox: 'line-bu0ybl',
   status: 'stable',
 });
