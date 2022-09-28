@@ -5,7 +5,7 @@ export default createStand({
   id: 'Waterfall',
   group: 'components',
   description: 'Каскадная диаграмма.',
-  version: '0.6.4',
+  version: '0.1.2',
   sandbox: 'waterfall-h37e1c',
   status: 'stable',
 });

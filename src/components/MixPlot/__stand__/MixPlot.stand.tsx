@@ -5,7 +5,7 @@ export default createStand({
   id: 'MixPlot',
   group: 'components',
   description: 'Группа графиков.',
-  version: '0.6.4',
+  version: '0.4.0',
   sandbox: 'mixplot-sj7qw4',
   status: 'stable',
 });

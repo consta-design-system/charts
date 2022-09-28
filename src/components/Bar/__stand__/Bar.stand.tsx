@@ -5,7 +5,7 @@ export default createStand({
   id: 'Bar',
   group: 'components',
   description: 'Горизонтальная столбчатая диаграмма.',
-  version: '0.6.4',
+  version: '0.1.0',
   sandbox: 'bar-b3fvww',
   status: 'stable',
 });

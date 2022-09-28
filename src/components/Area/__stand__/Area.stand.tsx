@@ -5,7 +5,7 @@ export default createStand({
   id: 'Area',
   group: 'components',
   description: 'Диаграмма с областями.',
-  version: '0.6.4',
+  version: '0.1.0',
   sandbox: 'area-inhcr7',
   status: 'stable',
   figma:
