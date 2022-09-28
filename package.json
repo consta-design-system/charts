@@ -58,6 +58,7 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog",
+      "disableScopeLowerCase": true,
       "types": {
         "feat": {
           "description": "Adding new feature"
