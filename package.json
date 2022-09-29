@@ -27,8 +27,7 @@
     "stand:start": "NODE_ENV=development webpack serve --open --progress --mode development --hot --progress --config node_modules/@consta/stand/webpack.config.js",
     "stand:dev": "NODE_ENV=standDevelopment webpack serve --open --progress --mode development --hot --progress --config node_modules/@consta/stand/webpack.config.js",
     "start": "yarn stand:generate && yarn stand:start",
-    "start:dev": "yarn stand:generate && yarn stand:dev",
-    "prepare": "yarn install-peers"
+    "start:dev": "yarn stand:generate && yarn stand:dev"
   },
   "files": [
     "*",
@@ -95,8 +94,8 @@
     "@babel/preset-typescript": "^7.18.6",
     "@bem/sdk.naming.cell.match": "^0.1.3",
     "@bem/sdk.naming.presets": "^0.2.3",
-    "@consta/stand": "^0.0.48",
-    "@consta/uikit": ">= 3.9.3",
+    "@consta/stand": "^0.0.53",
+    "@consta/uikit": "^4.0.1",
     "@oclif/command": "^1.8.16",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/core": "^6.3.1",
@@ -145,7 +144,6 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
-    "install-peers-cli": "^2.2.0",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "lint-staged": "^13.0.3",
