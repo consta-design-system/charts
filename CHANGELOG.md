@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.7.0 (29/09/2022)
+Самое важное:
+Выкладываем новый стенд и сборщик, сама библиотека и документация не меняются.
+Добавили песочницу: теперь в ней можно смотреть примеры компонентов.
+
+---
+
+- [chore(deps): update @consta/uikit](https://github.com/consta-design-system/charts/commit/7c90901b67fc97a23a4915d43e014b879c496c00) - [@gizeasy](https://github.com/gizeasy)
+- [chore(stand): new stand and new builder (#63)](https://github.com/consta-design-system/charts/commit/f548b2b2d1a64b6a2aa795f28e241bd06e14f7f9) - [@gizeasy](https://github.com/gizeasy)
+- [docs(components): fix figma links (#62)](https://github.com/consta-design-system/charts/commit/5606cd0ff35bbac42be144d04e2daa84a08ac7fa) - [@arhayka](https://github.com/arhayka)
+- [chore(stand): add automation publish stand](https://github.com/consta-design-system/charts/commit/81f38de446515c51a3f22fde68467e36eba9df4f) - [@gizeasy](https://github.com/gizeasy)
+
+--------------------
+
 ## v0.6.4 (22/06/2022)
 - [ fix(Legend): fix spacing on Legend](https://github.com/consta-design-system/charts/commit/5c27b60f6e7770f5a52ae0487ad9dae7ce487b2b) - [@N1MBER](https://github.com/N1MBER)
 
