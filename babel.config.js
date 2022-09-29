@@ -11,6 +11,7 @@ module.exports = {
         '**/__tests__/*',
         '**/__mocks__/*',
         '**/src/stand/*',
+        '**/src/docs/*',
       ]
     : [],
   comments: false,

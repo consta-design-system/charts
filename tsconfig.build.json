@@ -5,6 +5,7 @@
     "**/__stories__/*",
     "**/__stand__/*",
     "**/__tests__/*",
-    "**/src/stand/*"
+    "**/src/stand/*",
+    "**/src/docs/*"
   ]
 }

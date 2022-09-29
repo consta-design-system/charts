@@ -1,6 +1,6 @@
 {
   "name": "@consta/charts",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "scripts": {
     "postinstall": "husky install",
     "tsc-dry-run": "tsc --noEmit",
