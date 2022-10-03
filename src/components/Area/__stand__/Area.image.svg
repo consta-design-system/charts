@@ -6,40 +6,40 @@
   xmlns="http://www.w3.org/2000/svg"
 >
   <g clip-path="url(#clip0_1889_16301)">
-    <rect width="200" height="120" rx="4" fill="white" />
+    <rect width="200" height="120" rx="4" fill="var(--color-bg-default)" />
     <path
       d="M21 25H178"
-      stroke="#002033"
+      stroke="var(--color-control-typo-ghost)"
       stroke-opacity="0.08"
       stroke-width="2"
       stroke-dasharray="4 4"
     />
     <path
       d="M21 60H178"
-      stroke="#002033"
+      stroke="var(--color-control-typo-ghost)"
       stroke-opacity="0.08"
       stroke-width="2"
       stroke-dasharray="4 4"
     />
     <path
       d="M21 94H178"
-      stroke="#002033"
+      stroke="var(--color-control-typo-ghost)"
       stroke-opacity="0.08"
       stroke-width="2"
       stroke-dasharray="4 4"
     />
     <path
       d="M142.586 48.433C156.752 47.8571 166.027 91.4733 178 91.4733V95H21V63.1429C28.0827 63.1429 33.8163 82 40.0558 82C52.7035 82 57.2567 28.9275 71.4221 29.0001C85.5875 29.0727 94.5252 78.662 109.534 78.662C120.327 78.662 127.258 49.0561 142.586 48.433Z"
-      fill="#DEE4E8"
+      fill="var(--color-bg-system)"
     />
     <path
       d="M56.4135 70.3054C42.2481 70 32.9731 93.1298 21 93.1298V95H178V82.0611C170.917 82.0611 165.184 92.061 158.944 92.061C146.296 92.061 141.743 59.9615 127.578 60C113.412 60.0385 104.475 86.3359 89.4662 86.3359C78.6735 86.3359 71.742 70.6358 56.4135 70.3054Z"
-      fill="#0078D2"
+      fill="var(--color-bg-link)"
     />
   </g>
   <defs>
     <clipPath id="clip0_1889_16301">
-      <rect width="200" height="120" rx="3" fill="white" />
+      <rect width="200" height="120" rx="3" fill="var(--color-bg-default)" />
     </clipPath>
   </defs>
 </svg>
