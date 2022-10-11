@@ -6,34 +6,34 @@
   xmlns="http://www.w3.org/2000/svg"
 >
   <g clip-path="url(#clip0_1889_16326)">
-    <rect width="200" height="120" rx="4" fill="white" />
+    <rect width="200" height="120" rx="4" fill="var(--color-bg-default)" />
     <path
       d="M100 25L100 94"
-      stroke="#002033"
+      stroke="var(--color-control-typo-ghost)"
       stroke-opacity="0.08"
       stroke-width="2"
       stroke-dasharray="4 4"
     />
     <path
       d="M179 25L179 94"
-      stroke="#002033"
+      stroke="var(--color-control-typo-ghost)"
       stroke-opacity="0.08"
       stroke-width="2"
       stroke-dasharray="4 4"
     />
     <path
       d="M21 25L21 94"
-      stroke="#002033"
+      stroke="var(--color-control-typo-ghost)"
       stroke-opacity="0.08"
       stroke-width="2"
       stroke-dasharray="4 4"
     />
-    <path d="M20 32H162V52H20V32Z" fill="#0078D2" />
-    <path d="M20 66H125V86H20V66Z" fill="#DEE4E8" />
+    <path d="M20 32H162V52H20V32Z" fill="var(--color-bg-link)" />
+    <path d="M20 66H125V86H20V66Z" fill="var(--color-bg-system)" />
   </g>
   <defs>
     <clipPath id="clip0_1889_16326">
-      <rect width="200" height="120" rx="3" fill="white" />
+      <rect width="200" height="120" rx="3" fill="var(--color-bg-default)" />
     </clipPath>
   </defs>
 </svg>
