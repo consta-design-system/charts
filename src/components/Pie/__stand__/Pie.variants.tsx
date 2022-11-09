@@ -28,6 +28,9 @@ const Variants = () => {
         width: '100%',
         height: '100%',
       }}
+      pieStyle={{
+        stroke: vars.color.primary['--color-bg-default'],
+      }}
       data={data}
       angleField="value"
       colorField="type"
@@ -38,6 +41,11 @@ const Variants = () => {
       statistic={{
         title: {
           formatter: withFormatter ? (v) => v?.type || 'Всего' : undefined,
+          style: {
+            color: vars.color.primary['--color-typo-primary'],
+          },
+        },
+        content: {
           style: {
             color: vars.color.primary['--color-typo-primary'],
           },
