@@ -11,7 +11,7 @@ import { useChartTheme } from '##/hooks/useChartTheme';
 import { getChart } from '##/utils/getChart';
 import { ChartProps } from '##/utils/types/ChartProps';
 
-export type BulletProps = ChartProps<Omit<G2plotBulletProps, 'label'>>;
+export type BulletProps = ChartProps<G2plotBulletProps>;
 
 type Bullet = (props: BulletProps) => React.ReactElement | null;
 
@@ -27,7 +27,7 @@ export const Bullet: Bullet = React.forwardRef((props, ref) => {
 
   const theme = useChartTheme();
   const { chart, container } = useChart(G2plotBullet, {
-    ...rest,
+    ...(rest as Omit<BulletProps, 'label'>),
     color: rest.color as unknown as ColorAttr,
     theme,
   });
