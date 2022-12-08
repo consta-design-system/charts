@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.7.1 (08/12/2022)
+Исправленные несколько багов, доработана документация
+
+---
+
+- [chore(deps): update consta stand (#75)](https://github.com/consta-design-system/charts/commit/092d501aafd6d21dab757dc4033bb3284d30b6b2) - [@gizeasy](https://github.com/gizeasy)
+- [fix(Bullet): fixed label prop (#74)](https://github.com/consta-design-system/charts/commit/c40d47f737f2082d10b59f31b56a99b9add9eeba) - [@gizeasy](https://github.com/gizeasy)
+- [fix(Variants): fix colors on dark theme (#73)](https://github.com/consta-design-system/charts/commit/e1aaad8fb93b87f4a3892603ca38010c8cb6add2) - [@N1MBER](https://github.com/N1MBER)
+- [docs(portal): readme links, stand, version (#72)](https://github.com/consta-design-system/charts/commit/4befc1c54e3b61cf27b478e4749a011c9f0bba08) - [@arhayka](https://github.com/arhayka)
+- [docs: edit links & readme (#71)](https://github.com/consta-design-system/charts/commit/f481f239215e248ab27c545916c2c3a10fcbe677) - [@arhayka](https://github.com/arhayka)
+- [chore(deps): update @consta/stand](https://github.com/consta-design-system/charts/commit/f2fe7f760b379259e12c643203cf4bb4d867ce70) - [@gizeasy](https://github.com/gizeasy)
+- [docs: change colors to vars (#70)](https://github.com/consta-design-system/charts/commit/1a52019876ed7336f031506802ad48f089a8f74e) - [@arhayka](https://github.com/arhayka)
+
+--------------------
+
 ## v0.7.0 (29/09/2022)
 Самое важное:
 Выкладываем новый стенд и сборщик, сама библиотека и документация не меняются.
