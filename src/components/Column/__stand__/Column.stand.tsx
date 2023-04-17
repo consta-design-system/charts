@@ -6,6 +6,7 @@ export default createStand({
   group: 'components',
   description: 'Вертикальная столбчатая диаграмма.',
   version: '0.1.0',
+  alias: ['диаграмма', 'график', 'столбчатая диаграмма'],
   sandbox: 'column-c68bpv',
   status: 'stable',
 });

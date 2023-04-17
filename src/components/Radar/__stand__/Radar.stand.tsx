@@ -6,6 +6,7 @@ export default createStand({
   group: 'components',
   description: 'Характеристика по нескольким параметрам.',
   version: '0.1.0',
+  alias: ['диаграмма', 'график', 'радар', 'круг', 'пончик'],
   sandbox: 'radar-gfo3qs',
   status: 'stable',
 });
