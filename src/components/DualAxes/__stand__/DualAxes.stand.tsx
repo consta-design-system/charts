@@ -5,6 +5,7 @@ export default createStand({
   id: 'DualAxes',
   group: 'components',
   description: 'Разные ряды и типы данных.',
+  alias: ['диаграмма', 'график', 'линия', 'линии', 'столбец', 'столбцы'],
   version: '0.1.1',
   sandbox: 'dualaxes-qcqymo',
   status: 'stable',

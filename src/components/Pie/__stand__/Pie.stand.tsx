@@ -6,6 +6,7 @@ export default createStand({
   group: 'components',
   description: 'Круговая диаграмма.',
   version: '0.1.0',
+  alias: ['диаграмма', 'график', 'пирог', 'круг', 'пончик'],
   sandbox: 'pie-gpb4lr',
   status: 'stable',
 });
