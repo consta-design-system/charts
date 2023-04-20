@@ -1,4 +1,4 @@
-import { createConfig } from '@consta/stand';
+import { createConfig, ListCardBig, ListCardList } from '@consta/stand';
 
 import image from './ConstaImage.png';
 
@@ -13,11 +13,12 @@ export const { createStand } = createConfig({
     {
       title: 'Компоненты',
       id: 'components',
-      view: 'card',
+      renderList: ListCardBig,
     },
     {
       title: 'Hooks',
       id: 'hooks',
+      renderList: ListCardList,
     },
   ],
   group: 'Библиотеки',
