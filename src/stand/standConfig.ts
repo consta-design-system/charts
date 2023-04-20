@@ -20,10 +20,10 @@ export const { createStand } = createConfig({
       id: 'hooks',
     },
   ],
-  group: 'Основные библиотеки',
+  group: 'Библиотеки',
   image,
   description:
-    'Диаграммы и графики из библиотеки G2Plot с тематизацией для Consta.',
+    'Диаграммы и графики из библиотеки G2Plot с тематизацией для Consta',
   repositoryUrl: 'https://github.com/consta-design-system/charts',
   order: 20,
 });
