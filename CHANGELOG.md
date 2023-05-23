@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.7.2 (23/05/2023)
+Запускать локальный сервер разработки и сборку пакетов теперь можно и на ОС Windows.
+
+---
+
+- [chore: configure build for windows (#77)](https://github.com/consta-design-system/charts/commit/830af5e3b53c0eae4d58f85e51cd27fb25110a33) - [@gizeasy](https://github.com/gizeasy)
+- [docs: edit stand config](https://github.com/consta-design-system/charts/commit/ae9a88c4559945d759ab46efd89afd012fe5ae38) - [@gizeasy](https://github.com/gizeasy)
+- [docs: edit stand group](https://github.com/consta-design-system/charts/commit/80c3ec08479d57d1863212ba26d57b290a30cb6f) - [@gizeasy](https://github.com/gizeasy)
+- [chore: update @consta/stand](https://github.com/consta-design-system/charts/commit/2f8dd3dcb196fdc2a8626507b2aeeab86f558bdc) - [@gizeasy](https://github.com/gizeasy)
+- [feat(Charts): add aliases (#76)](https://github.com/consta-design-system/charts/commit/e251e0961f6a0494906fa046a0300232d78df660) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.7.1 (08/12/2022)
 Исправленные несколько багов, доработана документация
 
