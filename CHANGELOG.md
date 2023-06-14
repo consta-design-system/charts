@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.7.3 (14/06/2023)
+Устранили ошибку с предупреждением об устарелости `ReactDOM.render` на `React 18`
+
+---
+
+- [fix(Charts): fix render for 18 react (#78)](https://github.com/consta-design-system/charts/commit/82e3fcebce61b2ca1447becff59c312ef72d8d25) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.7.2 (23/05/2023)
 Запускать локальный сервер разработки и сборку пакетов теперь можно и на ОС Windows.
 
