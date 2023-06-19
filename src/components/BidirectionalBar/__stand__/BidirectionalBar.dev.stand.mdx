@@ -1,0 +1,152 @@
+import { MdxMenu } from '@consta/stand';
+import {
+  RemadeInfo,
+  RemadeTableInfo,
+} from '../../../stand/components/RemadeInfo/RemadeInfo';
+import { BidirectionalBarExample } from './examples/BidirectionalBarExample/BidirectionalBarExample';
+import { BidirectionalBarLayoutExample } from './examples/BidirectionalBarLayoutExample/BidirectionalBarLayoutExample';
+
+```tsx
+import { BidirectionalBar } from '@consta/charts/BidirectionalBar';
+```
+
+<MdxMenu>
+
+- [Данные](#данные)
+- [Ориентация](#ориентация)
+- [Свойства](#свойства)
+- [Примеры](#примеры)
+
+</MdxMenu>
+
+## Данные
+
+Массив с объектами для сравнения передаются в параметре `data`.
+
+```tsx
+const data: Item[] = [
+  {
+    name: 'Петя',
+    value1: 13.4,
+    value2: 12.3,
+  },
+  ...{
+    name: 'Саша',
+    value1: 165.2,
+    value2: 72.9,
+  },
+];
+```
+
+За поле, по которому будет производиться групировка значений для сравнения, отвечает свойство `xField`.
+
+Поля по которым будут производиться сравнения определяются в свойстве `yField`.
+
+```tsx
+export const BidirectionalBarExample = () => {
+  return (
+    <BidirectionalBar
+      data={data}
+      xField="name"
+      yField={['value1', 'value2']}
+      style={{ height: 500, padding: 'auto' }}
+    />
+  );
+};
+```
+
+<BidirectionalBarExample />
+
+## Ориентация
+
+График имеет два вида ориентация: вертикальную и горизонтальную. Ориентация указывается через свойство `layout`.
+
+```tsx
+<BidirectionalBar data={data} xField="name" yField={['value1', 'value2']} layout="vertical" />
+<BidirectionalBar data={data} xField="name" yField={['value1', 'value2']} layout="horizontal" />
+```
+
+<BidirectionalBarLayoutExample />
+
+## Свойства
+
+<RemadeTableInfo apiUrl="https://charts.ant.design/en/api/plots/bidirectional-bar" />
+
+| Свойство                | Тип и значения                              | По умолчанию | Описание                                |
+| ----------------------- | ------------------------------------------- | ------------ | --------------------------------------- |
+| [`data`](#данные)       | `ITEM[]`                                    | -            | Массив с информацией о данных сравнения |
+| [`xField`](#данные)     | `string`                                    | -            | Поле с по которым данные сортируются    |
+| [`yField`](#данные)     | `['string', 'string']`                      | -            | Поля по которым происходит сравнение    |
+| [`layout`](#ориентация) | `vertical` <code>&#124;</code> `horizontal` | -            | Ориентация графика                      |
+| `className`             | `string`                                    | -            | Дополнительный CSS-класс компонента     |
+
+### Примеры
+
+<BidirectionalBarExample />
+
+```tsx
+type Item = {
+  name: string;
+  value1: number;
+  value2: number;
+};
+
+const data: Item[] = [
+  {
+    name: 'Петя',
+    value1: 13.4,
+    value2: 12.3,
+  },
+  {
+    name: 'Вася',
+    value1: 14.4,
+    value2: 6.3,
+  },
+  {
+    name: 'Аня',
+    value1: 18.4,
+    value2: 8.3,
+  },
+  {
+    name: 'Леша',
+    value1: 34.4,
+    value2: 13.8,
+  },
+  {
+    name: 'Андрей',
+    value1: 44.4,
+    value2: 19.5,
+  },
+  {
+    name: 'Максим',
+    value1: 24.4,
+    value2: 18.8,
+  },
+  {
+    name: 'Света',
+    value1: 54.4,
+    value2: 24.7,
+  },
+  {
+    name: 'Настя',
+    value1: 104.4,
+    value2: 5.3,
+  },
+  {
+    name: 'Саша',
+    value1: 165.2,
+    value2: 72.9,
+  },
+];
+
+export const BidirectionalBarExample = () => {
+  return (
+    <BidirectionalBar
+      data={data}
+      xField="name"
+      yField={['value1', 'value2']}
+      style={{ height: 500, padding: 'auto' }}
+    />
+  );
+};
+```

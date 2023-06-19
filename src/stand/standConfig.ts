@@ -1,6 +1,7 @@
 import { createConfig, ListCardBig, ListCardList } from '@consta/stand';
 
 import image from './ConstaImage.png';
+import { StandPageDecoration as standPageDecoration } from './standPageDecoration';
 
 export const { createStand } = createConfig({
   title: 'Consta Сharts',
@@ -23,6 +24,7 @@ export const { createStand } = createConfig({
   ],
   group: 'Библиотеки',
   image,
+  standPageDecoration,
   description:
     'Диаграммы и графики из библиотеки G2Plot с тематизацией для Consta',
   repositoryUrl: 'https://github.com/consta-design-system/charts',
