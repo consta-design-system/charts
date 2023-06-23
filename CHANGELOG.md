@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.8.0 (23/06/2023)
+Добавили график `BidirectionalBar`
+
+---
+
+- [feat(BidirectionalBar): add new chart (#79)](https://github.com/consta-design-system/charts/commit/a912e09a4c0f49b4750b36def9a47f0b5dd09994) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.7.3 (14/06/2023)
 Устранили ошибку с предупреждением об устарелости `ReactDOM.render` на `React 18`
 
