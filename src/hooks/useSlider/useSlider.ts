@@ -43,7 +43,7 @@ export const useSlider: UseSlider = (props) => {
       fontWeight: 400,
       fontFamily: themeVars.font['--font-primary'],
       lineHeight: 12,
-      stroke: '#002033',
+      fill: themeVars.color.primary['--color-typo-secondary'],
       opacity: 0.6,
     },
   };
