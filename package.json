@@ -51,7 +51,7 @@
     "@consta/uikit": ">= 3.9.3"
   },
   "dependencies": {
-    "@antv/g2plot": "2.4.7"
+    "@antv/g2plot": "2.4.31"
   },
   "config": {
     "commitizen": {
