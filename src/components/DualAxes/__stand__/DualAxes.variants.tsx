@@ -40,7 +40,6 @@ const Variants = () => {
         // geometry,
         color: colors[0],
         smooth,
-        seriesField: 'value',
         connectNulls: true,
         isGroup,
         isPercent,
@@ -48,7 +47,10 @@ const Variants = () => {
         isStack,
         legend: getLegend({ layout: 'horizontal', position: 'top-right' }),
         point: {
-          size: pointSize,
+          size: pointSize || 1,
+          style: {
+            stroke: 'none',
+          },
         },
       },
       {
@@ -56,14 +58,16 @@ const Variants = () => {
         color: colors[1],
         smooth,
         connectNulls: true,
-        seriesField: 'count',
         isGroup,
         isPercent,
         isRange,
-        legend: getLegend({ layout: 'horizontal', position: 'top-right' }),
         isStack,
+        legend: getLegend({ layout: 'horizontal', position: 'top-right' }),
         point: {
-          size: pointSize,
+          size: pointSize || 1,
+          style: {
+            stroke: 'none',
+          },
         },
       },
     ],
