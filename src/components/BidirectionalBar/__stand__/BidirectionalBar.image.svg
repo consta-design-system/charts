@@ -1,0 +1,40 @@
+<svg
+  width="200"
+  height="120"
+  viewBox="0 0 200 120"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g clip-path="url(#clip0_4293_32369)">
+    <rect width="200" height="120" rx="4" fill="var(--color-bg-default)" />
+    <path
+      d="M100 25L100 94"
+      stroke="var(--color-control-typo-ghost)"
+      stroke-opacity="0.08"
+      stroke-width="2"
+    />
+    <path
+      d="M179 25L179 94"
+      stroke="var(--color-control-typo-ghost)"
+      stroke-opacity="0.08"
+      stroke-width="2"
+      stroke-dasharray="4 4"
+    />
+    <path
+      d="M21 25L21 94"
+      stroke="var(--color-control-typo-ghost)"
+      stroke-opacity="0.08"
+      stroke-width="2"
+      stroke-dasharray="4 4"
+    />
+    <rect x="100" y="32" width="73" height="20" fill="var(--color-bg-system)" />
+    <path d="M100 32H34V52H100V32Z" fill="var(--color-control-bg-primary)" />
+    <rect x="100" y="66" width="46" height="20" fill="var(--color-bg-system)" />
+    <path d="M100 66H68V86H100V66Z" fill="var(--color-control-bg-primary)" />
+  </g>
+  <defs>
+    <clipPath id="clip0_4293_32369">
+      <rect width="200" height="120" rx="3" fill="var(--color-bg-default)" />
+    </clipPath>
+  </defs>
+</svg>
