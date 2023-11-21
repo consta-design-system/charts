@@ -15,7 +15,7 @@ export const RemadeInfo: React.FC<{
   const { commponentName, apiUrl } = props;
   return (
     <Informer className={cnRemadeInfo()} status="system" view="bordered">
-      <Text>
+      <Text size="m" view="primary" lineHeight="m">
         Это компонент{' '}
         <Text as="span" weight="bold">
           {commponentName}
@@ -42,7 +42,12 @@ export const RemadeInfo: React.FC<{
         </Text>{' '}
         и полностью проксировали API.
       </Text>
-      <Text style={{ marginTop: 'var(--space-m)' }}>
+      <Text
+        size="m"
+        view="primary"
+        lineHeight="m"
+        style={{ marginTop: 'var(--space-m)' }}
+      >
         Здесь описаны только основные свойства, подробности — в{' '}
         <Text
           className={cnRemadeInfo('Link')}
@@ -63,7 +68,7 @@ export const RemadeTableInfo: React.FC<{ apiUrl: string }> = (props) => {
   const { apiUrl } = props;
   return (
     <Informer className={cnRemadeInfo()} status="system" view="bordered">
-      <Text>
+      <Text size="m" view="primary" lineHeight="m">
         Здесь описаны только основные свойства компонента.{' '}
         <Text
           className={cnRemadeInfo('Link')}
