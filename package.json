@@ -1,6 +1,6 @@
 {
   "name": "@consta/charts",
-  "version": "0.8.0",
+  "version": "1.0.0-beta.1",
   "scripts": {
     "postinstall": "yarn install-peers && husky install",
     "tsc-dry-run": "tsc --noEmit",
@@ -181,7 +181,7 @@
     "terser-webpack-plugin": "^5.2.5",
     "ts-jest": "^28.0.7",
     "ts-loader": "^9.2.8",
-    "ttypescript": "^1.5.13",
+    "ttypescript": "^1.5.15",
     "typescript": "^4.6.3",
     "typescript-eslint-parser": "^22.0.0",
     "typescript-transform-paths": "^3.3.1",
