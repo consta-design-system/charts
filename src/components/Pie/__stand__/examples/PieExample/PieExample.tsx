@@ -47,7 +47,9 @@ export function PieExample() {
         },
         content: {
           customHtml: (_v, _v2, v3, v4) => (
-            <Text size="3xl">{v3?.value || sum(v4)}</Text>
+            <Text size="3xl" view="primary" lineHeight="m">
+              {v3?.value || sum(v4)}
+            </Text>
           ),
         },
       }}
