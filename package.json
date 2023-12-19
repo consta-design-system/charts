@@ -1,6 +1,6 @@
 {
   "name": "@consta/charts",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "scripts": {
     "postinstall": "yarn install-peers && husky install",
     "tsc-dry-run": "tsc --noEmit",
@@ -49,7 +49,7 @@
   ],
   "peerDependencies": {
     "@antv/g2plot": "^2.4.31",
-    "@consta/uikit": "^5.0.0-beta.1"
+    "@consta/uikit": "^5.0.0"
   },
   "config": {
     "commitizen": {
