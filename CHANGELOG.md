@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.0 (19/12/2023)
+Самое важное:
+- Сторонние зависимости перенесены в `peerDependencies`. Установить их вы сможете самостоятельно, полный список доступен [здесь](https://github.com/consta-design-system/charts/blob/master/package.json) 
+- Добавлена поддержка `@consta/uikit` `v5.0.0`
+
+---
+
+- [chore(deps): update](https://github.com/consta-design-system/charts/commit/bc3c3be8b747ae5ea06a3b70d423237c336594c6) - [@gizeasy](https://github.com/gizeasy)
+- [chore: update uikit version (#89)](https://github.com/consta-design-system/charts/commit/51a1f05438e19b9c2bc6808051d3c58ba4cce117) - [@gizeasy](https://github.com/gizeasy)
+- [docs(BidirectionalBar): add image for stand (#88)](https://github.com/consta-design-system/charts/commit/b7badfd924277a8fbeb5b3a4ebd028f8f455f093) - [@N1MBER](https://github.com/N1MBER)
+- [chore(utils): added status classNames (#87)](https://github.com/consta-design-system/charts/commit/a249087aed9832d18945f39dde856cdf9dce938e) - [@N1MBER](https://github.com/N1MBER)
+- [docs(DualAxed): fix variants (#85)](https://github.com/consta-design-system/charts/commit/145a57ee58d907f1abcb6cfcf6791bca7637fd8d) - [@N1MBER](https://github.com/N1MBER)
+- [chore: edit deploy config and codeowners (#83)](https://github.com/consta-design-system/charts/commit/ec1470258b21b22998a6d5552df9eae0429aa935) - [@gizeasy](https://github.com/gizeasy)
+- [chore(Charts): update g2plot version (#81)](https://github.com/consta-design-system/charts/commit/735895170ea0e03690cabfb91f3810d02fae6a84) - [@N1MBER](https://github.com/N1MBER)
+
+--------------------
+
 ## v0.8.0 (23/06/2023)
 Добавили график `BidirectionalBar`
 
