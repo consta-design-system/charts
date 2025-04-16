@@ -33,7 +33,7 @@ jobs:
           echo "::set-output name=cache_dir::$(yarn cache dir)"
 
       - name: Настройка кэширования yarn
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ steps.yarn-setup.outputs.cache_dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
