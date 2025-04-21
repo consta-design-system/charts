@@ -1,4 +1,4 @@
-import { MdxMenu } from '@consta/stand';
+import { MdxMenu, MdxInformer } from '@consta/stand';
 import {
   RemadeInfo,
   RemadeTableInfo,
@@ -119,7 +119,11 @@ export function ColumnExampleSeriesField() {
 
 Чтобы собирать столбик из нескольких частей, добавьте `isStack`. Укажите, по какому параметру объединять значения в один столбик, в свойстве `seriesField`.
 
-> Если не добавлять `isStack`, объединённые части столбиков накладываются друг на друга
+<MdxInformer status="warning">
+
+Если не добавлять `isStack`, объединённые части столбиков накладываются друг на друга.
+
+</MdxInformer>
 
 <ColumnExample />
 
