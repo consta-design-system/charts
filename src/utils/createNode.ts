@@ -8,11 +8,11 @@ export const createNode = (children: React.ReactNode, type?: string) => {
   if (type === 'tooltip') {
     monthPoint.className = 'g2-tooltip';
   }
-  ReactDOM.render(children as React.ReactElement, monthPoint);
+
   if (createRoot) {
     const container = createRoot(monthPoint);
     container.render(children);
-  } else {
+  } else if (ReactDOM && ReactDOM.render) {
     ReactDOM.render(children as React.ReactElement, monthPoint);
   }
   return monthPoint;
