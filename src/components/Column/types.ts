@@ -23,4 +23,4 @@ export type ColumnProps<ITEM> = Omit<G2plotColumnProps, ExcludeProps> & {
 
 export type ColumnComponentType = <ITEM>(
   props: ColumnProps<ITEM>,
-) => React.ReactElement | null;
+) => React.ReactNode | null;

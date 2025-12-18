@@ -13,7 +13,7 @@ import { ChartProps } from '##/utils/types/ChartProps';
 
 export type WaterfallProps = Omit<ChartProps<G2plotWaterfallProps>, 'label'>;
 
-type Waterfall = (props: WaterfallProps) => React.ReactElement | null;
+type Waterfall = (props: WaterfallProps) => React.ReactNode | null;
 
 export const Waterfall: Waterfall = React.forwardRef((props, ref) => {
   const {

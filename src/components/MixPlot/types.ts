@@ -12,4 +12,4 @@ export type MixPlotProps<ITEM> = Omit<MixOptions, ExcludeProps> & {
 
 export type MixPlotComponentType = <ITEM>(
   props: MixPlotProps<ITEM>,
-) => React.ReactElement | null;
+) => React.ReactNode | null;
