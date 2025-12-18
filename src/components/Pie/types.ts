@@ -55,4 +55,4 @@ export type PieProps<ITEM> = Omit<G2plotPieProps, ExcludeProps> & {
 
 export type PieComponentType = <ITEM>(
   props: PieProps<ITEM>,
-) => React.ReactElement | null;
+) => React.ReactNode | null;

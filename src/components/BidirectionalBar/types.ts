@@ -15,4 +15,4 @@ export type BidirectionalBarProps<ITEM> = Omit<
 
 export type BidirectionalBarComponentType = <ITEM>(
   props: BidirectionalBarProps<ITEM>,
-) => React.ReactElement | null;
+) => React.ReactNode | null;

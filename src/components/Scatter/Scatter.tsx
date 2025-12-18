@@ -12,7 +12,7 @@ import { ChartProps } from '##/utils/types/ChartProps';
 
 export type ScatterProps = ChartProps<G2plotScatterProps>;
 
-type Scatter = (props: ScatterProps) => React.ReactElement | null;
+type Scatter = (props: ScatterProps) => React.ReactNode | null;
 
 export const Scatter: Scatter = React.forwardRef((props, ref) => {
   const {
