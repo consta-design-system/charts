@@ -12,7 +12,7 @@ import { ChartProps } from '##/utils/types/ChartProps';
 
 export type RadarProps = Omit<ChartProps<G2plotRadarProps>, 'label'>;
 
-type Radar = (props: RadarProps) => React.ReactElement | null;
+type Radar = (props: RadarProps) => React.ReactNode | null;
 
 export const Radar: Radar = React.forwardRef((props, ref) => {
   const {

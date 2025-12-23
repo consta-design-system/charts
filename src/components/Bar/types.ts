@@ -23,4 +23,4 @@ export type BarProps<ITEM> = Omit<G2plotBarProps, ExcludeProps> & {
 
 export type BarComponentType = <ITEM>(
   props: BarProps<ITEM>,
-) => React.ReactElement | null;
+) => React.ReactNode | null;

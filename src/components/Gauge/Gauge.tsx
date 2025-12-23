@@ -12,7 +12,7 @@ import { ChartProps } from '##/utils/types/ChartProps';
 
 export type GaugeProps = ChartProps<G2plotGaugeProps>;
 
-type Gauge = (props: GaugeProps) => React.ReactElement | null;
+type Gauge = (props: GaugeProps) => React.ReactNode | null;
 
 export const Gauge: Gauge = React.forwardRef((props, ref) => {
   const {
