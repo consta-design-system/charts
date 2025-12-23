@@ -14,4 +14,4 @@ export type DualAxesProps = Omit<G2plotDualAxesProps, ExcludeProps> & {
 
 export type DualAxesComponentType = (
   props: DualAxesProps,
-) => React.ReactElement | null;
+) => React.ReactNode | null;

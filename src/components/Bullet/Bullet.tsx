@@ -13,7 +13,7 @@ import { ChartProps } from '##/utils/types/ChartProps';
 
 export type BulletProps = ChartProps<G2plotBulletProps>;
 
-type Bullet = (props: BulletProps) => React.ReactElement | null;
+type Bullet = (props: BulletProps) => React.ReactNode | null;
 
 export const Bullet: Bullet = React.forwardRef((props, ref) => {
   const {

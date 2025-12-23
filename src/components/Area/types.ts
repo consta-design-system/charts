@@ -30,4 +30,4 @@ export type AreaProps<ITEM> = Omit<G2plotAreaProps, ExcludeProps> & {
 
 export type AreaComponentType = <ITEM>(
   props: AreaProps<ITEM>,
-) => React.ReactElement | null;
+) => React.ReactNode | null;

@@ -12,7 +12,7 @@ import { ChartProps } from '##/utils/types/ChartProps';
 
 export type HistogramProps = ChartProps<G2plotHistogramProps>;
 
-type Histogram = (props: HistogramProps) => React.ReactElement | null;
+type Histogram = (props: HistogramProps) => React.ReactNode | null;
 
 export const Histogram: Histogram = React.forwardRef((props, ref) => {
   const {

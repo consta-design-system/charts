@@ -38,7 +38,7 @@ type SomeChartProps<ITEM> = Omit<SomeChartOptions, ExcludeProps> & {
   tooltip?: Tooltip<ITEM>
 } & ContainerProps
 
-type SomeChartComponentType = <ITEM>(props: SomeChartProps<ITEM>) => React.ReactElement | null
+type SomeChartComponentType = <ITEM>(props: SomeChartProps<ITEM>) => React.ReactNode | null
 
 export const SomeChart: SomeChartComponentType = React.forwardRef((props, ref) => {
   const {

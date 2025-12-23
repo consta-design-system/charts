@@ -25,4 +25,4 @@ export type LineProps<ITEM> = Omit<G2plotLineProps, ExcludeProps> & {
 
 export type LineComponentType = <ITEM>(
   props: LineProps<ITEM>,
-) => React.ReactElement | null;
+) => React.ReactNode | null;
