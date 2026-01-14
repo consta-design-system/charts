@@ -1,4 +1,4 @@
-import { MdxMenu } from '@consta/stand';
+import { MdxMenu, MdxTabs, MdxInformer } from '@consta/stand';
 import {
   RemadeInfo,
   RemadeTableInfo,
@@ -8,25 +8,57 @@ import { DualAxesExampleStackedColumnLine } from './examples/DualAxesExampleStac
 import { DualAxesExampleDualLineWithStyle } from './examples/DualAxesExampleDualLineWithStyle/DualAxesExampleDualLineWithStyle';
 import { DualAxesExampleSlider } from './examples/DualAxesExampleSlider/DualAxesExampleSlider';
 
+<MdxMenu>
+
+- [Обзор](#обзор)
+- [Импорт](#импорт)
+- [Свойства](#свойства)
+- [Содержимое](#содержимое)
+  - [Две линии](#две-линии)
+  - [Две линии со стилизацией](#две-линии-со-стилизацией)
+  - [Линия и столбцы](#линия-и-столбцы)
+- [Масштабирование](#масштабирование)
+- [Пример использования](#пример-использования)
+
+</MdxMenu>
+
+## Обзор
+
+Компонент `DualAxes` позволяет отображать два набора данных на одном графике с двумя осями Y. Поддерживает комбинации линий, столбцов, стилизацию и масштабирование с помощью слайдера.
+
+<MdxInformer status="normal">
+
+Здесь описаны только основные свойства компонента. [Посмотреть все свойства](https://g2plot.antv.vision/en/docs/api/plots/dualaxes).
+
+</MdxInformer>
+
+## Импорт
+
 ```tsx
 import { DualAxes } from '@consta/charts/DualAxes';
 ```
 
-<MdxMenu>
+## Свойства
 
-- [Две линии](#две-линии)
-- [Две линии со стилизацией](#две-линии-со-стилизацией)
-- [Линия и столбцы](#линия-и-столбцы)
-- [Масштабирование](#масштабирование)
-- [Список свойств](#свойства)
+| Свойство                                       | Тип                | По умолчанию | Описание                                                                                                                          |
+| ---------------------------------------------- | ------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| [`data`](#содержимое)                          | `Data[]`           | -            | Двумерный массив данных: `[данныеДляЛевойОсиY, данныеДляПравойОсиY]`                                                              |
+| [`xField`](#содержимое)                        | `string`           | -            | Поле для горизонтальной оси X                                                                                                     |
+| [`yField`](#содержимое)                        | `[string, string]` | -            | Массив полей для вертикальных осей Y (левая и правая)                                                                             |
+| [`geometryOptions`](#две-линии-со-стилизацией) | `GeometryOption[]` | -            | Опции геометрии и стилизации для каждого набора данных                                                                            |
+| [`slider`](#масштабирование)                   | `object`           | -            | Объект конфигурации слайдера. Стилизация доступна через хук [useSlider](##LIBS.LIB.STAND/lib:charts/stand:hooks-useslider-stable) |
+| `className?`                                   | `string`           | -            | Дополнительный CSS-класс компонента                                                                                               |
 
-</MdxMenu>
+## Содержимое
 
-Создайте объект с данными для графика и передайте в свойстве `data`. Объект представляет собой двумерный массив в формате:
+Данные передаются в свойство `data` как двумерный массив: `[левыйНаборДанных, правыйНаборДанных]`.  
+Каждый набор — массив объектов с общим полем для оси X (`xField`) и отдельными полями для осей Y (`yField`).
 
-`[объект с данными для левой оси Y, объект с данными для правой оси Y]`
+### Две линии
 
-## Две линии
+<MdxTabs>
+
+<DualAxesExampleDualLine />
 
 ```tsx
 export const data = [
@@ -48,9 +80,15 @@ export function DualAxesExampleDualLine() {
 }
 ```
 
-<DualAxesExampleDualLine />
+</MdxTabs>
 
 ### Две линии со стилизацией
+
+С помощью `geometryOptions` можно задать тип геометрии, цвет, толщину линий, точки и подписи.
+
+<MdxTabs>
+
+<DualAxesExampleDualLineWithStyle />
 
 ```tsx
 export const data = [
@@ -116,9 +154,15 @@ export function DualAxesExampleDualLineWithStyle() {
 }
 ```
 
-<DualAxesExampleDualLineWithStyle />
+</MdxTabs>
 
-## Линия и столбцы
+### Линия и столбцы
+
+Комбинирование разных типов геометрии: столбцы с группировкой и линия.
+
+<MdxTabs>
+
+<DualAxesExampleStackedColumnLine />
 
 ```tsx
 const uvBillData = [
@@ -163,11 +207,16 @@ export function DualAxesExampleStackedColumnLine() {
 }
 ```
 
-<DualAxesExampleStackedColumnLine />
+</MdxTabs>
 
-### Масштабирование
+## Масштабирование
 
-Если график не помещается в контейнер по ширине, вы можете добавить к нему слайдер — элемент, который позволяет перемещаться между частями графика. Описать объект со слайдером можно в свойстве `slider`, стилизовать его — с помощью хука [useSlider](##LIBS.LIB.STAND/lib:charts/stand:hooks-useslider-stable).
+Если график не помещается по ширине, добавьте слайдер через свойство `slider`.  
+Свойства `start` и `end` задают видимый диапазон (значения от 0 до 1).
+
+<MdxTabs>
+
+<DualAxesExampleSlider />
 
 ```tsx
 export function DualAxesExampleSlider() {
@@ -186,16 +235,20 @@ export function DualAxesExampleSlider() {
 }
 ```
 
-<DualAxesExampleSlider />
+</MdxTabs>
 
-## Свойства
+## Пример использования
 
-<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/dualaxes" />
+```tsx
+import { DualAxes } from '@consta/charts/DualAxes';
 
-| Свойство                     | Тип и значения | По умолчанию | Описание                                                                                                                            |
-| ---------------------------- | -------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `data`                       | `Data[]`       | -            | Объект с информацией для графика. Двумерный массив в формате: [объект с данными для левой оси Y, объект с данными для правой оси Y] |
-| `xField`                     | `string`       | -            | Поле с данными для отображения на горизонтальной оси                                                                                |
-| `yField`                     | `string`       | -            | Поле с данными для отображения на вертикальной оси                                                                                  |
-| [`slider`](#масштабирование) | `object`       | -            | Объект с форматом данных для слайдера. Хук для стилизации — [useSlider](##LIBS.LIB.STAND/lib:charts/stand:hooks-useslider-stable)   |
-| `className`                  | `string`       | -            | Дополнительный CSS-класс компонента                                                                                                 |
+const data = [
+  { year: '1991', value: 3, count: 10 },
+  { year: '1992', value: 4, count: 4 },
+  // ... другие точки
+];
+
+const App = () => (
+  <DualAxes data={[data, data]} xField="year" yField={['value', 'count']} />
+);
+```
