@@ -255,35 +255,65 @@ const dataColor = [
 <ScatterExamplePseudo />
 
 ```tsx
-<Scatter
-  style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
-  data={dataColor}
-  xField="temperature"
-  yField="ufo"
-  colorField="place"
-  color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
-  size={[4, 20]}
-  sizeField="ufo"
-  shape="circle"
-  pointStyle={{
-    fillOpacity: 1,
-  }}
-  meta={{
-    temperature: {
-      alias: 'Воздух',
-      formatter: (v) => {
-        return `${v}°`;
-      },
-    },
-    ufo: {
-      alias: 'Видели НЛО',
-      formatter: (v) => {
-        return `${v} раз`;
-      },
-    },
-    place: { alias: 'Город' },
-  }}
-/>
+export function ScatterExamplePseudo() {
+  const vars = useThemeVars();
+
+  const colors: Record<string, string> = {
+    Asia: vars.color.primary['--color-bg-success'],
+    Americas: vars.color.primary['--color-bg-warning'],
+    Oceania: vars.color.primary['--color-bg-caution'],
+    Europe: vars.color.primary['--color-bg-alert'],
+    Africa: vars.color.primary['--color-bg-normal'],
+  };
+
+  return (
+    <Scatter
+      data={data}
+      xField="change in female rate"
+      appendPadding={30}
+      yField="change in male rate"
+      sizeField="pop"
+      color={Object.keys(colors).map((key) => colors[key])}
+      legend={getLegend({ position: 'top-left', layout: 'horizontal' })}
+      renderer="svg"
+      size={[4, 30]}
+      shape="circle"
+      colorField="continent"
+      meta={{
+        'pop': {
+          alias: 'население',
+          formatter: (value) => `${(value / 1000000).toFixed(2)} млн`,
+        },
+        'change in female rate': {
+          alias: 'занятость женщин',
+          formatter: (value) => value.toFixed(2),
+        },
+        'change in male rate': {
+          alias: 'занятость мужчин',
+          formatter: (value) => value.toFixed(2),
+        },
+        'continent': { alias: 'континент' },
+      }}
+      pointStyle={{
+        fillOpacity: 1,
+      }}
+      xAxis={{
+        grid: {
+          line: {
+            style: {
+              stroke: vars.color.primary['--color-bg-system'],
+            },
+          },
+        },
+        line: {
+          style: {
+            stroke: vars.color.primary['--color-bg-system'],
+          },
+        },
+      }}
+    />
+  );
+}
 ```
 
 </MdxTabs>
