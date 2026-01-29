@@ -1,4 +1,4 @@
-import { MdxMenu } from '@consta/stand';
+import { MdxMenu, MdxInformer, MdxTabs } from '@consta/stand';
 import {
   RemadeInfo,
   RemadeTableInfo,
@@ -6,31 +6,67 @@ import {
 import { BidirectionalBarExample } from './examples/BidirectionalBarExample/BidirectionalBarExample';
 import { BidirectionalBarLayoutExample } from './examples/BidirectionalBarLayoutExample/BidirectionalBarLayoutExample';
 
+<MdxMenu>
+
+- [Обзор](#обзор)
+- [Импорт](#импорт)
+- [Свойства](#свойства)
+- [Содержимое](#содержимое)
+  - [Данные](#данные)
+  - [Поля сравнения](#поля-сравнения)
+- [Внешний вид](#внешний-вид)
+  - [Ориентация](#ориентация)
+- [Пример использования](#пример-использования)
+
+</MdxMenu>
+
+## Обзор
+
+Компонент `BidirectionalBar` отображает двустороннюю столбчатую диаграмму для визуального сравнения двух наборов значений по категориям. Подходит для демонстрации положительных и отрицательных отклонений, сравнения двух метрик или симметричного представления данных.
+
+<MdxInformer status="normal">
+
+Полный список свойств и возможностей доступен в [официальной документации](https://charts.ant.design/en/api/plots/bidirectional-bar).
+
+</MdxInformer>
+
+## Импорт
+
 ```tsx
 import { BidirectionalBar } from '@consta/charts/BidirectionalBar';
 ```
 
-<MdxMenu>
+## Свойства
 
-- [Данные](#данные)
-- [Ориентация](#ориентация)
-- [Свойства](#свойства)
-- [Примеры](#примеры)
+| Свойство                    | Тип                          | По умолчанию | Описание                                |
+| --------------------------- | ---------------------------- | ------------ | --------------------------------------- |
+| [`data`](#данные)           | `Item[]`                     | —            | Массив объектов с данными для сравнения |
+| [`xField`](#поля-сравнения) | `string`                     | —            | Поле для группировки (категория)        |
+| [`yField`](#поля-сравнения) | `[string, string]`           | —            | Пара полей для сравниваемых значений    |
+| [`layout?`](#ориентация)    | `'vertical' \| 'horizontal'` | —            | Ориентация графика                      |
+| `className?`                | `string`                     | —            | Дополнительный CSS-класс                |
 
-</MdxMenu>
+## Содержимое
 
-## Данные
+### Данные
 
-Массив с объектами для сравнения передаются в параметре `data`.
+Основные данные передаются в свойстве `data` как массив объектов. Каждый объект должен содержать поле для группировки (обычно строковое) и два числовых поля для сравнения.
 
 ```tsx
+type Item = {
+  name: string;
+  value1: number;
+  value2: number;
+};
+
 const data: Item[] = [
   {
     name: 'Петя',
     value1: 13.4,
     value2: 12.3,
   },
-  ...{
+  // ...
+  {
     name: 'Саша',
     value1: 165.2,
     value2: 72.9,
@@ -38,9 +74,14 @@ const data: Item[] = [
 ];
 ```
 
-За поле, по которому будет производиться групировка значений для сравнения, отвечает свойство `xField`.
+### Поля сравнения
 
-Поля по которым будут производиться сравнения определяются в свойстве `yField`.
+- `xField` — имя поля, по которому происходит группировка (отображается по оси X в вертикальной ориентации или по оси Y в горизонтальной).
+- `yField` — массив из двух строк: имена полей с числовыми значениями для сравнения.
+
+<MdxTabs>
+
+<BidirectionalBarExample />
 
 ```tsx
 export const BidirectionalBarExample = () => {
@@ -55,32 +96,31 @@ export const BidirectionalBarExample = () => {
 };
 ```
 
-<BidirectionalBarExample />
+</MdxTabs>
 
-## Ориентация
+## Внешний вид
 
-График имеет два вида ориентация: вертикальную и горизонтальную. Ориентация указывается через свойство `layout`.
+### Ориентация
+
+Свойство `layout` управляет ориентацией графика:
+
+- `'vertical'` — вертикальные столбцы (по умолчанию).
+- `'horizontal'` — горизонтальные столбцы.
+
+<MdxTabs>
+
+<BidirectionalBarLayoutExample />
 
 ```tsx
 <BidirectionalBar data={data} xField="name" yField={['value1', 'value2']} layout="vertical" />
 <BidirectionalBar data={data} xField="name" yField={['value1', 'value2']} layout="horizontal" />
 ```
 
-<BidirectionalBarLayoutExample />
+</MdxTabs>
 
-## Свойства
+## Пример использования
 
-<RemadeTableInfo apiUrl="https://charts.ant.design/en/api/plots/bidirectional-bar" />
-
-| Свойство                | Тип и значения                              | По умолчанию | Описание                                |
-| ----------------------- | ------------------------------------------- | ------------ | --------------------------------------- |
-| [`data`](#данные)       | `ITEM[]`                                    | -            | Массив с информацией о данных сравнения |
-| [`xField`](#данные)     | `string`                                    | -            | Поле с по которым данные сортируются    |
-| [`yField`](#данные)     | `['string', 'string']`                      | -            | Поля по которым происходит сравнение    |
-| [`layout`](#ориентация) | `vertical` <code>&#124;</code> `horizontal` | -            | Ориентация графика                      |
-| `className`             | `string`                                    | -            | Дополнительный CSS-класс компонента     |
-
-### Примеры
+<MdxTabs>
 
 <BidirectionalBarExample />
 
@@ -150,3 +190,5 @@ export const BidirectionalBarExample = () => {
   );
 };
 ```
+
+</MdxTabs>
