@@ -235,34 +235,48 @@ export function ScatterExamplePseudo() {
 
   return (
     <Scatter
-      style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
       data={data}
-      xField="temperature"
-      yField="ufo"
-      colorField="place"
+      xField="change in female rate"
+      appendPadding={30}
+      yField="change in male rate"
+      sizeField="pop"
       color={Object.keys(colors).map((key) => colors[key])}
       legend={getLegend({ position: 'top-left', layout: 'horizontal' })}
       renderer="svg"
-      size={[4, 20]}
-      sizeField="ufo"
+      size={[4, 30]}
       shape="circle"
+      colorField="continent"
+      meta={{
+        'pop': {
+          alias: 'население',
+          formatter: (value) => `${(value / 1000000).toFixed(2)} млн`,
+        },
+        'change in female rate': {
+          alias: 'занятость женщин',
+          formatter: (value) => value.toFixed(2),
+        },
+        'change in male rate': {
+          alias: 'занятость мужчин',
+          formatter: (value) => value.toFixed(2),
+        },
+        'continent': { alias: 'континент' },
+      }}
       pointStyle={{
         fillOpacity: 1,
       }}
-      meta={{
-        temperature: {
-          alias: 'Воздух',
-          formatter: (v) => {
-            return `${v}°`;
+      xAxis={{
+        grid: {
+          line: {
+            style: {
+              stroke: vars.color.primary['--color-bg-system'],
+            },
           },
         },
-        ufo: {
-          alias: 'Видели НЛО',
-          formatter: (v) => {
-            return `${v} раз`;
+        line: {
+          style: {
+            stroke: vars.color.primary['--color-bg-system'],
           },
         },
-        place: { alias: 'Город' },
       }}
     />
   );

@@ -1,4 +1,4 @@
-import { MdxMenu } from '@consta/stand';
+import { MdxMenu, MdxInformer, MdxTabs } from '@consta/stand';
 import {
   RemadeInfo,
   RemadeTableInfo,
@@ -15,31 +15,61 @@ import {
   ScatterExamplePseudo,
 } from './examples/ScatterExample/ScatterExample';
 
+<MdxMenu>
+
+- [Обзор](#обзор)
+- [Импорт](#импорт)
+- [Свойства](#свойства)
+- [Данные](#данные)
+- [Внешний вид точек](#внешний-вид-точек)
+  - [Цвет](#цвет)
+  - [Размер](#размер)
+  - [Форма](#форма)
+- [Тултип](#тултип)
+- [Пример использования](#пример-использования)
+
+</MdxMenu>
+
+## Обзор
+
+Компонент `Scatter` отображает диаграмму рассеивания. Он позволяет визуализировать зависимость между двумя переменными, настраивать внешний вид точек как глобально, так и в зависимости от данных точки. При наведении на точку появляется тултип с информацией.
+
+## Импорт
+
 ```tsx
 import { Scatter } from '@consta/charts/Scatter';
 ```
 
-<MdxMenu>
+## Свойства
 
-- [Данные](#данные)
-- [Внешний вид точек](#внешний-вид-точек)
-  - [Цвет](#цвет)
-  - [Форма](#форма)
-  - [Размер](#размер)
-- [Формат данных](#формат-данных)
-- [Список свойств](#свойства)
-- [Пример использования](#пример)
-
-</MdxMenu>
+| Свойство               | Тип                                                                      | По умолчанию | Описание                                             |
+| ---------------------- | ------------------------------------------------------------------------ | ------------ | ---------------------------------------------------- |
+| [`data`](#данные)      | `Record<string, unknown>[]`                                              | -            | Массив данных с информацией о точках                 |
+| [`xField`](#данные)    | `string`                                                                 | -            | Ключ поля для значений по горизонтальной оси         |
+| [`yField`](#данные)    | `string`                                                                 | -            | Ключ поля для значений по вертикальной оси           |
+| [`color`](#цвет)       | `string \| string[]`                                                     | -            | Цвет точек или набор цветов                          |
+| [`colorField`](#цвет)  | `string`                                                                 | -            | Ключ поля, от значения которого зависит цвет точки   |
+| [`size`](#размер)      | `number \| [number, number]`                                             | -            | Размер точек или диапазон размеров                   |
+| [`sizeField`](#размер) | `string`                                                                 | -            | Ключ поля, от значения которого зависит размер точки |
+| [`shape`](#форма)      | `string \| string[]`                                                     | -            | Форма точек или набор форм                           |
+| [`shapeField`](#форма) | `string`                                                                 | -            | Ключ поля, от значения которого зависит форма точки  |
+| [`meta`](#тултип)      | `Record<string, { alias?: string; formatter?: (v: unknown) => string }>` | -            | Настройки отображения данных в тултипе               |
+| `pointStyle?`          | `object`                                                                 | -            | Стили точек (например, прозрачность)                 |
+| `style?`               | `React.CSSProperties`                                                    | -            | Стили контейнера компонента                          |
+| `className?`           | `string`                                                                 | -            | Дополнительный CSS-класс                             |
 
 ## Данные
 
-Значения переменных, которые нужно показать на диаграмме, можно описать в массиве `data`.
+Передайте массив объектов в свойстве `data`. Каждый объект описывает одну точку.
 
-Например, так:
+Укажите ключи полей для осей в свойствах `xField` (горизонтальная ось) и `yField` (вертикальная ось).
+
+<MdxTabs>
+
+<ScatterExampleSimple />
 
 ```tsx
-data = [
+const data = [
   { x: 1, y: 2 },
   { x: 2, y: 3 },
   { x: 3, y: 4 },
@@ -49,33 +79,19 @@ data = [
   { x: 7, y: 8 },
   { x: 8, y: 9 },
 ];
+
+<Scatter data={data} xField="x" yField="y" />;
 ```
 
-Укажите, из какого массива брать данные, в свойстве `data`.
-
-Потом сообщите компоненту, какие элементы массива за какие значения отвечают:
-
-- в свойстве `xField` укажите название элемента с данными для горизонтальной оси,
-- в свойстве `yField` — название элемента с данными для вертикальной оси.
-
-```tsx
-<Scatter data={data} xField="x" yField="y" />
-```
-
-Что получилось:
-
-<ScatterExampleSimple />
+</MdxTabs>
 
 ## Внешний вид точек
 
-Есть два варианта:
-
-- поменять внешний вид точек на всей диаграмме — цвет, размер, обводку, прозрачность и так далее (возможностей очень много, здесь описана только часть из них),
-- менять цвет, размер и форму в зависимости от информации об этой точке.
-
 ### Цвет
 
-Поменять цвет всех точек можно с помощью свойства `color` (здесь ещё заодно поменяли размер и прозрачность).
+Установите единый цвет всех точек через свойство `color`.
+
+<MdxTabs>
 
 <ScatterExampleColor />
 
@@ -101,9 +117,11 @@ const dataColor = [
 />
 ```
 
-В свойстве `colorField` можно указать название поля, в зависимости от значения которого будет меняться цвет точек. А в свойстве `color` — набор цветов для разных значений.
+</MdxTabs>
 
-Например, на этой диаграмме показана зависимость количества наблюдений НЛО от температуры воздуха. В трёх городах —  Тмутаракани, Урюпинске и Бобруйске. Точки, которые соответствуют наблюдениям в разных городах, покрашены в разные цвета.
+Чтобы цвет зависел от значения поля, используйте `colorField` и передайте массив цветов в `color`.
+
+<MdxTabs>
 
 <ScatterExampleColorField />
 
@@ -130,9 +148,13 @@ const dataColor = [
 />
 ```
 
+</MdxTabs>
+
 ### Размер
 
-Поменять размер точек можно с помощью свойства `size`.
+Установите фиксированный размер точек через свойство `size`.
+
+<MdxTabs>
 
 <ScatterExampleSize />
 
@@ -150,7 +172,11 @@ const dataColor = [
 />
 ```
 
-В свойстве `colorSize` можно указать название поля, в зависимости от величины которого будет меняться размер точек. А в свойстве `size` — диапазон размеров (минимум и максимум).
+</MdxTabs>
+
+Чтобы размер зависел от значения поля, используйте `sizeField` и передайте диапазон `[min, max]` в `size`.
+
+<MdxTabs>
 
 <ScatterExampleSizeField />
 
@@ -171,9 +197,13 @@ const dataColor = [
 />
 ```
 
+</MdxTabs>
+
 ### Форма
 
-Поменять форму точек можно с помощью свойства `shape`. [Посмотреть варианты форм](https://g2plot.antv.vision/en/docs/api/plots/scatter#shape)
+Установите форму всех точек через свойство `shape`. Доступные варианты форм можно посмотреть в [документации G2Plot](https://g2plot.antv.vision/en/docs/api/plots/scatter#shape).
+
+<MdxTabs>
 
 <ScatterExampleShape />
 
@@ -191,7 +221,11 @@ const dataColor = [
 />
 ```
 
-В свойстве `shapeField` можно указать название поля, в зависимости от значения которого будет меняться форма точек. А в свойстве `shape` — набор форм.
+</MdxTabs>
+
+Чтобы форма зависела от значения поля, используйте `shapeField` и передайте массив форм в `shape`.
+
+<MdxTabs>
 
 <ScatterExampleShapeField />
 
@@ -210,61 +244,85 @@ const dataColor = [
 />
 ```
 
-## Формат данных
+</MdxTabs>
 
-При наведении на точку всплывает тултип со всеми данными о ней. Вы можете поменять названия полей и формат данных с помощью свойства `meta`.
+## Тултип
+
+По умолчанию тултип показывает все поля точки. Настройте отображение через свойство `meta`: задайте псевдоним (`alias`) и форматирование (`formatter`).
+
+<MdxTabs>
 
 <ScatterExamplePseudo />
 
 ```tsx
-<Scatter
-  style={{ marginBottom: 'var(--space-l)', width: 300, height: 200 }}
-  data={dataColor}
-  xField="temperature"
-  yField="ufo"
-  colorField="place"
-  color={['#ffd500', '#82cab2', '#193442', '#d18768', '#7e827a']}
-  size={[4, 20]}
-  sizeField="ufo"
-  shape="circle"
-  pointStyle={{
-    fillOpacity: 1,
-  }}
-  meta={{
-    temperature: {
-      alias: 'Воздух',
-      formatter: (v) => {
-        return `${v}°`;
-      },
-    },
-    ufo: {
-      alias: 'Видели НЛО',
-      formatter: (v) => {
-        return `${v} раз`;
-      },
-    },
-    place: { alias: 'Город' },
-  }}
-/>
+export function ScatterExamplePseudo() {
+  const vars = useThemeVars();
+
+  const colors: Record<string, string> = {
+    Asia: vars.color.primary['--color-bg-success'],
+    Americas: vars.color.primary['--color-bg-warning'],
+    Oceania: vars.color.primary['--color-bg-caution'],
+    Europe: vars.color.primary['--color-bg-alert'],
+    Africa: vars.color.primary['--color-bg-normal'],
+  };
+
+  return (
+    <Scatter
+      data={data}
+      xField="change in female rate"
+      appendPadding={30}
+      yField="change in male rate"
+      sizeField="pop"
+      color={Object.keys(colors).map((key) => colors[key])}
+      legend={getLegend({ position: 'top-left', layout: 'horizontal' })}
+      renderer="svg"
+      size={[4, 30]}
+      shape="circle"
+      colorField="continent"
+      meta={{
+        'pop': {
+          alias: 'население',
+          formatter: (value) => `${(value / 1000000).toFixed(2)} млн`,
+        },
+        'change in female rate': {
+          alias: 'занятость женщин',
+          formatter: (value) => value.toFixed(2),
+        },
+        'change in male rate': {
+          alias: 'занятость мужчин',
+          formatter: (value) => value.toFixed(2),
+        },
+        'continent': { alias: 'континент' },
+      }}
+      pointStyle={{
+        fillOpacity: 1,
+      }}
+      xAxis={{
+        grid: {
+          line: {
+            style: {
+              stroke: vars.color.primary['--color-bg-system'],
+            },
+          },
+        },
+        line: {
+          style: {
+            stroke: vars.color.primary['--color-bg-system'],
+          },
+        },
+      }}
+    />
+  );
+}
 ```
 
-## Свойства
+</MdxTabs>
 
-| Свойство                 | Тип и значения              | По умолчанию | Описание                                             |
-| ------------------------ | --------------------------- | ------------ | ---------------------------------------------------- |
-| [`data`](#данные)        | `Data[]`                    | -            | Массив с информацией о точках                        |
-| [`xField`](#данные)      | `string`                    | -            | Поле с данными для отображения на горизонтальной оси |
-| [`yField`](#данные)      | `string`                    | -            | Поле с данными для отображения на вертикальной оси   |
-| [`color`](#цвет)         | `string\|string[]`          | -            | Цвет точки или набор цветов                          |
-| [`colorField`](#цвет)    | `string`                    | -            | Поле, от которого зависит цвет точек                 |
-| [`size`](#размер)        | `number\|[number, number] ` | -            | Размер точки или диапазон размеров                   |
-| [`sizeField`](#размер)   | `string`                    | -            | Поле, от которого зависит размер точек               |
-| [`shape`](#форма)        | `string\|string[]`          | -            | Форма точек или набор форм                           |
-| [`shapeField`](#форма)   | `string`                    | -            | Поле, от которого зависит форма точек                |
-| [`meta`](#формат-данных) | `string`                    | -            | Объект с форматом данных для тултипа                 |
-| `className`              | `string`                    | -            | Дополнительный CSS-класс компонента                  |
+## Пример использования
 
-### Пример
+<MdxTabs>
+
+<ScatterExample />
 
 ```tsx
 import { useThemeVars } from '@consta/uikit/useThemeVars';
@@ -337,4 +395,4 @@ export function ScatterExample() {
 }
 ```
 
-<ScatterExample />
+</MdxTabs>
