@@ -135,8 +135,10 @@ export function ColumnExampleSeriesField() {
     <Column
       style={{ marginBottom: 'var(--space-m)', maxWidth: 400, maxHeight: 200 }}
       data={dataSimple}
-      xField="number"
-      yField="parameter"
+      legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
+      renderer="svg"
+      xField="parameter"
+      yField="number"
       seriesField="parameter"
     />
   );

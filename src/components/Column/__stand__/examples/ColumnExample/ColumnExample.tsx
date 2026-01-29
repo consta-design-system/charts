@@ -49,15 +49,12 @@ export function ColumnExampleSimple() {
 }
 
 export function ColumnExampleSeriesField() {
-  const vars = useThemeVars();
-
   return (
     <Column
       style={{ marginBottom: 'var(--space-m)', maxWidth: 400, maxHeight: 200 }}
       data={dataSimple}
       legend={getLegend({ layout: 'horizontal', position: 'top-left' })}
       renderer="svg"
-      color={vars.color.primary['--color-bg-normal']}
       xField="parameter"
       yField="number"
       seriesField="parameter"
