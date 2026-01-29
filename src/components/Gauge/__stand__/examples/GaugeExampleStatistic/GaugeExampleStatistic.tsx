@@ -31,7 +31,7 @@ export const GaugeExampleStatistic = () => {
       content: {
         formatter: customFormatter,
         style: {
-          color: vars.color.primary['--color-bg-tone'],
+          color: vars.color.primary['--color-typo-primary'],
         },
       },
     },
