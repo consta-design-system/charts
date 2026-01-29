@@ -1,4 +1,4 @@
-import { MdxMenu } from '@consta/stand';
+import { MdxMenu, MdxInformer, MdxTabs } from '@consta/stand';
 import {
   RemadeInfo,
   RemadeTableInfo,
@@ -16,35 +16,69 @@ import { HistogramExampleColor } from './examples/HistogramExampleColor/Histogra
 
 <MdxMenu>
 
+- [Обзор](#обзор)
+- [Импорт](#импорт)
+- [Свойства](#свойства)
 - [Данные](#данные)
 - [Столбцы](#столбцы)
-  - [Количество](#количество-столбцов)
-  - [Цвет](#цвет-столбцов)
+  - [Количество столбцов](#количество-столбцов)
+  - [Цвет столбцов](#цвет-столбцов)
 - [Группы значений](#группы-значений)
 - [Сетка](#сетка)
-- [Список свойств](#свойства)
+- [Пример использования](#пример-использования)
 
 </MdxMenu>
 
+## Обзор
+
+Компонент `Histogram` отображает гистограмму распределения данных. Поддерживает настройку количества и ширины столбцов, цвета, группировку значений (стековая гистограмма) и внешний вид сетки.
+
+## Импорт
+
+```tsx
+import { Histogram } from '@consta/charts/Histogram';
+```
+
+## Свойства
+
+<MdxInformer status="normal">
+
+Компонент построен на базе G2Plot. [Полное описание API](https://g2plot.antv.vision/en/docs/api/plots/histogram).
+
+</MdxInformer>
+
+| Свойство                             | Тип                    | По умолчанию | Описание                                      |
+| ------------------------------------ | ---------------------- | ------------ | --------------------------------------------- |
+| [`data`](#данные)                    | `Data[]`               | —            | Массив данных для гистограммы                 |
+| [`binField`](#данные)                | `string`               | —            | Поле данных, по которому строится гистограмма |
+| [`stackField?`](#группы-значений)    | `string`               | —            | Поле для группировки (стековая гистограмма)   |
+| [`binNumber?`](#количество-столбцов) | `number`               | —            | Количество столбцов                           |
+| [`binWidth?`](#количество-столбцов)  | `number`               | —            | Ширина одного столбца                         |
+| [`color?`](#цвет-столбцов)           | `string` \| `string[]` | —            | Цвет(а) столбцов                              |
+| [`xAxis?`](#сетка)                   | `object`               | —            | Настройки горизонтальной оси                  |
+| [`yAxis?`](#сетка)                   | `object`               | —            | Настройки вертикальной оси                    |
+| [`meta?`](#сетка)                    | `object`               | —            | Форматирование данных и осей                  |
+| `legend?`                            | `object`               | —            | Настройки легенды (для группированных данных) |
+| `className?`                         | `string`               | —            | Дополнительный CSS-класс                      |
+| `ref?`                               | `Ref`                  | —            | Ссылка на DOM-элемент                         |
+
 ## Данные
 
-Создайте объект с данными для гистограммы, достаточно одной переменной. Например, с числами от 0 до 17:
+Гистограмма строится по одному числовому полю. Передайте массив объектов в свойство `data`, а имя поля — в `binField`.
+
+<MdxTabs>
+
+<HistogramExampleSuperBasic />
 
 ```tsx
 export const data = [
   { value: 0 },
   { value: 0 },
-  //...
+  // ...
   { value: 17 },
   { value: 17 },
 ];
-```
 
-Укажите, из какого объекта брать данные, в свойстве `data`.
-
-В свойстве `binField` укажите поле, по которому нужно построить гистограмму.
-
-```tsx
 export function HistogramExampleBasic() {
   const options = {
     data,
@@ -55,31 +89,31 @@ export function HistogramExampleBasic() {
 }
 ```
 
-<HistogramExampleSuperBasic />
+</MdxTabs>
 
 ## Столбцы
 
 ### Количество столбцов
 
-Вы можете ограничить количество столбцов на гистограмме: установить количество столбиков в `binNumber` или ограничить ширину одного столбика в `binWidth`.
+Управляйте количеством столбцов с помощью `binNumber` (фиксированное количество) или `binWidth` (фиксированная ширина). Одновременно использовать нельзя — выберите один вариант.
 
-Вместе не работают, нужно выбрать что-то одно.
-
-| `binNumber: 8`                  | `binWidth:5`                   |
+| `binNumber: 8`                  | `binWidth: 5`                  |
 | ------------------------------- | ------------------------------ |
 | <HistogramExampleBoxesNumber /> | <HistogramExampleBoxesWidth /> |
 
 ### Цвет столбцов
 
-Поменять цвет столбцов можно в свойстве `color`. Лучше использовать переменные.
+Цвет задаётся в свойстве `color`. Рекомендуется использовать токены темы. При группировке можно передать массив цветов.
 
-Если значения в гистограмме сгруппированы, можно указать [несколько цветов](#группы-значений).
+<MdxTabs>
+
+<HistogramExampleColor />
 
 ```tsx
 export const data = [
   { value: 0 },
   { value: 0 },
-  //...
+  // ...
   { value: 17 },
   { value: 17 },
 ];
@@ -97,20 +131,24 @@ export function HistogramExampleColor() {
 }
 ```
 
-<HistogramExampleColor />
+</MdxTabs>
 
 ## Группы значений
 
-Вы можете построить гистограмму с несколькими группами значений. Для этого добавьте в объект с описанием гистограммы несколько полей и укажите в свойстве `stackField` имя поля, по которому нужно сгруппировать данные внутри столбца.
+Для построения стековой гистограммы добавьте поле группировки и укажите его в `stackField`. Цвета можно передать массивом в `color`.
+
+<MdxTabs>
+
+<HistogramExampleStacked />
 
 ```tsx
 export const data = [
   { name: 'Blue', color: '#33ACF2', value: 4 },
   { name: 'Blue', color: '#33ACF2', value: 5 },
-  //...
+  // ...
   { name: 'Green', color: '#04BC7F', value: 0 },
   { name: 'Green', color: '#04BC7F', value: 1 },
-  //...
+  // ...
   { name: 'Orange', color: '#FFA217', value: 4 },
   { name: 'Orange', color: '#FFA217', value: 5 },
 ];
@@ -144,19 +182,21 @@ export function HistogramExampleBasic() {
 }
 ```
 
-<HistogramExampleStacked />
+</MdxTabs>
 
 ## Сетка
 
-Поменять внешний вид сетки можно с помощью свойств [`xAxis` и `yAxis`](https://g2plot.antv.vision/en/docs/api/plots/histogram#axis) или с помощью свойства [`meta`](https://g2plot.antv.vision/en/docs/api/plots/histogram#meta).
+Внешний вид осей и шкал настраивается через свойства `xAxis`, `yAxis` и `meta`.
 
-Например, так:
+<MdxTabs>
+
+<HistogramExampleBasic />
 
 ```tsx
 export const data = [
   { value: 0 },
   { value: 0 },
-  //...
+  // ...
   { value: 17 },
   { value: 17 },
 ];
@@ -184,18 +224,19 @@ export function HistogramExampleBasic() {
 }
 ```
 
-<HistogramExampleBasic />
+</MdxTabs>
 
-## Свойства
+## Пример использования
 
-<RemadeTableInfo apiUrl="https://g2plot.antv.vision/en/docs/api/plots/histogram" />
+```tsx
+import { Histogram } from '@consta/charts/Histogram';
 
-| Свойство                 | Тип и значения | По умолчанию | Описание                                        |
-| ------------------------ | -------------- | ------------ | ----------------------------------------------- |
-| [`data`](#данные)        | `Data[]`       | -            | Объект с данными для гистограммы                |
-| [`binField`](#данные)    | `string`       | -            | Поле, по которому строится гистограмма          |
-| [`binNumber?`](#столбцы) | `string`       | -            | Количество столбцов                             |
-| [`binWidth?`](#столбцы)  | `string`       | -            | Ширина столбца                                  |
-| [`xAxis?`](#сетка)       | `object`       | -            | Объект с описанием сетки для горизонтальной оси |
-| [`yAxis?`](#сетка)       | `string`       | -            | Объект с описанием сетки для вертикальной оси   |
-| [`meta?`](#сетка)        | `string`       | -            | Объект с форматом любых данных на графике       |
+const data = [
+  { value: 5 },
+  { value: 12 },
+  { value: 8 },
+  // ...
+];
+
+<Histogram data={data} binField="value" binWidth={2} />;
+```
