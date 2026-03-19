@@ -17,7 +17,6 @@ module.exports = {
       'never',
       { ignore: ['after-declaration'] },
     ],
-    'string-quotes': 'single',
     'order/order': ['custom-properties', 'declarations', 'rules'],
     'at-rule-no-unknown': [
       true,
